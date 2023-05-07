@@ -8,25 +8,27 @@ import { Box,
          Menu,
          MenuButton,
          MenuList,
-         MenuItem} from "@chakra-ui/react"
+         MenuItem,
+         extendTheme} from "@chakra-ui/react"
 
 import { HamburgerIcon } from '@chakra-ui/icons'
 
+
 export default function Navbar() {
    return (
-     <Box bg="blue.300" h="56px" p="10px"> 
+     <Box bg="#DBB489" h="56px" p="10px"> 
        <Container maxW="80em">
          <Flex alignItems='center' 
                justify='space-between' 
                gap="10px">
-           <IconButton colorScheme='blue' icon={<HamburgerIcon />} display={{ base: 'block' }} />
-           <Text fontSize='20px' color='white' as="b">
+           <IconButton colorScheme='orange' icon={<HamburgerIcon />} display={{ base: 'block' }} />
+           <Text fontSize='20px' color='black' as="b">
              LOGO
            </Text>
            
            <Spacer/>
            <Flex alignItems='center' gap='2' display={{ base: 'block', md: 'flex' }}>
-             <Button colorScheme='blue'>
+             <Button colorScheme='orange'>
                Log in
              </Button>
            </Flex>
