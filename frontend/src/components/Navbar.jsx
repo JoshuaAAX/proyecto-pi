@@ -17,7 +17,7 @@ export default function Navbar() {
       <Container maxW="80em">
         <Flex alignItems="center" justify="space-between" gap="10px">
           <Image 
-          src='\imagenes\1362534.png'
+          src='/1362534.png'
           boxSize='40px'
           />
           <Text fontSize="20px" color="black" as="b">

@@ -9,7 +9,7 @@ export default function Page() {
     <Box sx={styles.pagina}>
     </Box>
     <Box>
-    <Image src='\imagenes\1362534.png' sx={styles.imagen}/>
+    <Image src='/1362534.png' sx={styles.imagen}/>
     </Box>
     <Box>
     <Text sx={styles.texto}>¡Donde aprender sobre la cultura Egipcia
