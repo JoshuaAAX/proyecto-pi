@@ -1,8 +1,12 @@
 import { Button, Container, Grid, Stack, Typography } from "@mui/material";
 
+import { useNavigate } from "react-router-dom";
+
 import cube from "../../assets/cube.png";
 
 const Canvas = () => {
+  const navigate = useNavigate();
+
   return (
     <Container
       maxWidth="md"
@@ -17,7 +21,7 @@ const Canvas = () => {
           item
           sx={{
             mt: { xs: 20, md: 0 },
-            mb: { xs: 5, md: 0},
+            mb: { xs: 5, md: 0 },
             rotate: "20deg",
             "&: hover": {
               cursor: "pointer",
@@ -61,8 +65,12 @@ const Canvas = () => {
               },
             }}
           >
-            <Button>Crear una cuenta</Button>
-            <Button>Ya tengo una cuenta</Button>
+            <Button onClick={() => navigate("/signup")}>
+              Crear una cuenta
+            </Button>
+            <Button onClick={() => navigate("/login")}>
+              Ya tengo una cuenta
+            </Button>
           </Stack>
         </Grid>
       </Grid>
