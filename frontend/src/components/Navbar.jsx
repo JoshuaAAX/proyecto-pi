@@ -1,34 +1,46 @@
 import {
+  AppBar,
   Box,
-  Container,
-  Flex,
-  IconButton,
-  Text,
-  Spacer,
+  Toolbar,
+  Typography,
   Button,
-} from "@chakra-ui/react";
+  IconButton,
+} from "@mui/material";
 
-import { HamburgerIcon } from "@chakra-ui/icons";
+//import MenuIcon from "@mui/icons-material/Menu";
 
-export default function Navbar() {
+import logo from "../../assets/pyramid.png";
+
+const Navbar = () => {
   return (
-    <Box bg="#DBB489" h="56px" p="10px">
-      <Container maxW="80em">
-        <Flex alignItems="center" justify="space-between" gap="10px">
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static" sx={{ backgroundColor: "#DBB489" }}>
+        <Toolbar>
           <IconButton
-            icon={<HamburgerIcon />}
-            sx={{ background: "none", fontSize: "18px" }}
-          />
-          <Text fontSize="20px" color="black" as="b">
-            LOGO
-          </Text>
-
-          <Spacer />
-          <Flex alignItems="center" display={{ base: "block", md: "flex" }}>
-            <Button colorScheme="orange">Log in</Button>
-          </Flex>
-        </Flex>
-      </Container>
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 1 }}
+            disableRipple
+          >
+            <img src={logo} alt="Nilearn Logo" height={"40px"} />
+          </IconButton>
+          <Typography
+            variant="h6"
+            component="div"
+            color="black"
+            sx={{ flexGrow: 1 }}
+          >
+            Nilearn
+          </Typography>
+          <Button sx={{color: "brown", outline: "1px solid brown"}}>
+            Ingresar
+          </Button>
+        </Toolbar>
+      </AppBar>
     </Box>
   );
-}
+};
+
+export default Navbar;

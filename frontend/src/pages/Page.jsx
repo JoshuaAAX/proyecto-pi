@@ -1,20 +1,25 @@
-import { Center, Stack } from "@chakra-ui/react";
-import About from "../components/About";
-import Canvas from "../components/Canvas";
+import { Box } from "@mui/material";
 import Footer from "../components/Footer";
+import Canvas from "../components/Home";
 
-export default function Page() {
+function Page() {
   return (
-    <Stack direction={["column"]} my={8}>
-      <Center bg="blue" h="100px" color="white" gap="10px" as="b">
-        Hola este soy yo viendo si funcionó el deploy
-      </Center>
-      <Center bg="red" color="white" gap="10px" as="b">
-        This is the Center
-      </Center>
-      <Canvas />
-      <About />
+    <>
+      <Box
+        sx={{
+          height: "100vh",
+          position: "relative",
+          backgroundColor: "#F7EDD4",
+        }}
+      >
+        <Canvas />
+        {/* <Box>
+          <About />
+        </Box> */}
+      </Box>
       <Footer />
-    </Stack>
+    </>
   );
 }
+
+export default Page;
