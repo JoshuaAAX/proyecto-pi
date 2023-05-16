@@ -1,5 +1,7 @@
 import { Button, Container, Grid, Stack, Typography } from "@mui/material";
 
+import cube from "../../assets/cube.png";
+
 const Canvas = () => {
   return (
     <Container
@@ -30,7 +32,7 @@ const Canvas = () => {
           xs={12}
           md={4}
         >
-          <img width={200} src="../../assets/cube.png" alt="3D Cube" />
+          <img width={200} src={cube} alt="3D Cube" />
         </Grid>
         <Grid
           item

@@ -34,9 +34,6 @@ const Navbar = () => {
           >
             Nilearn
           </Typography>
-          <Button sx={{color: "brown", outline: "1px solid brown"}}>
-            Ingresar
-          </Button>
         </Toolbar>
       </AppBar>
     </Box>
