@@ -1,29 +1,18 @@
-import { 
-  createBrowserRouter, 
-  createRoutesFromElements, 
-  Route, 
-  RouterProvider 
-} from 'react-router-dom'
+import { Routes, Route } from "react-router-dom";
 
 // layouts and pages
-import RootLayout from './layouts/RootLayout'
-import Page from './pages/Page'
+import Page from "./pages/Page";
+import Navbar from "./components/Navbar";
 
-
-
-// router and routes
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="/" element={<RootLayout />}>
-      <Route index element={<Page />} />
-    </Route>
-  )
-)
-
-function App() {
+const App = () => {
   return (
-    <RouterProvider router={router} />
-  )
-}
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Page />} />
+      </Routes>
+    </>
+  );
+};
 
-export default App
+export default App;
