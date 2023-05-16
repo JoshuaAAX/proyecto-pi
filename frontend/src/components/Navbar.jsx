@@ -1,6 +1,6 @@
 import { AppBar, Box, Toolbar, Typography, IconButton } from "@mui/material";
 
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import HomeIcon from "@mui/icons-material/Home";
 
@@ -8,6 +8,7 @@ import logo from "../../assets/pyramid.png";
 
 const Navbar = () => {
   const path = useLocation().pathname;
+  const navigate = useNavigate();
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -32,7 +33,7 @@ const Navbar = () => {
             Nilearn
           </Typography>
           {path === "/login" && (
-            <IconButton disableRipple>
+            <IconButton disableRipple onClick={() => navigate("/")}>
               <HomeIcon sx={{ color: "black" }} />
             </IconButton>
           )}

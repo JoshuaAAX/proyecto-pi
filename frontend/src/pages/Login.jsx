@@ -10,9 +10,13 @@ import {
   ThemeProvider,
   Typography,
   createTheme,
+  useTheme,
+  useMediaQuery,
 } from "@mui/material";
 
 import "../styles/Login.css";
+
+import { useNavigate } from "react-router-dom";
 
 import banner from "../../assets/sphinx.jpg";
 import GoogleIcon from "../../assets/google.png";
@@ -26,6 +30,10 @@ const theme = createTheme({
 });
 
 const Login = () => {
+  const navigate = useNavigate();
+  const tema = useTheme();
+  const matches = useMediaQuery(tema.breakpoints.up("md"));
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -49,30 +57,40 @@ const Login = () => {
           backgroundColor: "#F7EDD4",
         }}
       >
-        <Grid
-          item
-          height="95%"
-          xs={false}
-          sm={4}
-          md={5}
-          sx={{
-            backgroundImage: `url(${banner})`,
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            borderTopLeftRadius: "20px",
-            borderBottomLeftRadius: "20px",
-          }}
-        />
+        {matches && (
+          <Grid
+            item
+            height="95%"
+            xs={false}
+            sm={4}
+            md={5}
+            sx={{
+              backgroundImage: `url(${banner})`,
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              borderTopLeftRadius: "20px",
+              borderBottomLeftRadius: "20px",
+            }}
+          />
+        )}
         <Grid
           item
           height="95%"
           xs={12}
-          sm={8}
-          md={5}
+          sm={12}
+          md={6}
           component={Paper}
           elevation={6}
-          sx={{ borderTopRightRadius: "20px", borderBottomRightRadius: "20px" }}
+          sx={{
+            borderTopRightRadius: "20px",
+            borderBottomRightRadius: "20px",
+            borderTopLeftRadius: { xs: "20px", md: "0px" },
+            borderBottomLeftRadius: { xs: "20px", md: "0px" },
+            display:"flex",
+            alignItems: "center",
+            justifyContent: "center"
+          }}
         >
           <Box
             sx={{
@@ -90,10 +108,11 @@ const Login = () => {
               component="form"
               noValidate
               onSubmit={handleSubmit}
-              sx={{ mt: 1, width: "60%" }}
+              sx={{ mt: 1, width: matches ? "70%" : "80%" }}
             >
               <TextField
                 required
+                size="small"
                 fullWidth
                 id="email"
                 label="Email"
@@ -112,6 +131,7 @@ const Login = () => {
               />
               <TextField
                 required
+                size="small"
                 fullWidth
                 name="password"
                 label="Contraseña"
@@ -130,7 +150,7 @@ const Login = () => {
               />
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
-                label="Mantener sesión iniciada"
+                label={matches ? "Mantener sesión iniciada" : "Recuérdame"}
               />
               <Button
                 type="submit"
@@ -177,7 +197,7 @@ const Login = () => {
               >
                 Continuar con Google
               </Button>
-              <Grid container>
+              <Grid>
                 <Grid item xs>
                   <Link href="#" variant="body2">
                     ¿Olvidaste tu contraseña?
