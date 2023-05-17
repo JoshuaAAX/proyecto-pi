@@ -42,4 +42,11 @@ jobs:
 
     - name: Deploy Project Artifacts to Vercel
       run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
+      
+    - name: Environment variables to Dotenv
+      uses: CallePuzzle/envvar-to-dotenv-action@v1.1.5
+      with:
+        # Comma separated names of environment variables to append to a dotenv file
+        variableNames: VITE_SUPABASE_URL=https://zjqmreuhjdezydattxvf.supabase.co, VITE_SUPABASE_API_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpqcW1yZXVoamRlenlkYXR0eHZmIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQyNzk0MTQsImV4cCI6MTk5OTg1NTQxNH0.DPk3VbiLCJWxNbQtrIV7EYAnz93tNknqumoORyX7yTk
+        envPath: .env.local
 
