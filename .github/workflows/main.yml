@@ -42,9 +42,3 @@ jobs:
 
     - name: Deploy Project Artifacts to Vercel
       run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
-      
-    - name: Set environment variables
-      run: |
-        echo "VITE_SUPABASE_URL=https://zjqmreuhjdezydattxvf.supabase.co" >> $GITHUB_ENV
-        echo "VITE_SUPABASE_API_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpqcW1yZXVoamRlenlkYXR0eHZmIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQyNzk0MTQsImV4cCI6MTk5OTg1NTQxNH0.DPk3VbiLCJWxNbQtrIV7EYAnz93tNknqumoORyX7yTk" >> $GITHUB_ENV
-
