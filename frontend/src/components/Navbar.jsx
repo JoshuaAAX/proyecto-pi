@@ -1,4 +1,11 @@
-import { AppBar, Box, Toolbar, Typography, IconButton } from "@mui/material";
+import {
+  AppBar,
+  Box,
+  Toolbar,
+  Typography,
+  IconButton,
+  Button,
+} from "@mui/material";
 
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -6,9 +13,27 @@ import HomeIcon from "@mui/icons-material/Home";
 
 import logo from "../../assets/pyramid.png";
 
+import { supabase } from "./../../backend/client";
+import { useState } from "react";
+import { useEffect } from "react";
+
 const Navbar = () => {
   const path = useLocation().pathname;
   const navigate = useNavigate();
+  const [session, setSession] = useState(null);
+
+  useEffect(() => {
+    supabase.auth.onAuthStateChange((event, session) => {
+      setSession(session);
+    });
+  }, []);
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    navigate("/");
+  };
+
+  const routes = ["/login", "/signup"];
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -32,11 +57,12 @@ const Navbar = () => {
           >
             Nilearn
           </Typography>
-          {path === "/login" && (
+          {routes.includes(path) && (
             <IconButton disableRipple onClick={() => navigate("/")}>
               <HomeIcon sx={{ color: "black" }} />
             </IconButton>
           )}
+          {session ? <Button onClick={handleLogout}>Logout</Button> : null}
         </Toolbar>
       </AppBar>
     </Box>
