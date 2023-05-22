@@ -11,6 +11,7 @@ import {
   useTheme,
   useMediaQuery,
   Stack,
+  Tooltip,
 } from "@mui/material";
 
 import "../styles/Login.css";
@@ -18,7 +19,7 @@ import "../styles/Login.css";
 import { amber } from "@mui/material/colors";
 import { useNavigate } from "react-router-dom";
 
-import banner from "../../assets/sphinx.jpg";
+import banner from "../../assets/egypt-pyramid.jpg";
 import GoogleIcon from "../../assets/google.png";
 import { useEffect, useState } from "react";
 import { supabase } from "./../../backend/client";
@@ -134,23 +135,6 @@ const Signup = () => {
         }}
       />
 
-      {matches && (
-        <Grid
-          item
-          height="80%"
-          xs={false}
-          sm={4}
-          md={4}
-          sx={{
-            backgroundImage: `url(${banner})`,
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            borderTopLeftRadius: "20px",
-            borderBottomLeftRadius: "20px",
-          }}
-        />
-      )}
       <Grid
         item
         height="80%"
@@ -160,10 +144,10 @@ const Signup = () => {
         component={matches && Paper}
         elevation={6}
         sx={{
-          borderTopRightRadius: "20px",
-          borderBottomRightRadius: "20px",
-          borderTopLeftRadius: { xs: "20px", md: "0px" },
-          borderBottomLeftRadius: { xs: "20px", md: "0px" },
+          borderTopLeftRadius: "20px",
+          borderBottomLeftRadius: "20px",
+          borderTopRightRadius: { xs: "20px", md: "0px" },
+          borderBottomRightRadius: { xs: "20px", md: "0px" },
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -249,29 +233,39 @@ const Signup = () => {
             >
               Registrarte
             </Button>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              onClick={loginWithGoogle}
-              sx={{
-                textTransform: "none",
-                mt: 2,
-                mb: 2,
-                py: 1,
-                borderRadius: "20px",
-                backgroundColor: "white",
-                color: "black",
-                fontSize: "1rem",
-                fontWeight: 200,
-                "&:hover": { color: "white" },
-              }}
-              startIcon={
-                <img src={GoogleIcon} alt="Google" width="20px" height="20px" />
-              }
-            >
-              Continuar con Google
-            </Button>
+            <Tooltip title="No funciona en producción" placement="right">
+              <span>
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  onClick={loginWithGoogle}
+                  disabled
+                  sx={{
+                    textTransform: "none",
+                    mt: 2,
+                    mb: 2,
+                    py: 1,
+                    borderRadius: "20px",
+                    backgroundColor: "white",
+                    color: "black",
+                    fontSize: "1rem",
+                    fontWeight: 200,
+                    "&:hover": { color: "white" },
+                  }}
+                  startIcon={
+                    <img
+                      src={GoogleIcon}
+                      alt="Google"
+                      width="20px"
+                      height="20px"
+                    />
+                  }
+                >
+                  Continuar con Google
+                </Button>
+              </span>
+            </Tooltip>
             <Grid item>
               <Link
                 onClick={() => navigate("/login")}
@@ -284,6 +278,23 @@ const Signup = () => {
           </Box>
         </Box>
       </Grid>
+      {matches && (
+        <Grid
+          item
+          height="80%"
+          xs={false}
+          sm={4}
+          md={4}
+          sx={{
+            backgroundImage: `url(${banner})`,
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            borderTopRightRadius: "20px",
+            borderBottomRightRadius: "20px",
+          }}
+        />
+      )}
     </Grid>
   );
 };

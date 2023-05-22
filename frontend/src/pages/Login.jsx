@@ -24,6 +24,7 @@ import GoogleIcon from "../../assets/google.png";
 import { amber } from "@mui/material/colors";
 import { useEffect, useState } from "react";
 import { supabase } from "../../backend/client";
+import { Toaster, toast } from "react-hot-toast";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -41,8 +42,36 @@ const Login = () => {
   const initialState = { email: "", password: "" };
   const [user, setUser] = useState(initialState);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    const { email, password } = user;
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+    
+    console.log(data)
+
+    if (error) {
+      toast.error((t) => (
+        <span>
+          Error
+          <Button
+            disableRipple
+            size="small"
+            sx={{
+              textTransform: "capitalize",
+              ml: 1,
+              color: "white",
+              background: "#474747",
+            }}
+            onClick={() => toast.dismiss(t.id)}
+          >
+            cerrar
+          </Button>
+        </span>
+      ));
+    }
   };
 
   const handleChange = ({ target }) => {
@@ -63,6 +92,19 @@ const Login = () => {
         backgroundColor: "#F7EDD4",
       }}
     >
+      <Toaster
+        position="bottom-right"
+        reverseOrder={false}
+        toastOptions={{
+          error: {
+            style: {
+              borderRadius: "10px",
+              background: "#333",
+              color: "#fff",
+            },
+          },
+        }}
+      />
       {matches && (
         <Grid
           item
@@ -145,7 +187,7 @@ const Login = () => {
               label={matches ? "Mantener sesión iniciada" : "Recuérdame"}
             />
             <Button
-              type="submit"
+              onClick={handleSubmit}
               fullWidth
               variant="contained"
               sx={{
@@ -167,6 +209,7 @@ const Login = () => {
               type="submit"
               fullWidth
               variant="contained"
+              disabled
               sx={{
                 textTransform: "none",
                 mt: 2,
