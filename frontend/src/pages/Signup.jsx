@@ -1,8 +1,6 @@
 import {
   Box,
-  Button,
-  Checkbox,
-  FormControlLabel,
+  Button, 
   Grid,
   Link,
   Paper,
@@ -45,7 +43,7 @@ const Signup = () => {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: "http://localhost:5173/signup",
+        redirectTo: "https://dropaax.com/signup",
       },
     });
 
@@ -240,7 +238,6 @@ const Signup = () => {
                   fullWidth
                   variant="contained"
                   onClick={loginWithGoogle}
-                  disabled
                   sx={{
                     textTransform: "none",
                     mt: 2,
