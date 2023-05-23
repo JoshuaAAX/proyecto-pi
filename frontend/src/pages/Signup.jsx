@@ -1,6 +1,6 @@
 import {
   Box,
-  Button, 
+  Button,
   Grid,
   Link,
   Paper,
@@ -10,6 +10,7 @@ import {
   useMediaQuery,
   Stack,
   Tooltip,
+  Divider,
 } from "@mui/material";
 
 import "../styles/Login.css";
@@ -40,10 +41,11 @@ const Signup = () => {
   const [user, setUser] = useState(initialState);
 
   const loginWithGoogle = async () => {
+    const redirectPath = location.origin;
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: "https://dropaax.com/signup",
+        redirectTo: `${redirectPath}/signup`,
       },
     });
 
@@ -116,7 +118,7 @@ const Signup = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "#F7EDD4",
+        backgroundColor: matches ? "#F7EDD4" : "#FFFFFF",
       }}
     >
       <Toaster
@@ -146,12 +148,12 @@ const Signup = () => {
           borderBottomLeftRadius: "20px",
           borderTopRightRadius: { xs: "20px", md: "0px" },
           borderBottomRightRadius: { xs: "20px", md: "0px" },
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
+          display: "grid",
+          placeItems: "center",
         }}
       >
         <Box
+          width="60%"
           sx={{
             my: 6,
             mx: { md: 4, xs: 0 },
@@ -177,7 +179,7 @@ const Signup = () => {
                 required
                 size="small"
                 fullWidth
-                name="username"
+                name="nickname"
                 label="Usuario"
                 variant="outlined"
                 onChange={handleChange}
@@ -231,6 +233,7 @@ const Signup = () => {
             >
               Registrarte
             </Button>
+            <Divider sx={{ my: 3 }} />
             <Tooltip title="No funciona en producción" placement="right">
               <span>
                 <Button
@@ -240,7 +243,6 @@ const Signup = () => {
                   onClick={loginWithGoogle}
                   sx={{
                     textTransform: "none",
-                    mt: 2,
                     mb: 2,
                     py: 1,
                     borderRadius: "20px",

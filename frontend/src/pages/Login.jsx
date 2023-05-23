@@ -13,6 +13,7 @@ import {
   useTheme,
   useMediaQuery,
   Stack,
+  Divider,
 } from "@mui/material";
 
 import "../styles/Login.css";
@@ -49,8 +50,8 @@ const Login = () => {
       email,
       password,
     });
-    
-    console.log(data)
+
+    console.log(data);
 
     if (error) {
       toast.error((t) => (
@@ -89,7 +90,7 @@ const Login = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "#F7EDD4",
+        backgroundColor: matches ? "#F7EDD4" : "#FFFFFF",
       }}
     >
       <Toaster
@@ -135,9 +136,8 @@ const Login = () => {
           borderBottomRightRadius: "20px",
           borderTopLeftRadius: { xs: "20px", md: "0px" },
           borderBottomLeftRadius: { xs: "20px", md: "0px" },
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
+          display: "grid",
+          placeItems: "center",
         }}
       >
         <Box
@@ -154,7 +154,6 @@ const Login = () => {
           </Typography>
           <Box
             sx={{
-              width: "70%",
               mt: 4,
               "& .MuiInputBase-root": {
                 background: amber[50],
@@ -186,6 +185,7 @@ const Login = () => {
               control={<Checkbox value="remember" color="primary" />}
               label={matches ? "Mantener sesión iniciada" : "Recuérdame"}
             />
+
             <Button
               onClick={handleSubmit}
               fullWidth
@@ -205,14 +205,13 @@ const Login = () => {
             >
               Ingresar
             </Button>
+            <Divider sx={{ my: 3 }} />
             <Button
               type="submit"
               fullWidth
               variant="contained"
-              disabled
               sx={{
                 textTransform: "none",
-                mt: 2,
                 mb: 2,
                 py: 1,
                 borderRadius: "20px",
@@ -226,7 +225,7 @@ const Login = () => {
                 <img src={GoogleIcon} alt="Google" width="20px" height="20px" />
               }
             >
-              Continuar con Google
+              {matches ? "Continuar con Google" : undefined}
             </Button>
             <Grid>
               <Grid item xs>
