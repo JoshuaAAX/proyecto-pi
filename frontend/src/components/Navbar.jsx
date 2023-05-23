@@ -16,6 +16,7 @@ import logo from "../../assets/pyramid.png";
 import { supabase } from "./../../backend/client";
 import { useState } from "react";
 import { useEffect } from "react";
+import UserMenu from "./UserMenu";
 
 const Navbar = () => {
   const path = useLocation().pathname;
@@ -62,7 +63,13 @@ const Navbar = () => {
               <HomeIcon sx={{ color: "black" }} />
             </IconButton>
           )}
-          {session ? <Button onClick={handleLogout}>Logout</Button> : null}
+          {session ? (
+            <UserMenu
+              bgcolor="slategray"
+              session={session}
+              handleLogout={handleLogout}
+            />
+          ) : null}
         </Toolbar>
       </AppBar>
     </Box>

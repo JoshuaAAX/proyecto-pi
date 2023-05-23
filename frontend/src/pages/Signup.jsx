@@ -75,31 +75,49 @@ const Signup = () => {
           </Button>
         </span>
       ));
-    }
-
-    try {
-      const { error } = await supabase.auth.signUp({
-        email,
-        password,
-        options: {
-          data: { nickname, full_name },
-        },
-      });
-
-      if (error) {
-        console.log(error);
-      } else {
-        await supabase.from("users").insert({ nickname, full_name, email });
-        toast.success("Usuario registrado!", {
-          style: {
-            borderRadius: "10px",
-            background: "#333",
-            color: "#fff",
+    } else {
+      try {
+        const { error } = await supabase.auth.signUp({
+          email,
+          password,
+          options: {
+            data: { nickname, full_name },
           },
         });
+
+        if (error) {
+          toast.error((t) => (
+            <span>
+              Ya existe un usuario con el email{" "}
+              <span style={{ color: "green" }}>{email}</span>
+              <Button
+                disableRipple
+                size="small"
+                sx={{
+                  textTransform: "capitalize",
+                  ml: 1,
+                  color: "white",
+                  background: "#474747",
+                }}
+                onClick={() => toast.dismiss(t.id)}
+              >
+                cerrar
+              </Button>
+            </span>
+          ));
+        } else {
+          await supabase.from("users").insert({ nickname, full_name, email });
+          toast.success("Usuario registrado!", {
+            style: {
+              borderRadius: "10px",
+              background: "#333",
+              color: "#fff",
+            },
+          });
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
     }
   };
 

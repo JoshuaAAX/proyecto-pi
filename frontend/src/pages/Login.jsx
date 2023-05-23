@@ -43,6 +43,18 @@ const Login = () => {
   const initialState = { email: "", password: "" };
   const [user, setUser] = useState(initialState);
 
+  const loginWithGoogle = async () => {
+    const redirectPath = location.origin;
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: `${redirectPath}/signup`,
+      },
+    });
+
+    if (error) console.log(error);
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const { email, password } = user;
@@ -207,7 +219,7 @@ const Login = () => {
             </Button>
             <Divider sx={{ my: 3 }} />
             <Button
-              type="submit"
+              onClick={loginWithGoogle}
               fullWidth
               variant="contained"
               sx={{
