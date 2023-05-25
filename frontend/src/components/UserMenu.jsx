@@ -15,6 +15,8 @@ import Settings from "@mui/icons-material/Settings";
 import DashboardRounded from "@mui/icons-material/DashboardRounded";
 import Person from "@mui/icons-material/Person";
 
+import { Link } from "react-router-dom";
+
 // eslint-disable-next-line react/prop-types
 const UserMenu = ({ bgcolor, session, handleLogout }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -124,12 +126,14 @@ const UserMenu = ({ bgcolor, session, handleLogout }) => {
               </ListItemIcon>
               Dashboard
             </MenuItem>
+            <Link to="/profile" style={{ textDecoration: "none", color: "inherit" }}>
             <MenuItem>
               <ListItemIcon>
                 <Person fontSize="small" />
               </ListItemIcon>
               Mi cuenta
             </MenuItem>
+            </Link>
             <Divider />
             <MenuItem>
               <ListItemIcon>
