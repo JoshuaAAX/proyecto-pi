@@ -10,13 +10,11 @@ const Profile = () => {
   const [nickname, setNickname] = useState("");
   const [email, setEmail] = useState("");
 
-
   useEffect(() => {
     supabase.auth.onAuthStateChange((event, session) => {
       if (!session) {
         navigate("/");
       } else {
-        //console.log(session.user)
         setFullName(session.user.user_metadata.full_name);
         setNickname(session.user.user_metadata.nickname);
         setEmail(session.user.email);
@@ -25,30 +23,30 @@ const Profile = () => {
   }, [navigate]);
 
   return (
-    <Grid  justifyContent="center" >
-       <Box m={4} display="flex" justifyContent="center" sx={{ display: "flex", flexDirection: "column", alignItems: "center"  }}>
-         <Card  sx={{ width: 900, height: 700, borderRadius: "20px"}}>
-         <CardContent sx={{ padding: '30px' }}>
+    <Grid justifyContent="center">
+      <Box m={4} display="flex" justifyContent="center" sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+        <Card sx={{ width: 900, borderRadius: "20px" }}>
+          <CardContent sx={{ padding: '30px', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
 
-          <Typography fontSize="1.8rem" fontWeight={600} color="#987E62">
-           Perfil de cuenta
-          </Typography>
-        
-          <Stack spacing={2} sx={{ mb: 1 }}>
-          <TextField
+            <Typography fontSize="1.8rem" fontWeight={600} color="#987E62">
+              Perfil de cuenta
+            </Typography>
+
+            <Stack spacing={2} sx={{ mb: 1 }}>
+              <TextField
                 required
                 size="small"
-                id="nikname"
-                label={nickname}     
+                id="nickname"
+                label={nickname}
                 name="nickname"
                 variant="outlined"
                 inputProps={{
                   style: {
-                    backgroundColor: '#FFF8E1', 
-                   },
+                    backgroundColor: '#FFF8E1',
+                  },
                 }}
               />
-              
+
               <TextField
                 required
                 size="small"
@@ -57,9 +55,9 @@ const Profile = () => {
                 name="fullname"
                 variant="outlined"
                 inputProps={{
-                style: {
-                  backgroundColor: '#FFF8E1', 
-                 },
+                  style: {
+                    backgroundColor: '#FFF8E1',
+                  },
                 }}
               />
 
@@ -72,15 +70,13 @@ const Profile = () => {
                 variant="outlined"
                 inputProps={{
                   style: {
-                    backgroundColor: '#FFF8E1', 
-                   },
+                    backgroundColor: '#FFF8E1',
+                  },
                 }}
               />
-              
-              
-         </Stack>
+            </Stack>
 
-         <Button
+            <Button
               fullWidth
               variant="contained"
               sx={{
@@ -96,14 +92,14 @@ const Profile = () => {
                 },
               }}
             >
-              guardar
+              Guardar
             </Button>
 
-         </CardContent>
+          </CardContent>
         </Card>
-       </Box>
+      </Box>
     </Grid>
-    
+
   );
 };
 
