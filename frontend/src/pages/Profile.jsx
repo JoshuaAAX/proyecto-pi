@@ -21,9 +21,14 @@ import {
   Snackbar,
 } from "@mui/material";
 
+
+    
+
   //pagina de perfil
   const Profile = () => {
+
   const navigate = useNavigate();
+
 
   //useState de la informacion que sera traida del backend 
 
@@ -32,16 +37,11 @@ import {
   const [email, setEmail] = useState("");
   const [id, setid] = useState("");
 
-  console.log("este es el id "+id)
-  console.log("este es el nombre "+fullName)
-  console.log("este es el nickname "+nickName)
-  console.log("este es el email "+email)
-
   //useState del mensaje de alerte
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
 
-  //trae la informacion del backend
+  //traer los datos de authentication
   useEffect(() => {
 
     //de autenticacion toma el id y el email
@@ -56,17 +56,40 @@ import {
       }
     });
 
-    const response = supabase.from('users').select('id')
-    console.log(response)
-
   }, [navigate]);
+
+
+  //traer lo datos de la tabla de usuarios
+  const [usersData, setUsersData] = useState([]);
+
+  useEffect(() => {
+    const fetchUsersData = async () => {
+      try {
+        const { data, error } = await supabase.from("users").select("*").eq('email', email).limit(1);
+        if (error) {
+          console.error("Error al obtener los datos de usuarios:", error);
+        } else {
+          if (data && data.length > 0) {
+            setUsersData(data[0].nickname);
+            setFullName(data[0].full_name);
+            setNickname(data[0].nickname);
+        
+            setTextfield_name(data[0].full_name);
+            setTextfield_nick(data[0].nickname);
+          }
+        }
+      } catch (error) {
+        console.error("Error al obtener los datos de usuarios:", error);
+      }
+    };
+
+    fetchUsersData();
+  }, [email]);
+
 
   //contenido dentro de los texfield
   const [textfield_name, setTextfield_name] = useState("");
   const [textfield_nick, setTextfield_nick] = useState("");
-
-  console.log(textfield_nick)
-  console.log(textfield_name)
 
   //evento del boton de gurdar que realiza la actualizacion al usuario
   const handleUpdateUser = async (event) => {
