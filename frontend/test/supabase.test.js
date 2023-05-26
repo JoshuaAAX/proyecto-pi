@@ -3,8 +3,8 @@ require('dotenv').config({path: '../.env.local'})
 
  // Configurar el cliente de Supabase
 
- const supabaseUrl = "https://zjqmreuhjdezydattxvf.supabase.co"
- const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpqcW1yZXVoamRlenlkYXR0eHZmIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY4NDI3OTQxNCwiZXhwIjoxOTk5ODU1NDE0fQ.uNjw-coYE9ZZqSn8kBXYu_H7uzTOLrxFj_n0pLT9_EA"
+ const supabaseUrl = "urlsupabase"
+ const supabaseKey = "supabasekey"
  const supabase = createClient(supabaseUrl, supabaseKey);
 
 
@@ -54,5 +54,24 @@ test("Prueba de autenticación de usuario con Supabase", async () => {
     expect(data.user).toBeDefined();
     expect(data.session).toBeTruthy();
     expect(error).toBeNull();
-  });
+});
+
+
+
+test("Prueba de actualizar de usuario con Supabase", async () => {
+
+  // Datos de actualizacion
+  const nick = "andresito";
+  const name = "andres ortega";
+  const email = "prueba@correo.dot";
+
+  // Actualizar un usuario
+  const { data, error } = await supabase.from('users').update({ nickname: nick, full_name: name }).eq('email', email)
+
+  // Realizar una prueba de autenticación exitosa
+  expect(data.user).toBeDefined();
+  expect(error).toBeNull();
+});
+
+
   
