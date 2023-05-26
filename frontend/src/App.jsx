@@ -8,6 +8,8 @@ import Signup from "./pages/Signup";
 import Profile from "./pages/Profile";
 //import Profile from "./pages/Profile";
 import MainPage from "./pages/MainPage";
+import IntroPage from "./pages/IntroPage";
+
 
 import { supabase } from "../backend/client";
 import { useEffect } from "react";
@@ -23,8 +25,8 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/mainpage" element={<MainPage/>} />
-        v<Route path="/profile" element={<Profile />} />
-     
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/intro" element={<IntroPage />} />
       </Routes>
     </>
   );
