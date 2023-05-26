@@ -1,6 +1,13 @@
-import { supabase } from "../backend/client.js";
+const { createClient } = require("@supabase/supabase-js");
+require('dotenv').config({path: '../.env.local'})
 
  // Configurar el cliente de Supabase
+
+ const supabaseUrl = "https://zjqmreuhjdezydattxvf.supabase.co"
+ const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpqcW1yZXVoamRlenlkYXR0eHZmIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY4NDI3OTQxNCwiZXhwIjoxOTk5ODU1NDE0fQ.uNjw-coYE9ZZqSn8kBXYu_H7uzTOLrxFj_n0pLT9_EA"
+ const supabase = createClient(supabaseUrl, supabaseKey);
+
+
 test("Prueba de conexión a Supabase", () => {
   // Realizar una prueba de conexión a Supabase
   expect(supabase).toBeTruthy();
@@ -48,5 +55,4 @@ test("Prueba de autenticación de usuario con Supabase", async () => {
     expect(data.session).toBeTruthy();
     expect(error).toBeNull();
   });
-  
   
