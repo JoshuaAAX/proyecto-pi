@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../../backend/client";
-import { Box, Typography, Card, Grid, Stack, TextField, CardContent, Button } from "@mui/material";
+import { Avatar, Divider, Box, Typography, Card, Grid, Stack, TextField, CardContent, Button, Slider } from "@mui/material";
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -27,9 +27,38 @@ const Profile = () => {
       <Box m={4} display="flex" justifyContent="center" sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
         <Card sx={{ width: 900, borderRadius: "20px" }}>
           <CardContent sx={{ padding: '30px', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+            <Typography fontSize="1.8rem" fontWeight={600} color="#987E62">
+              Cuenta de usuario
+            </Typography>
+
+            <Box my={2} display="flex" justifyContent="center">
+              <Avatar alt="Remy Sharp" sx={{ width: 130, height: 130 }} />
+            </Box>
+            
+            <Divider />
 
             <Typography fontSize="1.8rem" fontWeight={600} color="#987E62">
-              Perfil de cuenta
+              Progreso
+            </Typography>
+
+            <Typography id="non-linear-slider" gutterBottom>
+              Porcentaje de progreso: {"0%"}
+            </Typography>
+
+            <Slider disabled defaultValue={0} aria-label="Disabled slider" color="secondary" />
+
+            <Typography id="non-linear-slider" gutterBottom>
+              Temas completados: {"0/6"}
+            </Typography>
+
+            <Typography id="non-linear-slider" gutterBottom>
+              Puntaje por Tema: {"0.0"}
+            </Typography>
+
+            <Divider />
+
+            <Typography fontSize="1.8rem" fontWeight={600} color="#987E62">
+              Editar Perfil
             </Typography>
 
             <Stack spacing={2} sx={{ mb: 1 }}>
@@ -76,30 +105,45 @@ const Profile = () => {
               />
             </Stack>
 
-            <Button
-              fullWidth
-              variant="contained"
-              sx={{
-                textTransform: "none",
-                mt: 3,
-                py: 1,
-                borderRadius: "20px",
-                backgroundColor: "#DBB489",
-                fontSize: "1rem",
-                fontWeight: 600,
-                "&:hover": {
-                  backgroundColor: "darkslategrey",
-                },
-              }}
-            >
-              Guardar
-            </Button>
+            <Box mt={3} display="flex" justifyContent="space-between">
+              <Button
+                variant="contained"
+                color="error"
+                sx={{
+                  textTransform: "none",
+                  py: 1,
+                  borderRadius: "20px",
+                  fontSize: "1rem",
+                  fontWeight: 600,
+                  "&:hover": {
+                    backgroundColor: "#8B0000",
+                  },
+                }}
+              >
+                Borrar
+              </Button>
 
+              <Button
+                variant="contained"
+                sx={{
+                  textTransform: "none",
+                  py: 1,
+                  borderRadius: "20px",
+                  backgroundColor: "#DBB489",
+                  fontSize: "1rem",
+                  fontWeight: 600,
+                  "&:hover": {
+                    backgroundColor: "darkslategrey",
+                  },
+                }}
+              >
+                Guardar
+              </Button>
+            </Box>
           </CardContent>
         </Card>
       </Box>
     </Grid>
-
   );
 };
 
