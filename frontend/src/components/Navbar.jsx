@@ -44,6 +44,7 @@ const Navbar = () => {
             size="large"
             edge="start"
             color="inherit"
+            onClick={() => navigate("/mainpage")}
             aria-label="menu"
             sx={{ mr: 1 }}
             disableRipple

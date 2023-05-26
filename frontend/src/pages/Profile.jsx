@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../../backend/client";
-import { Avatar, Divider, Box, Typography, Card, Grid, Stack, TextField, CardContent, Button, Slider } from "@mui/material";
+
+
+import {Avatar,Divider,Slider, Box, Typography, Card, Grid, Stack, TextField, CardContent, Button, Dialog, DialogTitle, DialogContent, DialogActions } from "@mui/material";
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -9,6 +11,8 @@ const Profile = () => {
   const [fullName, setFullName] = useState("");
   const [nickname, setNickname] = useState("");
   const [email, setEmail] = useState("");
+  const [id, setid] = useState("");
+  const [showConfirmation, setShowConfirmation] = useState(false);
 
   useEffect(() => {
     supabase.auth.onAuthStateChange((event, session) => {
@@ -18,9 +22,32 @@ const Profile = () => {
         setFullName(session.user.user_metadata.full_name);
         setNickname(session.user.user_metadata.nickname);
         setEmail(session.user.email);
+        setid(session.user.id);
       }
     });
   }, [navigate]);
+
+  const handleDeleteUser = async () => {
+    try {
+
+  
+      // Send email notification to the user
+
+      // Send the email
+
+  
+      // Delete the user from the 'users' table
+      await supabase.from('users').delete().eq('email', email);
+      await supabase.auth.admin.deleteUser(id);
+      await supabase.auth.signOut();
+  
+   
+  
+      // Delete the user's authentication credentials
+    } catch (error) {
+      console.error('Error deleting user:', error);
+    }
+  };
 
   return (
     <Grid justifyContent="center">
@@ -106,45 +133,62 @@ const Profile = () => {
             </Stack>
 
             <Box mt={3} display="flex" justifyContent="space-between">
-              <Button
-                variant="contained"
-                color="error"
-                sx={{
-                  textTransform: "none",
-                  py: 1,
-                  borderRadius: "20px",
-                  fontSize: "1rem",
-                  fontWeight: 600,
-                  "&:hover": {
-                    backgroundColor: "#8B0000",
-                  },
-                }}
-              >
-                Borrar
-              </Button>
-
-              <Button
-                variant="contained"
-                sx={{
-                  textTransform: "none",
-                  py: 1,
-                  borderRadius: "20px",
-                  backgroundColor: "#DBB489",
-                  fontSize: "1rem",
-                  fontWeight: 600,
-                  "&:hover": {
-                    backgroundColor: "darkslategrey",
-                  },
-                }}
+            <Button
+                 variant="contained"
+                 sx={{
+                   textTransform: "none",
+                   py: 1,
+                   borderRadius: "20px",
+                   backgroundColor: "#DBB489",
+                   fontSize: "1rem",
+                   fontWeight: 600,
+                   "&:hover": {
+                     backgroundColor: "darkslategrey",
+                   },
+                 }}
               >
                 Guardar
               </Button>
+            <Button
+              variant="contained"
+              color="error"
+              onClick={() => setShowConfirmation(true)} // Show the confirmation dialog when clicked
+              sx={{
+                textTransform: "none",
+                py: 1,
+                borderRadius: "20px",
+                fontSize: "1rem",
+                fontWeight: 600,
+                "&:hover": {
+                  backgroundColor: "#8B0000",
+                },
+              }}
+            >
+              Borrar Cuenta
+            </Button>
             </Box>
+            {/* Confirmation Dialog */}
+            <Dialog open={showConfirmation} onClose={() => setShowConfirmation(false)}>
+              <DialogTitle>Estas seguro que quieres borrar tu cuenta?</DialogTitle>
+              <DialogContent>
+                <Typography>
+                  Esta accion no puede ser rehecha, y los datos de tu cuenta seran permanentemente borrados.
+                </Typography>
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={() => setShowConfirmation(false)}>No</Button>
+                <Button onClick={handleDeleteUser} autoFocus>
+                  Si
+                </Button>
+              </DialogActions>
+            </Dialog>
+            
           </CardContent>
         </Card>
       </Box>
     </Grid>
   );
 };
+
 
 export default Profile;
