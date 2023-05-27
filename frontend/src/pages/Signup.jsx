@@ -32,11 +32,11 @@ const Signup = () => {
   useEffect(() => {
     supabase.auth.onAuthStateChange((event, session) => {
       if (session) {
-        navigate("/mainpage");
+        navigate("/intro");
       }
     });
   }, [navigate]);
-
+  
   const initialState = { nickname: "", full_name: "", email: "", password: "" };
   const [user, setUser] = useState(initialState);
 

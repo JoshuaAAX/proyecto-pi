@@ -22,8 +22,7 @@ import {
 } from "@mui/material";
 
 
-    
-
+  
   //pagina de perfil
   const Profile = () => {
 

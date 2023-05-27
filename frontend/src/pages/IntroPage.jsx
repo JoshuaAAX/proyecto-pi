@@ -10,7 +10,7 @@ function IntroPage() {
         <Grid sx={styles.banner}>
           <Box sx={styles.about}>
             <Typography variant="h4">Bienvenido(a) a nilearn</Typography>
-            <Typography variant="h6">
+            <Typography variant="h6" sx={{ px: "20%"}}>
               Sumérgete en el fascinante mundo de los faraones, los dioses y las
               imponentes pirámides que aún nos deslumbran con su grandeza.
               Acompáñanos mientras desenterramos los secretos del Valle de los
@@ -20,7 +20,7 @@ function IntroPage() {
           </Box>
         </Grid>
       </Box>
-      <Box sx={{ height: "100%", background: amber[100] }}>
+      <Box sx={{ height: "100%" }}>
         <Temas />
       </Box>
     </Box>
@@ -30,12 +30,12 @@ function IntroPage() {
 export default IntroPage;
 
 const styles = {
-  container: {
+  banner: {
     backgroundImage: `url(${background})`,
     marginTop: "0px",
     backgroundSize: "cover",
     backgroundPosition: "center",
-    height: "90vh",
+    height: "100vh",
     color: "black",
     display: "flex",
     justifyContent: "left",
@@ -43,12 +43,12 @@ const styles = {
     overflow: "visible",
   },
   about: {
-    display: "flex",
+    display: "grid",
     flexDirection: "column",
     textAlign: "center",
-    justifyContent: "center",
-    position: "absolute",
-    top: "25%",
+    placeContent: "center",
+    width: "100%",
+    height: "50%",
     px: 8,
     rowGap: 4,
   },
