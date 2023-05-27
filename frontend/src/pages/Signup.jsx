@@ -36,7 +36,7 @@ const Signup = () => {
       }
     });
   }, [navigate]);
-  
+
   const initialState = { nickname: "", full_name: "", email: "", password: "" };
   const [user, setUser] = useState(initialState);
 

@@ -16,6 +16,7 @@ import DashboardRounded from "@mui/icons-material/DashboardRounded";
 import Person from "@mui/icons-material/Person";
 
 import { Link } from "react-router-dom";
+import { supabase } from "../../backend/client";
 
 // eslint-disable-next-line react/prop-types
 const UserMenu = ({ bgcolor, session, handleLogout }) => {
@@ -28,6 +29,13 @@ const UserMenu = ({ bgcolor, session, handleLogout }) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+
+ 
+
+
+  // eslint-disable-next-line react/prop-types
+  const nickname = (session.user.user_metadata.nickname);
 
   return (
     <React.Fragment>
@@ -114,8 +122,8 @@ const UserMenu = ({ bgcolor, session, handleLogout }) => {
                 }}
               />
               {
-                <span style={{ color: "gray", fontWeight: "bold" }}>
-                  {name}
+                <span style={{ color: "gray", fontWeight: "bold", marginLeft: "10px" }}>
+                  {nickname}
                 </span>
               }
             </MenuItem>
@@ -126,13 +134,16 @@ const UserMenu = ({ bgcolor, session, handleLogout }) => {
               </ListItemIcon>
               Dashboard
             </MenuItem>
-            <Link to="/profile" style={{ textDecoration: "none", color: "inherit" }}>
-            <MenuItem>
-              <ListItemIcon>
-                <Person fontSize="small" />
-              </ListItemIcon>
-              Mi cuenta
-            </MenuItem>
+            <Link
+              to="/profile"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              <MenuItem>
+                <ListItemIcon>
+                  <Person fontSize="small" />
+                </ListItemIcon>
+                Mi perfil
+              </MenuItem>
             </Link>
             <Divider />
             <MenuItem>
