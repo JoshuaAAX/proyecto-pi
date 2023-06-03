@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import cube from "../../assets/cube.png";
 
-const Canvas = () => {
+const Home = () => {
   const navigate = useNavigate();
 
   return (
@@ -14,6 +14,7 @@ const Canvas = () => {
         height: "100%",
         display: "flex",
         alignItems: "center",
+        justifyContent: "center",
       }}
     >
       <Grid container>
@@ -48,7 +49,7 @@ const Canvas = () => {
           justifyContent="center"
           alignItems="center"
         >
-          <Typography fontSize="1.8rem">
+          <Typography variant="h5">
             ¡Donde aprender sobre la cultura egipcia es fácil y divertido!
           </Typography>
           <Stack
@@ -78,4 +79,4 @@ const Canvas = () => {
   );
 };
 
-export default Canvas;
+export default Home;

@@ -1,6 +1,7 @@
 import { Box } from "@mui/material";
 import Footer from "../components/Footer";
-import Canvas from "../components/Home";
+import Home from "../components/Home";
+import { amber } from "@mui/material/colors";
 
 function Page() {
   return (
@@ -9,10 +10,12 @@ function Page() {
         sx={{
           height: "100vh",
           position: "relative",
-          backgroundColor: "#F7EDD4",
+          backgroundColor: amber[50],
         }}
       >
-        <Canvas />
+        <Box sx={{ height: { md: "70%", xs: "60%" } }}>
+          <Home />
+        </Box>
         {/* <Box>
           <About />
         </Box> */}

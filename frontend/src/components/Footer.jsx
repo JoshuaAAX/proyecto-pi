@@ -5,12 +5,11 @@ const Footer = () => {
     <Box
       component="footer"
       sx={{
-        py: 3,
+        py: 4,
         backgroundColor: "#DBB489",
-        position: "static",
+        position: "fixed",
         bottom: 0,
         width: "100%",
-        height: "100px"
       }}
     >
       <Grid

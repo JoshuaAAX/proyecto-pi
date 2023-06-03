@@ -3,6 +3,7 @@ import background from "../../assets/background.png";
 import { amber } from "@mui/material/colors";
 import Temas from "../components/Temas";
 
+
 function IntroPage() {
   return (
     <Box sx={styles.home}>

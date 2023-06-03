@@ -88,8 +88,7 @@ const Signup = () => {
         if (error) {
           toast.error((t) => (
             <span>
-              Ya existe un usuario con el email{" "}
-              <span style={{ color: "green" }}>{email}</span>
+              {error.message}
               <Button
                 disableRipple
                 size="small"
@@ -155,13 +154,15 @@ const Signup = () => {
 
       <Grid
         item
-        height="80%"
         xs={12}
-        sm={12}
+        sm={8}
         md={5}
         component={matches && Paper}
         elevation={6}
+        overflow="auto"
         sx={{
+          py: 2,
+          height: "90%",
           borderTopLeftRadius: "20px",
           borderBottomLeftRadius: "20px",
           borderTopRightRadius: { xs: "20px", md: "0px" },
@@ -173,26 +174,24 @@ const Signup = () => {
         <Box
           width="60%"
           sx={{
-            my: 6,
             mx: { md: 4, xs: 0 },
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
           }}
         >
-          <Typography fontSize="1.8rem" fontWeight={600} color="#987E62">
+          <Typography variant="h5" fontWeight={600} color="#987E62">
             Registrarse
           </Typography>
           <Box
             sx={{
-              width: "100%",
               mt: 4,
               "& .MuiInputBase-root": {
                 background: amber[50],
               },
             }}
           >
-            <Stack spacing={2}>
+            <Stack spacing={1}>
               <TextField
                 required
                 size="small"
@@ -251,7 +250,7 @@ const Signup = () => {
             >
               Registrarte
             </Button>
-            <Divider sx={{ my: 3 }} />
+            <Divider sx={{ my: 1.5 }} />
             <Tooltip title="No funciona en producción" placement="right">
               <span>
                 <Button
@@ -298,7 +297,7 @@ const Signup = () => {
       {matches && (
         <Grid
           item
-          height="80%"
+          height="90%"
           xs={false}
           sm={4}
           md={4}
