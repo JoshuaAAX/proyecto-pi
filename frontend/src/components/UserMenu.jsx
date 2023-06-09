@@ -17,6 +17,7 @@ import Person from "@mui/icons-material/Person";
 
 import { Link } from "react-router-dom";
 import { supabase } from "../../backend/client";
+import avatar_default from "../../assets/default.png";
 
 // eslint-disable-next-line react/prop-types
 const UserMenu = ({ bgcolor, session, handleLogout }) => {
@@ -115,6 +116,7 @@ const UserMenu = ({ bgcolor, session, handleLogout }) => {
           >
             <MenuItem>
               <Avatar
+                scr={avatar_default}
                 sx={{
                   bgcolor,
                   width: 32,

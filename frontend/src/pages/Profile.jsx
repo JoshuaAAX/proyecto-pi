@@ -21,8 +21,10 @@ import {
   Snackbar,
 } from "@mui/material";
 
-
   
+import avatar_default from "../../assets/default.png";
+
+
   //pagina de perfil
   const Profile = () => {
 
@@ -135,12 +137,13 @@ import {
       <Box m={4} display="flex" justifyContent="center" sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
         <Card sx={{ width: 900, borderRadius: "20px" }}>
           <CardContent sx={{ padding: "30px", display: "flex", flexDirection: "column", flexGrow: 1 }}>
+
             <Typography fontSize="1.8rem" fontWeight={600} color="#987E62">
               Cuenta de usuario
             </Typography>
 
             <Box my={2} display="flex" justifyContent="center">
-              <Avatar alt="Remy Sharp" sx={{ width: 130, height: 130 }} />
+              <Avatar alt=".defaul.png"  src = {avatar_default} sx={{ width: 130, height: 130 }} />
             </Box>
 
             <Divider />

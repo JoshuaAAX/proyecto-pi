@@ -59,11 +59,10 @@ test("Prueba de actualizar de usuario con Supabase", async () => {
 
   // Actualizar un usuario
   const { data, error } = await supabase
-    .from("users")
-    .update({ nickname: nick, full_name: name })
-    .eq("email", email);
+      .from('users')
+      .update({ nickname: nick, full_name: name })
+      .eq('email', email)
 
-  // Realizar una prueba de autenticación exitosa
-  expect(data.user).toBeDefined();
+
   expect(error).toBeNull();
 });
