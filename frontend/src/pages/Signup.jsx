@@ -65,7 +65,7 @@ const Signup = () => {
             size="small"
             sx={{
               textTransform: "capitalize",
-              ml: 1,
+              ml: 1, 
               color: "white",
               background: "#474747",
             }}
@@ -81,7 +81,7 @@ const Signup = () => {
           email,
           password,
           options: {
-            data: { nickname, full_name },
+            data: { full_name, nickname },
           },
         });
 
@@ -105,7 +105,6 @@ const Signup = () => {
             </span>
           ));
         } else {
-          await supabase.from("users").insert({ nickname, full_name, email });
           toast.success("Usuario registrado!", {
             style: {
               borderRadius: "10px",
