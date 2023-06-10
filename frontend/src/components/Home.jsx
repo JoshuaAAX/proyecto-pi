@@ -8,14 +8,12 @@ import { useNavigate } from "react-router-dom";
 extend({ OrbitControls });
 export function Model(props) {
   const { nodes, materials } = useGLTF(
-    "../../assets/nefertitis_bust_like_in_the_museum.glb"
+    "../../assets/egypt_-_small_decorative_statue.glb"
   );
   return (
     <group {...props} dispose={null}>
       <group rotation={[-Math.PI / 2, 0, 0]}>
-        <mesh
-          castShadow
-          receiveShadow
+        <lineSegments
           geometry={nodes.Object_2.geometry}
           material={materials.material_0}
         />
@@ -25,11 +23,17 @@ export function Model(props) {
           geometry={nodes.Object_3.geometry}
           material={materials.material_0}
         />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Object_4.geometry}
+          material={materials.material_0}
+        />
       </group>
     </group>
   );
 }
-useGLTF.preload("../../assets/nefertitis_bust_like_in_the_museum.glb");
+useGLTF.preload("../../assets/egypt_-_small_decorative_statue.glb");
 
 const CameraControls = () => {
   const { camera, gl } = useThree();
@@ -46,7 +50,7 @@ const CameraControls = () => {
       rotateSpeed={0.2}
       maxPolarAngle={Math.PI / 2}
       minPolarAngle={1}
-      minDistance={20}
+      minDistance={28}
       maxDistance={50}
       // Uncomment these lines if you also want to limit the horizontal rotation
       // minAzimuthAngle={-Math.PI / 2}
@@ -74,7 +78,7 @@ const Home = () => {
           <Canvas
             shadows
             gl={{ alpha: true }}
-            camera={{ position: [-10, 3, 0], fov: 1}}
+            camera={{ position: [10, 10, 0], fov: 100}}
             style={{ width: "130%", height: "130%" }}
           >
             <ambientLight intensity={0.3} />
