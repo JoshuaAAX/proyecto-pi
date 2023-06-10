@@ -35,7 +35,7 @@ const Login = () => {
   useEffect(() => {
     supabase.auth.onAuthStateChange((event, session) => {
       if (session) {
-        navigate("/mainpage");
+        navigate("/intro");
       }
     });
   }, [navigate]);

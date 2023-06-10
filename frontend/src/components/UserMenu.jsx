@@ -17,6 +17,7 @@ import Person from "@mui/icons-material/Person";
 
 import { Link } from "react-router-dom";
 import { supabase } from "../../backend/client";
+import { useEffect } from "react";
 
 // eslint-disable-next-line react/prop-types
 const UserMenu = ({ bgcolor, session, handleLogout }) => {
@@ -31,11 +32,24 @@ const UserMenu = ({ bgcolor, session, handleLogout }) => {
   };
 
 
- 
+  const [avatar, setAvatar] = React.useState(null);
 
+  const test = async () => {
+    const { data: userData } = await supabase.auth.getUser();
+    const userID = userData.user.id;
+
+    const { data: downloadData, error } = await supabase.storage
+      .from("profile_pictures")
+      .download(`public/${userID}.png`);
+    downloadData && setAvatar(URL.createObjectURL(downloadData));
+  };
+
+  useEffect(() => {
+    test();
+  }, []);
 
   // eslint-disable-next-line react/prop-types
-  const nickname = (session.user.user_metadata.nickname);
+  const nickname = session.user.user_metadata.nickname;
 
   return (
     <React.Fragment>
@@ -116,13 +130,18 @@ const UserMenu = ({ bgcolor, session, handleLogout }) => {
             <MenuItem>
               <Avatar
                 sx={{
-                  bgcolor,
                   width: 32,
                   height: 32,
                 }}
               />
               {
-                <span style={{ color: "gray", fontWeight: "bold", marginLeft: "10px" }}>
+                <span
+                  style={{
+                    color: "gray",
+                    fontWeight: "bold",
+                    marginLeft: "10px",
+                  }}
+                >
                   {nickname}
                 </span>
               }
