@@ -61,6 +61,8 @@ const UserMenu = ({ bgcolor, session, handleLogout }) => {
                 disableRipple
               >
                 <Avatar
+                  alt=".defaul.png"  
+                  src = {avatar_default}
                   sx={{
                     width: 36,
                     height: 36,
@@ -115,17 +117,10 @@ const UserMenu = ({ bgcolor, session, handleLogout }) => {
             }}
           >
             <MenuItem>
-              <Avatar
-                scr={avatar_default}
-                sx={{
-                  bgcolor,
-                  width: 32,
-                  height: 32,
-                }}
-              />
+            <Avatar alt=".defaul.png"  src = {avatar_default} sx={{ width: 32, height: 32 }} />
               {
                 <span style={{ color: "gray", fontWeight: "bold", marginLeft: "10px" }}>
-                  {nickname}
+                  {"usuario"}
                 </span>
               }
             </MenuItem>
