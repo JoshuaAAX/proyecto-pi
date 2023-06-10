@@ -1,86 +1,43 @@
 import { Button, Container, Grid, Stack, Typography } from "@mui/material";
-import React, { useRef } from "react";
-import { Canvas, extend, useThree, useFrame } from "@react-three/fiber";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"; // Import OrbitControls from the correct location
-import { useGLTF } from "@react-three/drei";
+
 import { useNavigate } from "react-router-dom";
 
-extend({ OrbitControls });
-export function Model(props) {
-  const { nodes, materials } = useGLTF(
-    "../../assets/nefertitis_bust_like_in_the_museum.glb"
-  );
-  return (
-    <group {...props} dispose={null}>
-      <group rotation={[-Math.PI / 2, 0, 0]}>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Object_2.geometry}
-          material={materials.material_0}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Object_3.geometry}
-          material={materials.material_0}
-        />
-      </group>
-    </group>
-  );
-}
-useGLTF.preload("../../assets/nefertitis_bust_like_in_the_museum.glb");
-
-const CameraControls = () => {
-  const { camera, gl } = useThree();
-  const controlsRef = useRef();
-
-  useFrame(() => controlsRef.current && controlsRef.current.update());
-
-  return (
-    <orbitControls
-      ref={controlsRef}
-      args={[camera, gl.domElement]}
-      enableDamping
-      dampingFactor={0.1}
-      rotateSpeed={0.2}
-      maxPolarAngle={Math.PI / 2}
-      minPolarAngle={1}
-      minDistance={20}
-      maxDistance={50}
-      // Uncomment these lines if you also want to limit the horizontal rotation
-      // minAzimuthAngle={-Math.PI / 2}
-      // maxAzimuthAngle={Math.PI / 2}
-    />
-  );
-};
+import cube from "../../assets/cube.png";
 
 const Home = () => {
   const navigate = useNavigate();
 
   return (
     <Container
-      maxWidth="x1"
+      maxWidth="md"
       sx={{
         height: "100%",
-        width: "85%",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
       }}
     >
       <Grid container>
-        <Grid item xs={5} md={4} px={1} sm={12} style={{ height: "300px" }}>
-          <Canvas
-            shadows
-            gl={{ alpha: true }}
-            camera={{ position: [-10, 3, 0], fov: 1}}
-            style={{ width: "130%", height: "130%" }}
-          >
-            <ambientLight intensity={0.3} />
-            <CameraControls />
-            <Model />
-          </Canvas>
+        <Grid
+          item
+          sx={{
+            mt: { xs: 20, md: 0 },
+            mb: { xs: 5, md: 0 },
+            rotate: "20deg",
+            "&: hover": {
+              cursor: "pointer",
+              transform: "scale(1.1)",
+              transition: "all 0.5s ease-in-out",
+            },
+            transition: "all 0.5s ease-in-out",
+            justifyContent: "center",
+            alignItems: "center",
+            display: "flex",
+          }}
+          xs={12}
+          md={4}
+        >
+          <img width={200} src={cube} alt="3D Cube" />
         </Grid>
         <Grid
           item
