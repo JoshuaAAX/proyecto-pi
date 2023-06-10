@@ -1,8 +1,10 @@
 import { Box, Grid, Paper, Typography } from "@mui/material";
 import { amber } from "@mui/material/colors";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const MainPage = () => {
+  const navigate = useNavigate();
   return (
     <Box
       sx={{
@@ -43,16 +45,19 @@ const MainPage = () => {
           <Paper sx={{ height: "100px", width: "100px" }} />
           Arte
         </Grid>
-        <Grid item md={6}>
+        <Grid item md={6}
+        onClick={() => navigate('/religion')}
+        >
           <Paper sx={{ height: "100px", width: "100px" }} />
           Religión
         </Grid>
         <Grid item md={4}>
           <Paper sx={{ height: "100px", width: "100px" }} /> Gastronomia
         </Grid>
-        <Grid item md={4}>
-          <Paper sx={{ height: "100px", width: "100px" }} />
-          Arquitectura
+        <Grid item md={4}  onClick={() => navigate('/arquitectura')} >
+
+          <Paper sx={{ height: "100px", width: "100px" }} /> Arquitectura
+
         </Grid>
         <Grid item md={4}>
           <Paper sx={{ height: "100px", width: "100px" }} /> Estrategia militar
