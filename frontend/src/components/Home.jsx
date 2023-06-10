@@ -8,108 +8,28 @@ import { useNavigate } from "react-router-dom";
 extend({ OrbitControls });
 export function Model(props) {
   const { nodes, materials } = useGLTF(
-    "../../assets/statue_of_ramesses_iii.glb"
+    "../../assets/nefertitis_bust_like_in_the_museum.glb"
   );
   return (
     <group {...props} dispose={null}>
-      <group position={[-8.05, 0.77, 18.54]} rotation={[-0.06, 0.77, 1.56]}>
-        <group position={[-5.97, -14.05, -3.1]}>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Object_2.geometry}
-            material={materials.material_0}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Object_3.geometry}
-            material={materials.material_0}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Object_4.geometry}
-            material={materials.material_0}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Object_5.geometry}
-            material={materials.material_0}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Object_6.geometry}
-            material={materials.material_0}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Object_7.geometry}
-            material={materials.material_0}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Object_8.geometry}
-            material={materials.material_0}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Object_9.geometry}
-            material={materials.material_0}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Object_10.geometry}
-            material={materials.material_0}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Object_11.geometry}
-            material={materials.material_0}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Object_12.geometry}
-            material={materials.material_0}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Object_13.geometry}
-            material={materials.material_0}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Object_14.geometry}
-            material={materials.material_0}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Object_15.geometry}
-            material={materials.material_0}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Object_16.geometry}
-            material={materials.material_0}
-          />
-        </group>
+      <group rotation={[-Math.PI / 2, 0, 0]}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Object_2.geometry}
+          material={materials.material_0}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Object_3.geometry}
+          material={materials.material_0}
+        />
       </group>
     </group>
   );
 }
-useGLTF.preload("../../assets/statue_of_ramesses_iii.glb");
+useGLTF.preload("../../assets/nefertitis_bust_like_in_the_museum.glb");
 
 const CameraControls = () => {
   const { camera, gl } = useThree();
@@ -126,8 +46,8 @@ const CameraControls = () => {
       rotateSpeed={0.2}
       maxPolarAngle={Math.PI / 2}
       minPolarAngle={1}
-      minDistance={40}
-      maxDistance={100}
+      minDistance={20}
+      maxDistance={50}
       // Uncomment these lines if you also want to limit the horizontal rotation
       // minAzimuthAngle={-Math.PI / 2}
       // maxAzimuthAngle={Math.PI / 2}
@@ -154,7 +74,7 @@ const Home = () => {
           <Canvas
             shadows
             gl={{ alpha: true }}
-            camera={{ position: [0, 3, 80], fov: 10 }}
+            camera={{ position: [-10, 3, 0], fov: 1}}
             style={{ width: "130%", height: "130%" }}
           >
             <ambientLight intensity={0.3} />
