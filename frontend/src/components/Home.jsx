@@ -1,43 +1,60 @@
 import { Button, Container, Grid, Stack, Typography } from "@mui/material";
-
+import React, { useRef } from "react";
+import { Canvas, extend, useThree, useFrame } from "@react-three/fiber";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { useNavigate } from "react-router-dom";
 
-import cube from "../../assets/cube.png";
+import Modelo from "./Modelo";
+
+extend({ OrbitControls });
+
+const CameraControls = () => {
+  const { camera, gl } = useThree();
+  const controlsRef = useRef();
+
+  useFrame(() => controlsRef.current && controlsRef.current.update());
+
+  return (
+    <orbitControls
+      ref={controlsRef}
+      args={[camera, gl.domElement]}
+      enableDamping
+      dampingFactor={0.1}
+      rotateSpeed={0.2}
+      maxPolarAngle={Math.PI / 2}
+      minPolarAngle={1}
+      minDistance={28}
+      maxDistance={50}
+    />
+  );
+};
 
 const Home = () => {
   const navigate = useNavigate();
 
   return (
     <Container
-      maxWidth="md"
+      maxWidth="x1"
       sx={{
         height: "100%",
+        width: "85%",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
       }}
     >
       <Grid container>
-        <Grid
-          item
-          sx={{
-            mt: { xs: 20, md: 0 },
-            mb: { xs: 5, md: 0 },
-            rotate: "20deg",
-            "&: hover": {
-              cursor: "pointer",
-              transform: "scale(1.1)",
-              transition: "all 0.5s ease-in-out",
-            },
-            transition: "all 0.5s ease-in-out",
-            justifyContent: "center",
-            alignItems: "center",
-            display: "flex",
-          }}
-          xs={12}
-          md={4}
-        >
-          <img width={200} src={cube} alt="3D Cube" />
+        <Grid item xs={5} md={4} px={1} sm={12} style={{ height: "400px" }}>
+          <Canvas
+            shadows
+            gl={{ alpha: true }}
+            camera={{ position: [10, 10, 0], fov: 100}}
+            style={{ width: "130%", height: "130%" }}
+          >
+            <ambientLight intensity={0.3} />
+            <CameraControls />
+            <Modelo />
+          </Canvas>
         </Grid>
         <Grid
           item
