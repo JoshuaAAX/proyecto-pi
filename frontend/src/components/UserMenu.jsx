@@ -9,6 +9,7 @@ import {
   Menu,
   MenuItem,
 } from "@mui/material";
+import defaultAvatar from "../../assets/default.png";
 
 import Logout from "@mui/icons-material/Logout";
 import Settings from "@mui/icons-material/Settings";
@@ -17,7 +18,7 @@ import Person from "@mui/icons-material/Person";
 
 import { Link } from "react-router-dom";
 import { supabase } from "../../backend/client";
-import avatar_default from "../../assets/default.png";
+import { useEffect } from "react";
 
 // eslint-disable-next-line react/prop-types
 const UserMenu = ({ bgcolor, session, handleLogout }) => {
@@ -32,12 +33,23 @@ const UserMenu = ({ bgcolor, session, handleLogout }) => {
   };
 
 
- 
 
+  const [avatar, setAvatar] = React.useState(null);
+  const test = async () => {
+    const userID = session.user.id; // Use this line instead
+  
+    const { data: downloadData, error } = await supabase.storage
+      .from("profile_pictures")
+      .download(`public/${userID}.png`);
+    downloadData && setAvatar(URL.createObjectURL(downloadData));
+  };
+  useEffect(() => {
+    test();
+  }, []);
 
   // eslint-disable-next-line react/prop-types
-  const nickname = (session.user.user_metadata.nickname);
-
+  const nickname = session.user.user_metadata.nickname;
+  const avatarUrl = avatar || defaultAvatar;
   return (
     <React.Fragment>
       {!session ? null : (
@@ -51,25 +63,24 @@ const UserMenu = ({ bgcolor, session, handleLogout }) => {
             }}
           >
             <Tooltip title="Account settings">
-              <IconButton
-                onClick={handleClick}
-                size="small"
-                sx={{ ml: 2 }}
-                aria-controls={open ? "account-menu" : undefined}
-                aria-haspopup="true"
-                aria-expanded={open ? "true" : undefined}
-                disableRipple
-              >
-                <Avatar
-                  alt=".defaul.png"  
-                  src = {avatar_default}
-                  sx={{
-                    width: 36,
-                    height: 36,
-                    bgcolor: bgcolor,
-                  }}
-                />
-              </IconButton>
+            <IconButton
+  onClick={handleClick}
+  size="small"
+  sx={{ ml: 2 }}
+  aria-controls={open ? "account-menu" : undefined}
+  aria-haspopup="true"
+  aria-expanded={open ? "true" : undefined}
+  disableRipple
+>
+  <Avatar
+    alt="Profile Picture" src={avatarUrl}
+    sx={{
+      width: 36,
+      height: 36,
+      bgcolor: bgcolor,
+    }}
+  />
+</IconButton>
             </Tooltip>
           </Box>
           <Menu
@@ -116,14 +127,26 @@ const UserMenu = ({ bgcolor, session, handleLogout }) => {
               horizontal: "right",
             }}
           >
-            <MenuItem>
-            <Avatar alt=".defaul.png"  src = {avatar_default} sx={{ width: 32, height: 32 }} />
-              {
-                <span style={{ color: "gray", fontWeight: "bold", marginLeft: "10px" }}>
-                  {"usuario"}
-                </span>
-              }
-            </MenuItem>
+           <MenuItem>
+  <Avatar
+  alt="Profile Picture" src={avatarUrl}
+    sx={{
+      width: 32,
+      height: 32,
+    }}
+  />
+  {
+    <span
+      style={{
+        color: "gray",
+        fontWeight: "bold",
+        marginLeft: "10px",
+      }}
+    >
+      {nickname}
+    </span>
+  }
+</MenuItem>
             <Divider />
             <MenuItem>
               <ListItemIcon>
@@ -131,6 +154,8 @@ const UserMenu = ({ bgcolor, session, handleLogout }) => {
               </ListItemIcon>
               Dashboard
             </MenuItem>
+            
+            
             <Link
               to="/profile"
               style={{ textDecoration: "none", color: "inherit" }}
@@ -149,6 +174,17 @@ const UserMenu = ({ bgcolor, session, handleLogout }) => {
               </ListItemIcon>
               Ajustes
             </MenuItem>
+            <Link
+              to="/intro"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+            <MenuItem>
+                <ListItemIcon>
+                  <Person fontSize="small" />
+                </ListItemIcon>
+                Introduccion
+            </MenuItem>
+            </Link>
             <Divider />
             <MenuItem onClick={handleLogout}>
               <ListItemIcon>

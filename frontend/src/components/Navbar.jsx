@@ -37,14 +37,14 @@ const Navbar = () => {
   const routes = ["/login", "/signup"];
 
   return (
-    <Box sx={{ flexGrow: 1, height:"2.5rem" }} position="sticky">
-      <AppBar  sx={{ backgroundColor: "#DBB489" }}>
+    <Box sx={{ flexGrow: 1, mb: 8}}>
+      <AppBar sx={{ backgroundColor: "#DBB489", position: "fixed" }}>
         <Toolbar>
           <IconButton
             size="large"
             edge="start"
             color="inherit"
-            onClick={() => navigate("/mainpage")}
+            onClick={() => navigate("/.")}
             aria-label="menu"
             sx={{ mr: 1 }}
             disableRipple

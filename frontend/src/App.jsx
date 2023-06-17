@@ -11,7 +11,9 @@ import MainPage from "./pages/MainPage";
 import IntroPage from "./pages/IntroPage";
 import Religion from "./pages/Religion";
 import QuizzReligion from "./pages/QuizzReligion.jsx";
-
+import Arquitectura from "./pages/Arquitectura";
+import QuizzArquitectura from "./pages/QuizzArquitectura.jsx";
+import Militar from "./pages/EstrategiaMilitar";
 import { supabase } from "../backend/client";
 import { useEffect } from "react";
 
@@ -29,7 +31,10 @@ const App = () => {
         <Route path="/profile" element={<Profile />} />
         <Route path="/intro" element={<IntroPage />} />
         <Route path="/religion" element={<Religion />} />
+        <Route path="/arquitectura" element={<Arquitectura />} />
         <Route path="/quizzreligion" element={<QuizzReligion />} />
+        <Route path="/quizzarquitectura" element={<QuizzArquitectura/>} />
+        <Route path="/estrategia-militar" element={<Militar />} />
       </Routes>
     </>
   );
