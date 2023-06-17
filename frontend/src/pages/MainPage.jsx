@@ -74,9 +74,7 @@ const MainPage = () => {
           <Paper sx={{ height: "100px", width: "100px" }} /> Gastronomia
         </Grid>
         <Grid item md={4}  onClick={() => navigate('/arquitectura')} >
-
           <Paper sx={{ height: "100px", width: "100px" }} /> Arquitectura
-
         </Grid>
         <Grid item md={4}  onClick={() => navigate('/estrategia-militar')} >
           <Paper sx={{ height: "100px", width: "100px" }} /> Estrategia militar

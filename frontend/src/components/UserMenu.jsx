@@ -33,23 +33,23 @@ const UserMenu = ({ bgcolor, session, handleLogout }) => {
   };
 
 
-
   const [avatar, setAvatar] = React.useState(null);
   const test = async () => {
-    const userID = session.user.id; // Use this line instead
-  
+    const userID = session.user.id;
     const { data: downloadData, error } = await supabase.storage
       .from("profile_pictures")
       .download(`public/${userID}.png`);
     downloadData && setAvatar(URL.createObjectURL(downloadData));
   };
+
+  
   useEffect(() => {
     test();
   }, []);
 
   // eslint-disable-next-line react/prop-types
   const nickname = session.user.user_metadata.nickname;
-  const avatarUrl = avatar || defaultAvatar;
+ const avatarUrl = avatar || defaultAvatar;
   return (
     <React.Fragment>
       {!session ? null : (
@@ -127,7 +127,7 @@ const UserMenu = ({ bgcolor, session, handleLogout }) => {
               horizontal: "right",
             }}
           >
-           <MenuItem>
+        <MenuItem>
   <Avatar
   alt="Profile Picture" src={avatarUrl}
     sx={{

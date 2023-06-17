@@ -7,7 +7,7 @@ const QuizzArquitectura = () => {
     const navigate = useNavigate();
 return ( 
     <Box>
-        
+
 <Button
         onClick={() => navigate('/mainpage')}
           sx={{
