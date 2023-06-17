@@ -22,7 +22,7 @@ import {
   Snackbar,
   CircularProgress,
 } from "@mui/material";
-
+import defaultAvatar from "../../assets/default.png";
 //pagina de perfil
 const Profile = () => {
   const navigate = useNavigate();
@@ -288,6 +288,23 @@ const Profile = () => {
                 Guardar
               </Button>
               <Button
+               onClick={() => navigate("/mainpage")}
+                variant="contained"
+                sx={{
+                  textTransform: "none",
+                  py: 1,
+                  borderRadius: "20px",
+                  backgroundColor: "#black",
+                  fontSize: "1rem",
+                  fontWeight: 600,
+                  "&:hover": {
+                    backgroundColor: "black",
+                  },
+                }}
+              >
+                Regresar
+              </Button>
+              <Button
                 variant="contained"
                 color="error"
                 onClick={() => setShowConfirmation(true)}
@@ -373,6 +390,7 @@ function UploadableAvatar({ usersData, avatar, setAvatar, file, setFile }) {
     fileInput.current.click();
   };
 
+  const avatarUrl = avatar || defaultAvatar;
   return (
     <Stack>
       <HiddenFileInput
@@ -384,7 +402,7 @@ function UploadableAvatar({ usersData, avatar, setAvatar, file, setFile }) {
       />
       <Avatar
         alt="Profile Picture"
-        src={avatar}
+        src={avatarUrl}
         onClick={handleClick}
         sx={{
           height: "150px",

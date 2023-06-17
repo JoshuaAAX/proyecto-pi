@@ -105,7 +105,7 @@ const Militar = () => {
           Ir a la página principal
 </Button>
 <Button
-onClick={() => navigate('/arquitectura')}
+onClick={() => navigate('/mainpage')}
           sx={{
             color: "brown",
             outline: "1px solid #DBB489",

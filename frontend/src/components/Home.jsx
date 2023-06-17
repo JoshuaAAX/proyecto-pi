@@ -1,55 +1,69 @@
 import { Button, Container, Grid, Stack, Typography } from "@mui/material";
 
 import { useNavigate } from "react-router-dom";
+import {Canvas, useThree} from "@react-three/fiber"
+import { AmbientLight } from "three";
+import React, {Suspense,useRef, useEffect } from "react";
+import {Estatua} from "./Estatua"
+import { OrbitControls } from "@react-three/drei";
 
-import cube from "../../assets/cube.png";
 
 const Home = () => {
   const navigate = useNavigate();
+  const controlsRef = useRef();
+
+
 
   return (
     <Container
       maxWidth="md"
       sx={{
         height: "100%",
-        display: "flex",
+        width: "100%",
+        display: "center",
         alignItems: "center",
         justifyContent: "center",
       }}
     >
-      <Grid container>
-        <Grid
+      <Grid container   sx={{
+              mt: 5,
+              ml:-20,
+              
+              mb: { md: 10, xs: 0},
+              width: "70%", 
+              height: "80%"
+              
+            }}>
+        <Canvas shadows
+            gl={{ alpha: true }}
+            camera={{ position: [0, 0, 30], fov: 100 }}
+            style={{ width: "100%", height: "100%" }}>
+      <ambientLight intensity={0.7} />
+      <OrbitControls  enableZoom={true} minDistance={25} maxDistance={40} enableRotate={true} />
+     
+          <Estatua />
+
+        </Canvas>
+
+      
+      </Grid>
+      <Grid
           item
-          sx={{
-            mt: { xs: 20, md: 0 },
-            mb: { xs: 5, md: 0 },
-            rotate: "20deg",
-            "&: hover": {
-              cursor: "pointer",
-              transform: "scale(1.1)",
-              transition: "all 0.5s ease-in-out",
-            },
-            transition: "all 0.5s ease-in-out",
-            justifyContent: "center",
-            alignItems: "center",
-            display: "flex",
-          }}
-          xs={12}
-          md={4}
-        >
-          <img width={200} src={cube} alt="3D Cube" />
-        </Grid>
-        <Grid
-          item
-          xs={12}
+          xs={100}
+          mr={30}
           md={8}
-          px={6}
+          px={1}
           display="flex"
           flexDirection="column"
           justifyContent="center"
           alignItems="center"
         >
-          <Typography variant="h5">
+          <Typography variant="h4"  sx={{
+              mt: 5,
+              mb: { md: 0, xs: 10 },
+              width: { xs: "100%", md: "120%" }
+              
+            }}>
             ¡Donde aprender sobre la cultura egipcia es fácil y divertido!
           </Typography>
           <Stack
@@ -58,7 +72,7 @@ const Home = () => {
             sx={{
               mt: 5,
               mb: { md: 0, xs: 10 },
-              width: { xs: "100%", md: "40%" },
+              width: { xs: "100%", md: "100%" },
               "& .MuiButton-root": {
                 color: "brown",
                 outline: "1px solid #DBB489",
@@ -73,8 +87,9 @@ const Home = () => {
               Ya tengo una cuenta
             </Button>
           </Stack>
-        </Grid>
-      </Grid>
+           
+           </Grid>
+          
     </Container>
   );
 };

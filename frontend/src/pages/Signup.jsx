@@ -32,7 +32,7 @@ const Signup = () => {
   useEffect(() => {
     supabase.auth.onAuthStateChange((event, session) => {
       if (session) {
-        navigate("/intro");
+        navigate("/mainpage");
       }
     });
   }, [navigate]);

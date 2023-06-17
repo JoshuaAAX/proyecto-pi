@@ -106,7 +106,7 @@ const Arquitectura = () => {
           Ir a la página principal
 </Button>
 <Button
-onClick={() => navigate('/arquitectura')}
+onClick={() => navigate('/quizzArquitectura')}
           sx={{
             color: "brown",
             outline: "1px solid #DBB489",
