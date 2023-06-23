@@ -1,8 +1,14 @@
 {
   "routes": [
     {
+      "src": "/(.*).gltf",
+      "headers": { "content-type": "model/gltf+json" },
+      "dest": "/$1.gltf"
+    },
+    {
       "src": "/(.*).js",
-      "headers": { "content-type": "application/javascript" }
+      "headers": { "content-type": "application/javascript" },
+      "dest": "/$1.js"
     },
     {
       "src": "/(.*)",
