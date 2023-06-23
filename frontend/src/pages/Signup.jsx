@@ -26,16 +26,16 @@ import { Toaster, toast } from "react-hot-toast";
 
 const Signup = () => {
   const navigate = useNavigate();
-  const tema = useTheme();
-  const matches = useMediaQuery(tema.breakpoints.up("md"));
-
   useEffect(() => {
     supabase.auth.onAuthStateChange((event, session) => {
       if (session) {
-        navigate("/mainpage");
+        navigate("/intro");
       }
     });
-  }, [navigate]);
+  }, []);
+
+  const tema = useTheme();
+  const matches = useMediaQuery(tema.breakpoints.up("md"));
 
   const initialState = { nickname: "", full_name: "", email: "", password: "" };
   const [user, setUser] = useState(initialState);
@@ -65,7 +65,7 @@ const Signup = () => {
             size="small"
             sx={{
               textTransform: "capitalize",
-              ml: 1, 
+              ml: 1,
               color: "white",
               background: "#474747",
             }}
