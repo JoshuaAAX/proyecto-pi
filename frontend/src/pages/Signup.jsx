@@ -32,10 +32,7 @@ const Signup = () => {
         navigate("/intro");
       }
     });
-  }, []);
-
-  const tema = useTheme();
-  const matches = useMediaQuery(tema.breakpoints.up("md"));
+  });
 
   const initialState = { nickname: "", full_name: "", email: "", password: "" };
   const [user, setUser] = useState(initialState);

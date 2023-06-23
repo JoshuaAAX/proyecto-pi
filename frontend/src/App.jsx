@@ -16,7 +16,8 @@ import Militar from "./pages/EstrategiaMilitar";
 
 import Test from "./components/Test";
 import IntroPage from "./components/Slider";
-
+import Gastronomia from "./pages/Gastronomia";
+import QuizzGastronomia from "./pages/QuizzGastronomia"
 const App = () => {
   return (
     <>
@@ -34,6 +35,8 @@ const App = () => {
         <Route path="/quizzarquitectura" element={<QuizzArquitectura />} />
         <Route path="/estrategia-militar" element={<Militar />} />
         <Route path="/xd" element={<Test />} />
+        <Route path="/gastronomia" element={<Gastronomia/>}/>
+        <Route path="/quizzgastronomia" element={<QuizzGastronomia/>}/>
       </Routes>
     </>
   );
