@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import * as React from "react";
 import {
   Box,
@@ -32,7 +33,6 @@ const UserMenu = ({ bgcolor, session, handleLogout }) => {
     setAnchorEl(null);
   };
 
-
   const [avatar, setAvatar] = React.useState(null);
   const test = async () => {
     const userID = session.user.id;
@@ -42,14 +42,13 @@ const UserMenu = ({ bgcolor, session, handleLogout }) => {
     downloadData && setAvatar(URL.createObjectURL(downloadData));
   };
 
-  
   useEffect(() => {
     test();
   }, []);
 
   // eslint-disable-next-line react/prop-types
   const nickname = session.user.user_metadata.nickname;
- const avatarUrl = avatar || defaultAvatar;
+  const avatarUrl = avatar || defaultAvatar;
   return (
     <React.Fragment>
       {!session ? null : (
@@ -63,24 +62,25 @@ const UserMenu = ({ bgcolor, session, handleLogout }) => {
             }}
           >
             <Tooltip title="Account settings">
-            <IconButton
-  onClick={handleClick}
-  size="small"
-  sx={{ ml: 2 }}
-  aria-controls={open ? "account-menu" : undefined}
-  aria-haspopup="true"
-  aria-expanded={open ? "true" : undefined}
-  disableRipple
->
-  <Avatar
-    alt="Profile Picture" src={avatarUrl}
-    sx={{
-      width: 36,
-      height: 36,
-      bgcolor: bgcolor,
-    }}
-  />
-</IconButton>
+              <IconButton
+                onClick={handleClick}
+                size="small"
+                sx={{ ml: 2 }}
+                aria-controls={open ? "account-menu" : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? "true" : undefined}
+                disableRipple
+              >
+                <Avatar
+                  alt="Profile Picture"
+                  src={avatarUrl}
+                  sx={{
+                    width: 36,
+                    height: 36,
+                    bgcolor: bgcolor,
+                  }}
+                />
+              </IconButton>
             </Tooltip>
           </Box>
           <Menu
@@ -127,35 +127,40 @@ const UserMenu = ({ bgcolor, session, handleLogout }) => {
               horizontal: "right",
             }}
           >
-        <MenuItem>
-  <Avatar
-  alt="Profile Picture" src={avatarUrl}
-    sx={{
-      width: 32,
-      height: 32,
-    }}
-  />
-  {
-    <span
-      style={{
-        color: "gray",
-        fontWeight: "bold",
-        marginLeft: "10px",
-      }}
-    >
-      {nickname}
-    </span>
-  }
-</MenuItem>
-            <Divider />
             <MenuItem>
-              <ListItemIcon>
-                <DashboardRounded fontSize="small" />
-              </ListItemIcon>
-              Dashboard
+              <Avatar
+                alt="Profile Picture"
+                src={avatarUrl}
+                sx={{
+                  width: 32,
+                  height: 32,
+                }}
+              />
+              {
+                <span
+                  style={{
+                    color: "gray",
+                    fontWeight: "bold",
+                    marginLeft: "10px",
+                  }}
+                >
+                  {nickname}
+                </span>
+              }
             </MenuItem>
-            
-            
+            <Divider />
+            <Link
+              to="/mainpage"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              <MenuItem>
+                <ListItemIcon>
+                  <DashboardRounded fontSize="small" />
+                </ListItemIcon>
+                Página principal
+              </MenuItem>
+            </Link>
+
             <Link
               to="/profile"
               style={{ textDecoration: "none", color: "inherit" }}
@@ -178,12 +183,12 @@ const UserMenu = ({ bgcolor, session, handleLogout }) => {
               to="/intro"
               style={{ textDecoration: "none", color: "inherit" }}
             >
-            <MenuItem>
+              <MenuItem>
                 <ListItemIcon>
-                  <Person fontSize="small" />
+                  <DashboardRounded fontSize="small" />
                 </ListItemIcon>
                 Introduccion
-            </MenuItem>
+              </MenuItem>
             </Link>
             <Divider />
             <MenuItem onClick={handleLogout}>
@@ -193,7 +198,9 @@ const UserMenu = ({ bgcolor, session, handleLogout }) => {
                   sx={{ color: bgcolor, fontWeight: "bold" }}
                 />
               </ListItemIcon>
-              <span style={{ color: bgcolor, fontWeight: "bold" }}>
+              <span
+                style={{ color: bgcolor, fontWeight: "bold", paddingTop: 4 }}
+              >
                 Cerrar sesión
               </span>
             </MenuItem>

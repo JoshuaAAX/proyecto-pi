@@ -1,4 +1,4 @@
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 // layouts and pages
 import Page from "./pages/Page";
@@ -8,17 +8,14 @@ import Signup from "./pages/Signup";
 import Profile from "./pages/Profile";
 //import Profile from "./pages/Profile";
 import MainPage from "./pages/MainPage";
-import IntroPage from "./pages/IntroPage";
 import Religion from "./pages/Religion";
 import QuizzReligion from "./pages/QuizzReligion.jsx";
 import Arquitectura from "./pages/Arquitectura";
 import QuizzArquitectura from "./pages/QuizzArquitectura.jsx";
 import Militar from "./pages/EstrategiaMilitar";
-import { supabase } from "../backend/client";
-import { useEffect } from "react";
 
-
-
+import Test from "./components/Test";
+import IntroPage from "./components/Slider";
 
 const App = () => {
   return (
@@ -28,14 +25,15 @@ const App = () => {
         <Route path="/" element={<Page />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/mainpage" element={<MainPage/>} />
+        <Route path="/mainpage" element={<MainPage />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/intro" element={<IntroPage />} />
         <Route path="/religion" element={<Religion />} />
         <Route path="/arquitectura" element={<Arquitectura />} />
         <Route path="/quizzreligion" element={<QuizzReligion />} />
-        <Route path="/quizzarquitectura" element={<QuizzArquitectura/>} />
+        <Route path="/quizzarquitectura" element={<QuizzArquitectura />} />
         <Route path="/estrategia-militar" element={<Militar />} />
+        <Route path="/xd" element={<Test />} />
       </Routes>
     </>
   );
