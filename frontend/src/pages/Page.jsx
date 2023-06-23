@@ -15,7 +15,8 @@ function Page() {
         navigate("/mainpage");
       }
     });
-  }, [navigate]);
+  });
+
   return (
     <>
       <Box
