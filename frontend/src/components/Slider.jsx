@@ -16,13 +16,22 @@ import gastronomia from "../../assets/gastronomia.jpg";
 import estrategia from "../../assets/ejercito.jpg";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { Box, Grid, Typography, useMediaQuery } from "@mui/material";
+import {
+  Box,
+  Button,
+  Grid,
+  Paper,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import { toast } from "react-hot-toast";
 
 import TouchAppIcon from "@mui/icons-material/TouchApp";
+import { useNavigate } from "react-router-dom";
 
 const IntroPage = () => {
   const sliderRef = useRef();
+  const navigate = useNavigate();
 
   const settings = {
     dots: false,
@@ -586,6 +595,27 @@ const IntroPage = () => {
       <AnimatePresence> 
         {indice === 7 && (
           <Box sx={{ position: "absolute", top: "2rem" }}>
+            <Box
+              sx={{
+                position: "fixed",
+                bottom: "15%",
+                right: "20px",
+                "& .MuiPaper-root": {
+                  px: 2,
+                  py: 1,
+                  cursor: "pointer",
+                  "&:hover": { boxShadow: "1px 0.5px 7px 2px #DBB489" },
+                  outline: "1.5px solid #DBB489",
+                  background: "rgba(219, 180, 137, 0.1)",
+                },
+              }}
+            >
+              <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                <Paper onClick={() => navigate("/mainpage")}>
+                  Ir a la página principal
+                </Paper>
+              </motion.div>
+            </Box>
             {!small && <Typography variant="h4">Temas de estudio</Typography>}
             <motion.div
               initial={{ y: "-10vh", opacity: 0 }}
@@ -640,7 +670,7 @@ const IntroPage = () => {
           </Box>
         )}
       </AnimatePresence>
-    ),
+    )
   };
 
   useEffect(() => {
@@ -649,7 +679,7 @@ const IntroPage = () => {
 
   return (
     <Slider {...settings} ref={sliderRef}>
-      {[...Array(8)].map((_, index) => (
+      {[...Array(Object.keys(temas).length)].map((_, index) => (
         <div className="my-slide" key={index}>
           {temas[index]}
         </div>
@@ -666,7 +696,7 @@ const styles = {
     marginTop: "0px",
     backgroundSize: "cover",
     backgroundPosition: "top",
-    height: "100vh",
+    height: "100%",
     width: "100%",
     color: "black",
     display: "flex",
