@@ -7,7 +7,12 @@ import { OrbitControls } from "@react-three/drei";
 import { Gato } from "../components/gato";
 import { amber } from "@mui/material/colors";
 
-import sistema from "../../assets/sp.png";
+import sistema from "../../assets/mainIcons/sp.png";
+import arte from "../../assets/mainIcons/arteR.png";
+import religion from "../../assets/mainIcons/ReligionR.png";
+import gastronomia from "../../assets/mainIcons/gastronomia.png";
+import arquitectura from "../../assets/mainIcons/arqui.png";
+import estrategia from "../../assets/mainIcons/estrategia.png";
 
 const MainPage = () => {
   const navigate = useNavigate();
@@ -63,11 +68,7 @@ const MainPage = () => {
           </Grid>
           <Grid item md={6}>
             <Paper sx={{ borderColor: "black", border: "2px solid" }}>
-              <img
-                src="../../assets/arteR.png"
-                height={"40px"}
-                style={{ marginTop: "8px" }}
-              />
+              <img src={arte} height={"40px"} style={{ marginTop: "8px" }} />
             </Paper>
             Arte
           </Grid>
@@ -75,7 +76,7 @@ const MainPage = () => {
           <Grid item md={6} onClick={() => navigate("/religion")}>
             <Paper sx={{ borderColor: "black", border: "2px solid" }}>
               <img
-                src="../../assets/ReligionR.png"
+                src={religion}
                 height={"40px"}
                 style={{ marginTop: "8px" }}
               />
@@ -85,7 +86,7 @@ const MainPage = () => {
           <Grid item md={4} onClick={() => navigate("/gastronomia")}>
             <Paper sx={{ borderColor: "black", border: "2px solid" }}>
               <img
-                src="../../assets/gastronomia.png"
+                src={gastronomia}
                 height={"40px"}
                 style={{ marginTop: "8px" }}
               />
@@ -95,7 +96,7 @@ const MainPage = () => {
           <Grid item md={4} onClick={() => navigate("/arquitectura")}>
             <Paper sx={{ borderColor: "black", border: "2px solid" }}>
               <img
-                src="../../assets/arqui.png"
+                src={arquitectura}
                 height={"40px"}
                 style={{ marginTop: "8px" }}
               />
@@ -105,7 +106,7 @@ const MainPage = () => {
           <Grid item md={4} onClick={() => navigate("/estrategia-militar")}>
             <Paper sx={{ borderColor: "black", border: "2px solid" }}>
               <img
-                src="../../assets/estrategia.png"
+                src={estrategia}
                 height={"40px"}
                 style={{ marginTop: "8px" }}
               />
