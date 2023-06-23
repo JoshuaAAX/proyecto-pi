@@ -1,5 +1,11 @@
 {
+  "cleanUrls": true,
   "routes": [
+    {
+      "src": "^/static/(.*)",
+      "dest": "/static/$1",
+      "headers": { "cache-control": "s-maxage=31536000,immutable" }
+    },
     {
       "src": "/(.*).gltf",
       "headers": { "content-type": "model/gltf+json" },
