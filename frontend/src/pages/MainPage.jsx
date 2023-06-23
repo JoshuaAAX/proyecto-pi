@@ -60,40 +60,40 @@ const MainPage = () => {
         <Grid item md={12}>
           <Paper sx={{ borderColor: "black", border:"2px solid"}} >
        
-          <img src="../assets/sp.png" height={"40px"} style={{ marginTop: "8px" }} />
+          <img src="../../assets/sp.png" height={"40px"} style={{ marginTop: "8px" }} />
           </Paper>
           Sistema político
         </Grid>
         <Grid item md={6}>
           <Paper sx={{borderColor: "black", border:"2px solid"}} >
         
-          <img src="../assets/arteR.png" height={"40px"} style={{ marginTop: "8px" }} />
+          <img src="../../assets/arteR.png" height={"40px"} style={{ marginTop: "8px" }} />
           </Paper>
           Arte
         </Grid>
   
         <Grid item md={6} onClick={() => navigate('/religion')}>
           <Paper sx={{borderColor: "black", border:"2px solid"}}>
-            <img src="../assets/ReligionR.png" height={"40px"} style={{ marginTop: "8px" }} />
+            <img src="../../assets/ReligionR.png" height={"40px"} style={{ marginTop: "8px" }} />
           </Paper>
           Religión
         </Grid>
         <Grid item md={4} onClick={() => navigate('/gastronomia')} >
           <Paper sx={{borderColor: "black", border:"2px solid" }} > 
-          <img src="../assets/gastronomia.png" height={"40px"} style={{ marginTop: "8px" }} />
+          <img src="../../assets/gastronomia.png" height={"40px"} style={{ marginTop: "8px" }} />
           </Paper>
           Gastronomia
         </Grid>
         <Grid item md={4}  onClick={() => navigate('/arquitectura')} >
 
           <Paper sx={{borderColor: "black", border:"2px solid"}} > 
-          <img src="../assets/arqui.png" height={"40px"} style={{ marginTop: "8px" }} />
+          <img src="../../assets/arqui.png" height={"40px"} style={{ marginTop: "8px" }} />
           </Paper>
           Arquitectura
         </Grid>
         <Grid item md={4}  onClick={() => navigate('/estrategia-militar')} >
           <Paper sx={{borderColor: "black", border:"2px solid"}} > 
-          <img src="../assets/estrategia.png" height={"40px"} style={{ marginTop: "8px" }} />
+          <img src="../../assets/estrategia.png" height={"40px"} style={{ marginTop: "8px" }} />
           </Paper>
           Estrategia militar
         </Grid>
