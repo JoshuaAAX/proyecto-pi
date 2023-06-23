@@ -70,9 +70,7 @@ const IntroPage = () => {
   const small = useMediaQuery((theme) => theme.breakpoints.down("sm"));
 
   const [indice, setIndice] = useState(0);
-  useEffect(() => {
-    console.log(indice);
-  }, [indice]);
+
 
   const temas = {
     0: (
@@ -585,7 +583,7 @@ const IntroPage = () => {
       </AnimatePresence>
     ),
     7: (
-      <AnimatePresence>
+      <AnimatePresence> 
         {indice === 7 && (
           <Box sx={{ position: "absolute", top: "2rem" }}>
             {!small && <Typography variant="h4">Temas de estudio</Typography>}
