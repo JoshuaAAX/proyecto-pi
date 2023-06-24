@@ -18,7 +18,6 @@ import estrategia from "../../assets/ejercito.jpg";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   Box,
-  Button,
   Grid,
   Paper,
   Typography,
@@ -35,7 +34,7 @@ const IntroPage = () => {
 
   const settings = {
     dots: false,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
