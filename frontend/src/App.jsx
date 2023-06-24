@@ -9,15 +9,16 @@ import Profile from "./pages/Profile";
 //import Profile from "./pages/Profile";
 import MainPage from "./pages/MainPage";
 import Religion from "./pages/Religion";
-import QuizzReligion from "./pages/QuizzReligion.jsx";
 import Arquitectura from "./pages/Arquitectura";
-import QuizzArquitectura from "./pages/QuizzArquitectura.jsx";
 import Militar from "./pages/EstrategiaMilitar";
 
 import Test from "./components/Test";
 import IntroPage from "./components/Slider";
 import Gastronomia from "./pages/Gastronomia";
-import QuizzGastronomia from "./pages/QuizzGastronomia"
+
+import QuizEstrategia from "./pages/QuizEstrategia";
+import QuizReligion from "./pages/QuizReligion";
+
 const App = () => {
   return (
     <>
@@ -31,12 +32,11 @@ const App = () => {
         <Route path="/intro" element={<IntroPage />} />
         <Route path="/religion" element={<Religion />} />
         <Route path="/arquitectura" element={<Arquitectura />} />
-        <Route path="/quizzreligion" element={<QuizzReligion />} />
-        <Route path="/quizzarquitectura" element={<QuizzArquitectura />} />
+        <Route path="/quizreligion" element={<QuizReligion />} />
+        <Route path="/quizestrategia" element={<QuizEstrategia />} />
         <Route path="/estrategia-militar" element={<Militar />} />
         <Route path="/xd" element={<Test />} />
-        <Route path="/gastronomia" element={<Gastronomia/>}/>
-        <Route path="/quizzgastronomia" element={<QuizzGastronomia/>}/>
+        <Route path="/gastronomia" element={<Gastronomia />} />
       </Routes>
     </>
   );
