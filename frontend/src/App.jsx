@@ -17,7 +17,7 @@ import Test from "./components/Test";
 import IntroPage from "./components/Slider";
 import Gastronomia from "./pages/Gastronomia";
 
-import QuizArte from "./pages/QuizArte";
+
 import QuizEstrategia from "./pages/QuizEstrategia";
 import QuizReligion from "./pages/QuizReligion";
 import QuizArte from "./pages/QuizArte";
