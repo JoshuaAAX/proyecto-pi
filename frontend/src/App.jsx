@@ -13,11 +13,11 @@ import Arquitectura from "./pages/Arquitectura";
 import Militar from "./pages/EstrategiaMilitar";
 import Arte from "./pages/Arte";
 import SistemaPolitico from "./pages/SistemaPolitico";
-
 import Test from "./components/Test";
 import IntroPage from "./components/Slider";
 import Gastronomia from "./pages/Gastronomia";
 
+import QuizArte from "./pages/QuizArte";
 import QuizEstrategia from "./pages/QuizEstrategia";
 import QuizReligion from "./pages/QuizReligion";
 import QuizArte from "./pages/QuizArte";
@@ -45,6 +45,8 @@ const App = () => {
         <Route path="/xd" element={<Test />} />
         <Route path="/gastronomia" element={<Gastronomia />} />
         <Route path="/politica" element={<SistemaPolitico />} />
+        <Route path="/arte" element={<Arte />} />
+        <Route path="/quizarte" element={<QuizArte />} />
       </Routes>
     </>
   );
