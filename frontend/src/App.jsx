@@ -11,6 +11,7 @@ import MainPage from "./pages/MainPage";
 import Religion from "./pages/Religion";
 import Arquitectura from "./pages/Arquitectura";
 import Militar from "./pages/EstrategiaMilitar";
+import SistemaPolitico from "./pages/SistemaPolitico";
 
 import Test from "./components/Test";
 import IntroPage from "./components/Slider";
@@ -18,6 +19,7 @@ import Gastronomia from "./pages/Gastronomia";
 
 import QuizEstrategia from "./pages/QuizEstrategia";
 import QuizReligion from "./pages/QuizReligion";
+import QuizSistema from "./pages/QuizSistema";
 
 const App = () => {
   return (
@@ -34,9 +36,11 @@ const App = () => {
         <Route path="/arquitectura" element={<Arquitectura />} />
         <Route path="/quizreligion" element={<QuizReligion />} />
         <Route path="/quizestrategia" element={<QuizEstrategia />} />
+        <Route path="/quizpolitica" element={<QuizSistema />} />
         <Route path="/estrategia-militar" element={<Militar />} />
         <Route path="/xd" element={<Test />} />
         <Route path="/gastronomia" element={<Gastronomia />} />
+        <Route path="/politica" element={<SistemaPolitico />} />
       </Routes>
     </>
   );
