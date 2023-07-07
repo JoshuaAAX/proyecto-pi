@@ -66,7 +66,7 @@ const MainPage = () => {
             </Paper>
             Sistema político
           </Grid>
-          <Grid item md={6}>
+          <Grid item md={6}onClick={() => navigate("/arte")}>
             <Paper sx={{ borderColor: "black", border: "2px solid" }}>
               <img src={arte} height={"40px"} style={{ marginTop: "8px" }} />
             </Paper>
