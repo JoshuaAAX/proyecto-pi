@@ -59,16 +59,17 @@ const Home = () => {
           alignItems="center"
         >
           <Typography
-            sx={{
-              mt: 5,
-              mb: { md: 0, xs: 5 },
-              width: { xs: "100%", md: "120%" },
-              fontSize: { xs: 20, md: 30 },
-              textAlign: "center",
-            }}
-          >
-            ¡Donde aprender sobre la cultura egipcia es fácil y divertido!
-          </Typography>
+    sx={{
+      mt: 5,
+      mb: { md: 0, xs: 5 },
+      width: { xs: "100%", md: "120%" },
+      fontSize: { xs: 20, md: 30 },
+      textAlign: "center",
+    }}
+    dangerouslySetInnerHTML={{
+      __html: '<b>Cultura egipcia</b>, un aprendizaje sencillo y ameno te espera aquí.',
+    }}
+  />
           <Stack
             direction={{ xs: "row", md: "column" }}
             spacing={2}

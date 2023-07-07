@@ -14,7 +14,7 @@ import arquitectura from "../../assets/arquitectura.png";
 import arte from "../../assets/arte.png";
 import gastronomia from "../../assets/gastronomia.jpg";
 import estrategia from "../../assets/ejercito.jpg";
-
+import completecat from "../../assets/complete_cat.png"
 import { AnimatePresence, motion } from "framer-motion";
 import {
   Box,
@@ -142,7 +142,7 @@ const IntroPage = () => {
                         }}
                       >
                         <Typography sx={{ width: "12rem" }}>
-                          Desliza hacia los lados o usa el scroll
+                          Usa las flechas o el scroll para deslizar hacia los lados.
                         </Typography>
                       </motion.div>
                     </Box>
@@ -183,6 +183,7 @@ const IntroPage = () => {
                     grandeza. Acompáñanos mientras desenterramos los secretos
                     del Valle de los Reyes y descubrimos el poderoso Nilo, el
                     río que dio vida y sustento a esta antigua civilización.
+                    
                   </Typography>
                 </motion.div>
               </Box>
@@ -194,55 +195,64 @@ const IntroPage = () => {
     1: (
       <AnimatePresence>
         {indice === 1 && (
-          <Box sx={{ px: "15%" }}>
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{
-                opacity: 1,
-                transition: { duration: 1.5, type: "spring" },
-              }}
-              exit={{ opacity: 0 }}
-            >
-              <Typography
-                sx={{ fontSize: { xs: 26, md: 40 } }}
-                px="15%"
-                textAlign="center"
-                mb={4}
-                pt={4}
+          <Box sx={{ position: "absolute", top: "2rem" }}>
+            {!small && (
+              <motion.div
+                initial={{ y: "-10vh", opacity: 0 }}
+                whileInView={{
+                  y: 0,
+                  opacity: 1,
+                  transition: { duration: 1.5, type: "spring" },
+                }}
+                exit={{ opacity: 0 }}
               >
-                ¡Aquí comienza tu camino!
-              </Typography>
-            </motion.div>
+                <Typography variant="h4">¡Aquí Comienza Tu Camino!</Typography>
+              </motion.div>
+            )}
             <motion.div
-              initial={{ opacity: 0 }}
+              initial={{ y: "-10vh", opacity: 0 }}
               whileInView={{
+                y: 0,
                 opacity: 1,
-                transition: { duration: 1.5, delay: 0.7, type: "spring" },
+                transition: { duration: 2, type: "spring" },
               }}
             >
+              
               <Grid
                 container
                 sx={{
-                  pt: { md: 3, xs: 0 },
-                  "& .MuiTypography-root": {
-                    px: { md: "10%", xs: 0 },
-                    textAlign: "justify",
+                  mt: 5,
+                  "& .MuiGrid-item": {
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    px: 4,
                   },
                 }}
               >
-                <Grid item md={6} xs={12} pb={{ xs: 4, md: 0 }}>
-                  <Typography>
-                    Nuestro objetivo es brindarte una experiencia educativa y
+                {!small && (
+                  <Grid
+                    item
+                    md={6}
+                    sx={{
+                      width: "500px",
+                      height: "400px",
+                      backgroundImage: `url(${completecat})`,
+                      backgroundSize: "contain",
+                      backgroundPosition: "center",
+                      backgroundRepeat: "no-repeat",
+                    }}
+                  />
+                )}
+                <Grid item md={6} sx={{ width: "20rem" }}>
+                  <Typography variant="body1" sx={{ textAlign: "justify" }}>
+                  Nuestro objetivo es brindarte una experiencia educativa y
                     entretenida, llena de información detallada y visualmente
                     cautivadora. Explora nuestras secciones dedicadas a la vida
                     cotidiana en el antiguo Egipto, la arquitectura majestuosa
                     de los templos y las tumbas, los jeroglíficos enigmáticos y
-                    los tesoros ocultos del arte egipcio.
-                  </Typography>
-                </Grid>
-                <Grid item md={6} xs={12}>
-                  <Typography>
-                    La civilización egipcia se caracterizó por su estabilidad
+                    los tesoros ocultos del arte egipcio. 
+                    ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ La civilización egipcia se caracterizó por su estabilidad
                     política y social, así como por su avanzado conocimiento en
                     diversos campos, como la arquitectura, la escritura, la
                     medicina y la astronomía. Los antiguos egipcios creían en la
@@ -250,23 +260,9 @@ const IntroPage = () => {
                     recursos y esfuerzos a la preparación para la vida en el más
                     allá.
                   </Typography>
+                  
                 </Grid>
               </Grid>
-              <Typography
-                sx={{
-                  py: 4,
-                  px: "5%",
-                  textAlign: "justify",
-                  display: { xs: "none", md: "block" },
-                }}
-              >
-                Se expresaban a a través de la música, la danza, la pintura y la
-                escultura. Los antiguos egipcios eran expertos en la talla de
-                piedra y en la creación de obras de arte que representaban a
-                dioses, faraones y escenas de la vida cotidiana. La pintura se
-                utilizaba en los muros de los templos y las tumbas para narrar
-                historias y preservar la memoria de los difuntos.
-              </Typography>
             </motion.div>
           </Box>
         )}
