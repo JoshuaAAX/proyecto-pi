@@ -22,6 +22,7 @@ import QuizEstrategia from "./pages/QuizEstrategia";
 import QuizReligion from "./pages/QuizReligion";
 import QuizArte from "./pages/QuizArte";
 import QuizSistema from "./pages/QuizSistema";
+import QuizArquitectura from "./pages/QuizArquitectura";
 
 const App = () => {
   return (
@@ -47,6 +48,8 @@ const App = () => {
         <Route path="/politica" element={<SistemaPolitico />} />
         <Route path="/arte" element={<Arte />} />
         <Route path="/quizarte" element={<QuizArte />} />
+        <Route path="/quizarquitectura" element={<QuizArquitectura />} />
+
       </Routes>
     </>
   );
