@@ -38,7 +38,8 @@ const MainPage = () => {
           <Typography variant="h3" textAlign={"center"}
            sx={{
             backgroundColor: 'white',
-            
+            border: '1px solid black',
+            borderRadius: '8px',
             padding: '16px',
             display: 'inline-block',
             color: '',}}>
