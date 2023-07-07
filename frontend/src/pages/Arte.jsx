@@ -13,7 +13,7 @@ const filas = [
     titulo: "Jerarquía y simbolismo",
     parrafo:
       "El arte del Antiguo Egipto estaba impregnado de simbolismo y seguía una estricta jerarquía visual. Los faraones y los dioses eran representados de manera prominente y más grandes en tamaño para reflejar su estatus divino y poder. Las figuras humanas y animales también estaban representadas de acuerdo con su importancia social y religiosa.",
-        
+
     imagen: simbolismo,
     lado: "izq",
   },
@@ -42,7 +42,7 @@ const filas = [
     lado: "izq",
   },
 
- 
+
 ];
 
 const Arte = () => {
@@ -61,7 +61,7 @@ const Arte = () => {
         Su arte se centraba en la representación precisa y jerárquica de figuras humanas y divinas, 
         y tenía una fuerte conexión con la vida religiosa y el culto a los dioses
         </Typography>
-        
+
       </Box>
       {filas.map((fila, index) => (
         <Box key={index} sx={{ mb: 8, mt: 4 }}>
