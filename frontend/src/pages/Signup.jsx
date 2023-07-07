@@ -250,7 +250,7 @@ const Signup = () => {
               Registrarte
             </Button>
             <Divider sx={{ my: 1.5 }} />
-            <Tooltip title="No funciona en producción" placement="right">
+            
               <span>
                 <Button
                   type="submit"
@@ -280,7 +280,7 @@ const Signup = () => {
                   Continuar con Google
                 </Button>
               </span>
-            </Tooltip>
+            
             <Grid item>
               <Link
                 onClick={() => navigate("/login")}

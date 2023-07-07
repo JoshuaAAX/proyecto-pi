@@ -59,11 +59,7 @@ const Navbar = () => {
           >
             Nilearn
           </Typography>
-          {routes.includes(path) && (
-            <IconButton disableRipple onClick={() => navigate("/")}>
-              <HomeIcon sx={{ color: "black" }} />
-            </IconButton>
-          )}
+          
           {session ? (
             <UserMenu
               bgcolor="slategray"

@@ -13,7 +13,7 @@ import religion from "../../assets/mainIcons/ReligionR.png";
 import gastronomia from "../../assets/mainIcons/gastronomia.png";
 import arquitectura from "../../assets/mainIcons/arqui.png";
 import estrategia from "../../assets/mainIcons/estrategia.png";
-
+import gatocompleto from "../../assets/complete_cat.png"
 const MainPage = () => {
   const navigate = useNavigate();
   return (
@@ -35,10 +35,17 @@ const MainPage = () => {
         }}
       >
         <Grid item md={12} mb={4}>
-          <Typography variant="h4" textAlign={"center"}>
+          <Typography variant="h3" textAlign={"center"}
+           sx={{
+            backgroundColor: 'white',
+            
+            padding: '16px',
+            display: 'inline-block',
+            color: '',}}>
             Elige el tema de tu preferencia
           </Typography>
         </Grid>
+        
         <Grid
           container
           spacing={2}
@@ -60,6 +67,7 @@ const MainPage = () => {
             },
           }}
         >
+          
           <Grid item md={12}>
             <Paper sx={{ borderColor: "black", border: "2px solid" }}>
               <img src={sistema} height={"40px"} style={{ marginTop: "8px" }} />
@@ -115,31 +123,24 @@ const MainPage = () => {
           </Grid>
         </Grid>
       </Box>
-
       <Grid
         container
         sx={{
           mt: 5,
-          ml: 20,
+          mr: 5,
 
           mb: { md: 10, xs: 0 },
           width: "20%",
           height: "50%",
         }}
       >
-        <Canvas
-          shadows
-          gl={{ alpha: true }}
-          camera={{ position: [0, 0, 10], fov: 80 }}
-          style={{ width: "100%", height: "100%" }}
-        >
-          {/* eslint-disable-next-line react/no-unknown-property*/}
-          <ambientLight intensity={2} color="white" />
-          {/* Nueva luz ambiental */}
-          <OrbitControls makeDefault minPolarAngle={1} maxPolarAngle={2} />
-          <Gato />
-        </Canvas>
+        <img
+                src={gatocompleto}
+                height={"400px"}
+                style={{ marginTop: "8px" }}
+              />
       </Grid>
+     
     </Box>
   );
 };

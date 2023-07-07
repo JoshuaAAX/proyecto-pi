@@ -247,7 +247,8 @@ const Login = () => {
                 <Link
                   onClick={() => navigate("/signup")}
                   variant="body2"
-                  sx={{ "&:hover": { cursor: "pointer" } }}
+                  sx={{ 
+                    "&:hover": { cursor: "pointer" } }}
                 >
                   {"¿No tienes una cuenta? Regístrate"}
                 </Link>
