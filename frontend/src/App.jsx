@@ -11,11 +11,13 @@ import MainPage from "./pages/MainPage";
 import Religion from "./pages/Religion";
 import Arquitectura from "./pages/Arquitectura";
 import Militar from "./pages/EstrategiaMilitar";
+import Arte from "./pages/Arte";
 
 import Test from "./components/Test";
 import IntroPage from "./components/Slider";
 import Gastronomia from "./pages/Gastronomia";
 
+import QuizArte from "./pages/QuizArte";
 import QuizEstrategia from "./pages/QuizEstrategia";
 import QuizReligion from "./pages/QuizReligion";
 
@@ -37,6 +39,8 @@ const App = () => {
         <Route path="/estrategia-militar" element={<Militar />} />
         <Route path="/xd" element={<Test />} />
         <Route path="/gastronomia" element={<Gastronomia />} />
+        <Route path="/arte" element={<Arte />} />
+        <Route path="/quizarte" element={<QuizArte />} />
       </Routes>
     </>
   );
