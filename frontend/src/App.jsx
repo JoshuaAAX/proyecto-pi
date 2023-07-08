@@ -25,6 +25,7 @@ import QuizGastronomia from "./pages/QuizGastronomia.jsx";
 
 import "./App.css";
 import Home from './components/Home';
+import Quizzes from "./pages/Quizzes";
 
 const App = () => {
   return (
@@ -44,6 +45,7 @@ const App = () => {
         <Route path="/gastronomia" element={<Gastronomia />} />
         <Route path="/politica" element={<SistemaPolitico />} />
         <Route path="/arte" element={<Arte />} />
+        <Route path="/quizzes" element={<Quizzes />} />
         <Route path="/quizarte" element={<QuizArte />} />
         <Route path="/quizarquitectura" element={<QuizArquitectura />} />
         <Route path="/quizreligion" element={<QuizReligion />} />

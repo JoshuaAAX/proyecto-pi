@@ -14,7 +14,8 @@ import defaultAvatar from "../../assets/default.png";
 
 import Logout from "@mui/icons-material/Logout";
 import DashboardRounded from "@mui/icons-material/DashboardRounded";
-import HomeIcon from '@mui/icons-material/Home';
+import HomeIcon from "@mui/icons-material/Home";
+import ChecklistIcon from "@mui/icons-material/Checklist";
 
 import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "../../backend/client";
@@ -45,6 +46,7 @@ const UserMenu = ({ bgcolor, session, handleLogout }) => {
   useEffect(() => {
     test();
   }, []);
+
 
   // eslint-disable-next-line react/prop-types
   const nickname = session.user.user_metadata.nickname;
@@ -168,6 +170,17 @@ const UserMenu = ({ bgcolor, session, handleLogout }) => {
                   <DashboardRounded fontSize="small" />
                 </ListItemIcon>
                 Introduccion
+              </MenuItem>
+            </Link>
+            <Link
+              to="/quizzes"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              <MenuItem>
+                <ListItemIcon>
+                  <ChecklistIcon fontSize="small" />
+                </ListItemIcon>
+                Resultados de evaluaciones
               </MenuItem>
             </Link>
             <Divider />
