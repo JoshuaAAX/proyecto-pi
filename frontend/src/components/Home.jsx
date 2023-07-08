@@ -1,14 +1,23 @@
 import { Button, Container, Grid, Stack, Typography } from "@mui/material";
 
 import { useNavigate } from "react-router-dom";
-import { Canvas, useThree } from "@react-three/fiber";
-import { AmbientLight } from "three";
-import React, { Suspense, useRef, useEffect } from "react";
+import { Canvas } from "@react-three/fiber";
 import { Estatua } from "./Estatua";
 import { OrbitControls } from "@react-three/drei";
 
+import { motion } from "framer-motion";
+
 const Home = () => {
   const navigate = useNavigate();
+
+  const textVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { duration: 1.5, type: "tween" },
+      clipPath: ["inset(0 100% 0 0)", "inset(0 0 0 0)"],
+    },
+  };
 
   return (
     <Container
@@ -31,23 +40,35 @@ const Home = () => {
         }}
       >
         <Grid item md={5} xs={12}>
-          <Canvas
-            shadows
-            gl={{ alpha: true }}
-            camera={{ position: [0, 0, 30], fov: 100 }}
-            style={{ width: "100%", height: "100%" }}
+          <motion.div
+            initial={{ y: "-10%" }}
+            animate={{ y: 0 }}
+            transition={{
+              duration: 2,
+              delay: 0.5,
+              type: "spring",
+              bounce: 0.85,
+            }}
+            style={{ display: "flex", height: "100%" }}
           >
-            <ambientLight intensity={0.7} />
-            <OrbitControls
-              makeDefault
-              minDistance={28}
-              maxDistance={28}
-              minPolarAngle={1}
-              maxPolarAngle={1.5}
-              enablePan={false}
-            />
-            <Estatua />
-          </Canvas>
+            <Canvas
+              shadows
+              gl={{ alpha: true }}
+              camera={{ position: [0, 0, 30], fov: 100 }}
+              style={{ width: "100%", height: "100%" }}
+            >
+              <ambientLight intensity={0.7} />
+              <OrbitControls
+                makeDefault
+                minDistance={28}
+                maxDistance={28}
+                minPolarAngle={1}
+                maxPolarAngle={1.5}
+                enablePan={false}
+              />
+              <Estatua />
+            </Canvas>
+          </motion.div>
         </Grid>
         <Grid
           item
@@ -58,18 +79,25 @@ const Home = () => {
           justifyContent="center"
           alignItems="center"
         >
-          <Typography
-    sx={{
-      mt: 5,
-      mb: { md: 0, xs: 5 },
-      width: { xs: "100%", md: "120%" },
-      fontSize: { xs: 20, md: 30 },
-      textAlign: "center",
-    }}
-    dangerouslySetInnerHTML={{
-      __html: '<b>Cultura egipcia</b>, un aprendizaje sencillo y ameno te espera aquí.',
-    }}
-  />
+          <motion.p
+            style={{
+              marginTop: "40px",
+              marginBottom: { md: 0, xs: "40px" },
+              fontSize: 26,
+              textAlign: "center",
+            }}
+          >
+            <motion.span
+              variants={textVariants}
+              initial="hidden"
+              animate="visible"
+              style={{ fontWeight: "bold" }}
+            >
+              Cultura egipcia
+            </motion.span>
+            , un aprendizaje sencillo y divertido te espera aquí.
+          </motion.p>
+
           <Stack
             direction={{ xs: "row", md: "column" }}
             spacing={2}

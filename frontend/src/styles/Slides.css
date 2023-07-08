@@ -3,10 +3,11 @@
   justify-content: center !important;
   align-items: center !important;
   height: 100vh !important;
-  background-color: #F7EDD4;
+  background-color: #f7edd4;
 }
 
 .my-slide {
+  height: 100% !important;
   display: flex !important;
   flex-direction: column;
   justify-content: center !important;

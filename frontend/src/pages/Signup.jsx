@@ -13,7 +13,6 @@ import {
   Divider,
 } from "@mui/material";
 
-import "../styles/Login.css";
 
 import { amber } from "@mui/material/colors";
 import { useNavigate } from "react-router-dom";

@@ -2,21 +2,11 @@ import { Box } from "@mui/material";
 import Footer from "../components/Footer";
 import Home from "../components/Home";
 import { amber } from "@mui/material/colors";
-import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
-import { supabase } from "../../backend/client";
+
 
 function Page() {
-  const navigate = useNavigate();
 
-  useEffect(() => {
-    supabase.auth.onAuthStateChange((event, session) => {
-      if (session) {  
-        navigate("/mainpage");
-      }
-    });
-  });
-
+ 
   return (
     <>
       <Box
@@ -34,7 +24,6 @@ function Page() {
           <About />
         </Box> */}
       </Box>
-      <Footer />
     </>
   );
 }

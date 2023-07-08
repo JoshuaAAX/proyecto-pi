@@ -288,7 +288,7 @@ const Profile = () => {
                 Guardar
               </Button>
               <Button
-               onClick={() => navigate("/mainpage")}
+                onClick={() => navigate("/mainpage")}
                 variant="contained"
                 sx={{
                   textTransform: "none",

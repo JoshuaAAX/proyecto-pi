@@ -21,7 +21,7 @@ import {
   Paper,
   Typography,
   useMediaQuery,
-  Button
+  Button,
 } from "@mui/material";
 import { toast } from "react-hot-toast";
 
@@ -78,7 +78,6 @@ const SistemaPolitico = () => {
   const small = useMediaQuery((theme) => theme.breakpoints.down("sm"));
 
   const [indice, setIndice] = useState(0);
-
 
   const temas = {
     0: (
@@ -155,7 +154,6 @@ const SistemaPolitico = () => {
       </AnimatePresence>
     ),
     0: (
-     
       <AnimatePresence>
         {indice === 0 && (
           <Box sx={{ position: "absolute", top: "2rem" }}>
@@ -232,7 +230,6 @@ const SistemaPolitico = () => {
       <AnimatePresence>
         {indice === 1 && (
           <Box sx={{ position: "absolute", top: "2rem" }}>
-           
             <motion.div
               initial={{ y: "-10vh", opacity: 0 }}
               whileInView={{
@@ -243,7 +240,7 @@ const SistemaPolitico = () => {
               exit={{ opacity: 0 }}
             >
               <Typography variant="h4" sx={{ mt: 4 }}>
-              El Faraón: Líder Divino
+                El Faraón: Líder Divino
               </Typography>
               <Grid
                 container
@@ -273,7 +270,13 @@ const SistemaPolitico = () => {
                 )}
                 <Grid item md={6} sm={12} sx={{ width: "20rem" }}>
                   <Typography variant="body1" sx={{ textAlign: "justify" }}>
-                  En el antiguo Egipto, la máxima autoridad era el faraón, una figura considerada no solo como líder político, sino también como una deidad viviente. Por lo tanto, la palabra del faraón era incuestionable y su poder, absoluto. Además de sus responsabilidades políticas, los faraones también desempeñaban funciones religiosas y militares, reforzando su estatus en la sociedad egipcia.
+                    En el antiguo Egipto, la máxima autoridad era el faraón, una
+                    figura considerada no solo como líder político, sino también
+                    como una deidad viviente. Por lo tanto, la palabra del
+                    faraón era incuestionable y su poder, absoluto. Además de
+                    sus responsabilidades políticas, los faraones también
+                    desempeñaban funciones religiosas y militares, reforzando su
+                    estatus en la sociedad egipcia.
                   </Typography>
                 </Grid>
               </Grid>
@@ -286,7 +289,6 @@ const SistemaPolitico = () => {
       <AnimatePresence>
         {indice === 2 && (
           <Box sx={{ position: "absolute", top: "2rem" }}>
-            
             <motion.div
               initial={{ y: "-10vh", opacity: 0 }}
               whileInView={{
@@ -297,7 +299,7 @@ const SistemaPolitico = () => {
               exit={{ opacity: 0 }}
             >
               <Typography variant="h4" sx={{ mt: 4 }}>
-              La Administración del Reino: Visir y Sacerdotes
+                La Administración del Reino: Visir y Sacerdotes
               </Typography>
               <Grid
                 container
@@ -327,9 +329,18 @@ const SistemaPolitico = () => {
                 )}
                 <Grid item md={6} sx={{ width: "20rem" }}>
                   <Typography variant="body1" sx={{ textAlign: "justify" }}>
-                  Los faraones no gobernaban solos. Para ayudar en la administración del vasto imperio egipcio, contaban con un sistema administrativo complejo. El 'Visir', un equivalente al actual primer ministro, desempeñaba un papel crucial en este sistema. El visir supervisaba la administración del reino, asesoraba al faraón y se encargaba de implementar sus decisiones.
-
-Los sacerdotes también tenían una importante función en la administración del estado. Eran responsables de la recolección de impuestos y el mantenimiento de los proyectos de infraestructura, además de realizar sus deberes religiosos.                   </Typography>
+                    Los faraones no gobernaban solos. Para ayudar en la
+                    administración del vasto imperio egipcio, contaban con un
+                    sistema administrativo complejo. El 'Visir', un equivalente
+                    al actual primer ministro, desempeñaba un papel crucial en
+                    este sistema. El visir supervisaba la administración del
+                    reino, asesoraba al faraón y se encargaba de implementar sus
+                    decisiones. Los sacerdotes también tenían una importante
+                    función en la administración del estado. Eran responsables
+                    de la recolección de impuestos y el mantenimiento de los
+                    proyectos de infraestructura, además de realizar sus deberes
+                    religiosos.{" "}
+                  </Typography>
                 </Grid>
               </Grid>
             </motion.div>
@@ -396,7 +407,18 @@ Otra figura importante en el sistema político del antiguo Egipto era el nomarca
                 width: '100%',
               }}
             >
-              
+              <Button
+                onClick={() => navigate('/mainpage')}
+                sx={{
+                  color: "brown",
+                  outline: "1px solid #DBB489",
+                  backgroundColor: "rgba(219, 180, 137, 0.1)",
+                  mb: 2,
+                  width: '100%',
+                }}
+              >
+                Ir a la página principal
+              </Button>
               <Button
                 onClick={() => navigate('/quizpolitica')}
                 sx={{
