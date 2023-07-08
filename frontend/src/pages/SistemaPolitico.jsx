@@ -396,18 +396,7 @@ Otra figura importante en el sistema político del antiguo Egipto era el nomarca
                 width: '100%',
               }}
             >
-              <Button
-                onClick={() => navigate('/mainpage')}
-                sx={{
-                  color: "brown",
-                  outline: "1px solid #DBB489",
-                  backgroundColor: "rgba(219, 180, 137, 0.1)",
-                  mb: 2,
-                  width: '100%',
-                }}
-              >
-                Ir a la página principal
-              </Button>
+              
               <Button
                 onClick={() => navigate('/quizpolitica')}
                 sx={{

@@ -174,7 +174,7 @@ const Arte = () => {
                 }}
                 exit={{ opacity: 0 }}
               >
-                <Typography variant="h4">Temas de estudio</Typography>
+               
               </motion.div>
             )}
             <motion.div
@@ -533,7 +533,7 @@ const Arte = () => {
               }}
             >
               <Button
-                onClick={() => navigate('/quizpolitica')}
+                onClick={() => navigate('/quizarte')}
                 sx={{
                   color: "brown",
                   outline: "1px solid #DBB489",

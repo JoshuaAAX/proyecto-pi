@@ -579,10 +579,7 @@ const estrategiaMilitar = () => {
               organización militar bien estructurada, el uso efectivo de armas como
              carros de guerra, infantería, arqueros y una planificación defensiva
               sólida, los egipcios lograron mantener el control sobre su territorio
-              y enfrentarse a las amenazas externas. Además, su enfoque en la
-              diplomacia y la resolución pacífica de conflictos demostró su
-              sabiduría estratégica, la cual egipcia fue una combinación de fuerza,
-             inteligencia y adaptabilidad, su legado continúa siendo un testimonio
+              y enfrentarse a las amenazas externas. su legado continúa siendo un testimonio
               de la grandeza y la habilidad militar de esta antigua civilización.
 
 </Typography>
@@ -596,7 +593,7 @@ const estrategiaMilitar = () => {
               }}
             >
               <Button
-                onClick={() => navigate('/quizarquitectura')}
+                onClick={() => navigate('/quizestrategia')}
                 sx={{
                   color: "brown",
                   outline: "1px solid #DBB489",

@@ -23,7 +23,7 @@ import QuizReligion from "./pages/QuizReligion";
 import QuizArte from "./pages/QuizArte";
 import QuizSistema from "./pages/QuizSistema";
 import QuizArquitectura from "./pages/QuizArquitectura";
-
+import QuizGastronomia from "./pages/QuizGastronomia.jsx";
 const App = () => {
   return (
     <>
@@ -38,10 +38,6 @@ const App = () => {
         <Route path="/religion" element={<Religion />} />
         <Route path="/arquitectura" element={<Arquitectura />} />
         <Route path="/arte" element={<Arte />} />
-        <Route path="/quizarte" element={<QuizArte />} />
-        <Route path="/quizreligion" element={<QuizReligion />} />
-        <Route path="/quizestrategia" element={<QuizEstrategia />} />
-        <Route path="/quizpolitica" element={<QuizSistema />} />
         <Route path="/estrategia-militar" element={<Militar />} />
         <Route path="/xd" element={<Test />} />
         <Route path="/gastronomia" element={<Gastronomia />} />
@@ -49,7 +45,10 @@ const App = () => {
         <Route path="/arte" element={<Arte />} />
         <Route path="/quizarte" element={<QuizArte />} />
         <Route path="/quizarquitectura" element={<QuizArquitectura />} />
-
+        <Route path="/quizreligion" element={<QuizReligion />} />
+        <Route path="/quizestrategia" element={<QuizEstrategia />} />
+        <Route path="/quizpolitica" element={<QuizSistema />} />
+        <Route path="/quizgastronomia" element={<QuizGastronomia/>}/>
       </Routes>
     </>
   );

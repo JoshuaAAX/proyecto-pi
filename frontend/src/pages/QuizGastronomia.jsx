@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react";
 
 import cat from "../../assets/complete_cat.png";
 
-const QuizSistema = () => {
+const QuizGastronomia = () => {
   const navigate = useNavigate();
 
   const [points, setPoints] = useState(0);
@@ -15,38 +15,55 @@ const QuizSistema = () => {
 
   const questions = [
     {
-      question: "1. ¿Cuál era el papel del faraón en el Antiguo Egipto?",
-      options: ["Solo era una figura religiosa", " Solo era una figura política", "Era una figura religiosa, política y militar", "No tenía un papel específico."],
-      correctAnswer: "Era una figura religiosa, política y militar",
+      question:
+        "1. ¿Cuál era la base de la dieta egipcia antigua?",
+      options: [
+        "Los alimentos disponibles en el bosque",
+        "Los alimentos disponibles en el mar",
+        "Los alimentos que caian del cielo",
+        "Los alimentos y productos disponibles en la región del río Nilo.",
+      ],
+      correctAnswer: "Los alimentos y productos disponibles en la región del río Nilo.",
     },
     {
-      question: "2. ¿Quién era el 'Visir' en el antiguo Egipto?",
+      question:
+        "2. ¿Qué alimento era fundamental en la dieta egipcia antigua y se elaboraba principalmente con trigo?",
       options: [
-        "El faraón.",
-        "Un sacerdote.",
-        "Un gobernador provincial.",
-        "Un equivalente al primer ministro que asesoraba al faraón y supervisaba la administración del reino.",
+        "El pan",
+        "El buñuelo",
+        "El pastel",
+        "El pescado",
+      ],
+      correctAnswer:   "El pan",
+    },
+    {
+      question:
+        "3. ¿Cuál era la bebida más común en el antiguo Egipto y se elaboraba a partir de cebada?",
+      options: [
+        "La limonada",
+        "La Gaseosa",
+        "La Cerveza",
+        "El Café",
+      ],
+      correctAnswer:         "La Cerveza",
+    },
+    {
+      question:
+        "4. ¿Qué bebida estaba más asociada con la élite y las clases altas en el antiguo Egipto y se producía a partir de uvas?",
+      options: ["La Cerveza", "El Vino", "El Agua", "El Jugo"],
+      correctAnswer: "El Vino", 
+    },
+    {
+      question:
+        "5.¿Qué fuente de alimento proporcionaba el río Nilo en la dieta egipcia antigua?",
+      options: [
+        "Pescado del Nilo.",
+        "Camarón.",
+        "Langosta ",
+        "Cangrejo",
       ],
       correctAnswer:
-      "Un equivalente al primer ministro que asesoraba al faraón y supervisaba la administración del reino.",
-    },
-    {
-      question:
-        "3. ¿Qué papel desempeñaban los sacerdotes en la administración del Antiguo Egipto?",
-      options: ["Solo realizaban ceremonias religiosas.", "Solo recolectaban impuestos.", "Recolectaban impuestos y mantenían los proyectos de infraestructura.", "No desempeñaban ningún papel en la administración."],
-      correctAnswer: "Recolectaban impuestos y mantenían los proyectos de infraestructura.",
-    },
-    {
-      question:
-        "4. ¿Quiénes eran los nomarcas en el antiguo Egipto?",
-      options: ["Eran dioses.", "Eran escribas.", "Eran gobernadores provinciales.", "Eran sacerdotes."],
-      correctAnswer: "Eran gobernadores provinciales.",
-    },
-    {
-      question:
-        "5. ¿Los puestos de nomarcas se volvieron hereditarios con el tiempo?",
-      options: ["No, siempre fueron nombrados por el faraón.", "Sí, con el tiempo los puestos se volvieron hereditarios.", "No, siempre fueron puestos hereditarios.", "Sí, pero solo en ciertas regiones."],
-      correctAnswer: "Sí, con el tiempo los puestos se volvieron hereditarios.",
+      "Pescado del Nilo.",
     },
   ];
 
@@ -133,7 +150,7 @@ const QuizSistema = () => {
       ) : (
         <Box sx={styles.container}>
           <Typography variant="h4" textAlign="center" sx={{ mb: 6 }}>
-            Quiz Sistema Politico
+            Quiz Gastronomia
           </Typography>
           <Box sx={styles.questions}>
             {questions.map((question, index) => (
@@ -150,7 +167,7 @@ const QuizSistema = () => {
             variants={variants}
             initial="visible"
             animate={{
-              opacity: 1,
+              opacity: 0,
               transition: { duration: 1, type: "spring", delay: 1 },
             }}
             whileHover="visible"
@@ -183,7 +200,7 @@ const QuizSistema = () => {
   );
 };
 
-export default QuizSistema;
+export default QuizGastronomia;
 
 const styles = {
   returnButton: {
