@@ -15,55 +15,39 @@ const QuizGastronomia = () => {
 
   const questions = [
     {
-      question:
-        "1. ¿Cuál era la base de la dieta egipcia antigua?",
+      question: "1. ¿Cuál era la base de la dieta egipcia antigua?",
       options: [
         "Los alimentos disponibles en el bosque",
         "Los alimentos disponibles en el mar",
         "Los alimentos que caian del cielo",
         "Los alimentos y productos disponibles en la región del río Nilo.",
       ],
-      correctAnswer: "Los alimentos y productos disponibles en la región del río Nilo.",
+      correctAnswer:
+        "Los alimentos y productos disponibles en la región del río Nilo.",
     },
     {
       question:
         "2. ¿Qué alimento era fundamental en la dieta egipcia antigua y se elaboraba principalmente con trigo?",
-      options: [
-        "El pan",
-        "El buñuelo",
-        "El pastel",
-        "El pescado",
-      ],
-      correctAnswer:   "El pan",
+      options: ["El pan", "El buñuelo", "El pastel", "El pescado"],
+      correctAnswer: "El pan",
     },
     {
       question:
         "3. ¿Cuál era la bebida más común en el antiguo Egipto y se elaboraba a partir de cebada?",
-      options: [
-        "La limonada",
-        "La Gaseosa",
-        "La Cerveza",
-        "El Café",
-      ],
-      correctAnswer:         "La Cerveza",
+      options: ["La limonada", "La Gaseosa", "La Cerveza", "El Café"],
+      correctAnswer: "La Cerveza",
     },
     {
       question:
         "4. ¿Qué bebida estaba más asociada con la élite y las clases altas en el antiguo Egipto y se producía a partir de uvas?",
       options: ["La Cerveza", "El Vino", "El Agua", "El Jugo"],
-      correctAnswer: "El Vino", 
+      correctAnswer: "El Vino",
     },
     {
       question:
         "5.¿Qué fuente de alimento proporcionaba el río Nilo en la dieta egipcia antigua?",
-      options: [
-        "Pescado del Nilo.",
-        "Camarón.",
-        "Langosta ",
-        "Cangrejo",
-      ],
-      correctAnswer:
-      "Pescado del Nilo.",
+      options: ["Pescado del Nilo.", "Camarón.", "Langosta ", "Cangrejo"],
+      correctAnswer: "Pescado del Nilo.",
     },
   ];
 
@@ -163,32 +147,7 @@ const QuizGastronomia = () => {
               </div>
             ))}
           </Box>
-          <motion.div
-            variants={variants}
-            initial="visible"
-            animate={{
-              opacity: 0,
-              transition: { duration: 1, type: "spring", delay: 1 },
-            }}
-            whileHover="visible"
-          >
-            <Box sx={styles.buttons.container}>
-              <Paper
-                variant="outlined"
-                sx={styles.buttons.previous}
-                onClick={handlePrev}
-              >
-                {"<"}
-              </Paper>
-              <Paper
-                variant="outlined"
-                sx={styles.buttons.next}
-                onClick={handleNext}
-              >
-                {">"}
-              </Paper>
-            </Box>
-          </motion.div>
+
           <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
             <Button onClick={() => setFinished(true)} sx={styles.finishButton}>
               Finalizar quiz
@@ -217,6 +176,7 @@ const styles = {
     outline: "1px solid #DBB489",
     backgroundColor: "rgba(219, 180, 137, 0.1)",
     marginTop: "8%",
+    marginBottom: "40px",
     px: 3,
   },
   container: {
@@ -225,7 +185,8 @@ const styles = {
     alignItems: "center",
     flexDirection: "column",
     background: amber[50],
-    py: 5,
+    pb: 5,
+    pt: 8,
     overflow: "hidden",
   },
   questions: {

@@ -13,17 +13,17 @@ import {
 import defaultAvatar from "../../assets/default.png";
 
 import Logout from "@mui/icons-material/Logout";
-import Settings from "@mui/icons-material/Settings";
 import DashboardRounded from "@mui/icons-material/DashboardRounded";
-import Person from "@mui/icons-material/Person";
+import HomeIcon from '@mui/icons-material/Home';
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "../../backend/client";
 import { useEffect } from "react";
 
 // eslint-disable-next-line react/prop-types
 const UserMenu = ({ bgcolor, session, handleLogout }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const navigate = useNavigate();
   const open = Boolean(anchorEl);
 
   const handleClick = (event) => {
@@ -61,27 +61,25 @@ const UserMenu = ({ bgcolor, session, handleLogout }) => {
               justifyContent: "center",
             }}
           >
-            <Tooltip title="Account settings">
-              <IconButton
-                onClick={handleClick}
-                size="small"
-                sx={{ ml: 2 }}
-                aria-controls={open ? "account-menu" : undefined}
-                aria-haspopup="true"
-                aria-expanded={open ? "true" : undefined}
-                disableRipple
-              >
-                <Avatar
-                  alt="Profile Picture"
-                  src={avatarUrl}
-                  sx={{
-                    width: 36,
-                    height: 36,
-                    bgcolor: bgcolor,
-                  }}
-                />
-              </IconButton>
-            </Tooltip>
+            <IconButton
+              onClick={handleClick}
+              size="small"
+              sx={{ ml: 2 }}
+              aria-controls={open ? "account-menu" : undefined}
+              aria-haspopup="true"
+              aria-expanded={open ? "true" : undefined}
+              disableRipple
+            >
+              <Avatar
+                alt="Profile Picture"
+                src={avatarUrl}
+                sx={{
+                  width: 36,
+                  height: 36,
+                  bgcolor: bgcolor,
+                }}
+              />
+            </IconButton>
           </Box>
           <Menu
             anchorEl={anchorEl}
@@ -127,7 +125,7 @@ const UserMenu = ({ bgcolor, session, handleLogout }) => {
               horizontal: "right",
             }}
           >
-            <MenuItem>
+            <MenuItem onClick={() => navigate("/profile")}>
               <Avatar
                 alt="Profile Picture"
                 src={avatarUrl}
@@ -144,7 +142,7 @@ const UserMenu = ({ bgcolor, session, handleLogout }) => {
                     marginLeft: "10px",
                   }}
                 >
-                  {nickname}
+                  Mi perfil
                 </span>
               }
             </MenuItem>
@@ -155,30 +153,12 @@ const UserMenu = ({ bgcolor, session, handleLogout }) => {
             >
               <MenuItem>
                 <ListItemIcon>
-                  <DashboardRounded fontSize="small" />
+                  <HomeIcon fontSize="small" />
                 </ListItemIcon>
                 Página principal
               </MenuItem>
             </Link>
 
-            <Link
-              to="/profile"
-              style={{ textDecoration: "none", color: "inherit" }}
-            >
-              <MenuItem>
-                <ListItemIcon>
-                  <Person fontSize="small" />
-                </ListItemIcon>
-                Mi perfil
-              </MenuItem>
-            </Link>
-            <Divider />
-            <MenuItem>
-              <ListItemIcon>
-                <Settings fontSize="small" />
-              </ListItemIcon>
-              Ajustes
-            </MenuItem>
             <Link
               to="/intro"
               style={{ textDecoration: "none", color: "inherit" }}

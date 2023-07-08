@@ -5,8 +5,8 @@ import vino from "../../assets/vino.jpg";
 import pescado from "../../assets/pescado.jpg";
 import carne from "../../assets/carne.png";
 import frutas from "../../assets/frutas.png";
-import miel from "../../assets/miel.jpg"
-import Gato from "../../assets/complete_cat.png"
+import miel from "../../assets/miel.jpg";
+import Gato from "../../assets/complete_cat.png";
 
 import { useRef, useEffect, useState } from "react";
 import Slider from "react-slick";
@@ -23,19 +23,20 @@ import {
   Paper,
   Typography,
   useMediaQuery,
-  Button
+  Button,
 } from "@mui/material";
 import { toast } from "react-hot-toast";
 
 import TouchAppIcon from "@mui/icons-material/TouchApp";
 import { useNavigate } from "react-router-dom";
+import CircleIcon from "@mui/icons-material/Circle";
 
 const Gastronomia = () => {
   const sliderRef = useRef();
   const navigate = useNavigate();
 
   const settings = {
-    dots: false,
+    dots: true,
     infinite: false,
     speed: 500,
     slidesToShow: 1,
@@ -44,6 +45,19 @@ const Gastronomia = () => {
     lazyLoad: "ondemand",
     adaptiveHeight: true,
     beforeChange: (oldIndex, newIndex) => setIndice(newIndex),
+    customPaging: (i) => (
+      <div
+        style={{
+          position: "fixed",
+          bottom: 30,
+          width: "30px",
+          color: i === indice ? "#DBB489" : "gray",
+          transition: "color .5s ease-in-out",
+        }}
+      >
+        <CircleIcon fontSize="14px" />
+      </div>
+    ),
   };
 
   useEffect(() => {
@@ -81,27 +95,11 @@ const Gastronomia = () => {
 
   const [indice, setIndice] = useState(0);
 
-
   const temas = {
-
     0: (
-     
       <AnimatePresence>
         {indice === 0 && (
           <Box sx={{ position: "absolute", top: "2rem" }}>
-            {!small && (
-              <motion.div
-                initial={{ y: "-10vh", opacity: 0 }}
-                whileInView={{
-                  y: 0,
-                  opacity: 1,
-                  transition: { duration: 1.5, type: "spring" },
-                }}
-                exit={{ opacity: 0 }}
-              >
-                <Typography variant="h4">Temas de estudio</Typography>
-              </motion.div>
-            )}
             <motion.div
               initial={{ y: "-10vh", opacity: 0 }}
               whileInView={{
@@ -111,7 +109,7 @@ const Gastronomia = () => {
               }}
             >
               <Typography variant="h4" sx={{ mt: 4 }}>
-              Gastronomia en el antiguo Egipto
+                Gastronomia en el antiguo Egipto
               </Typography>
               <Grid
                 container
@@ -141,11 +139,13 @@ const Gastronomia = () => {
                 )}
                 <Grid item md={6} sx={{ width: "20rem" }}>
                   <Typography variant="body1" sx={{ textAlign: "justify" }}>
-                  La gastronomía del antiguo Egipto se basaba en gran medida en los alimentos
-                  y productos disponibles en la región del río Nilo. Los antiguos egipcios cultivaban
-                  una variedad de cultivos como trigo, cebada, lentejas, guisantes, cebollas, ajos, sandías,
-                  uvas y dátiles. También criaban animales como vacas, ovejas, cabras, cerdos, aves de corral
-                  y pescado del Nilo.
+                    La gastronomía del antiguo Egipto se basaba en gran medida
+                    en los alimentos y productos disponibles en la región del
+                    río Nilo. Los antiguos egipcios cultivaban una variedad de
+                    cultivos como trigo, cebada, lentejas, guisantes, cebollas,
+                    ajos, sandías, uvas y dátiles. También criaban animales como
+                    vacas, ovejas, cabras, cerdos, aves de corral y pescado del
+                    Nilo.
                   </Typography>
                 </Grid>
               </Grid>
@@ -155,28 +155,11 @@ const Gastronomia = () => {
       </AnimatePresence>
     ),
 
-
-
-
-//-------------------------------------------------------------------
+    //-------------------------------------------------------------------
     1: (
-     
       <AnimatePresence>
         {indice === 1 && (
           <Box sx={{ position: "absolute", top: "2rem" }}>
-            {!small && (
-              <motion.div
-                initial={{ y: "-10vh", opacity: 0 }}
-                whileInView={{
-                  y: 0,
-                  opacity: 1,
-                  transition: { duration: 1.5, type: "spring" },
-                }}
-                exit={{ opacity: 0 }}
-              >
-                <Typography variant="h4">Temas de estudio</Typography>
-              </motion.div>
-            )}
             <motion.div
               initial={{ y: "-10vh", opacity: 0 }}
               whileInView={{
@@ -186,7 +169,7 @@ const Gastronomia = () => {
               }}
             >
               <Typography variant="h4" sx={{ mt: 4 }}>
-              Pan
+                Pan
               </Typography>
               <Grid
                 container
@@ -216,10 +199,10 @@ const Gastronomia = () => {
                 )}
                 <Grid item md={6} sx={{ width: "20rem" }}>
                   <Typography variant="body1" sx={{ textAlign: "justify" }}>
-                  El pan era un alimento básico en la dieta egipcia antigua. 
-                  Se elaboraba principalmente con trigo y se horneaba en forma 
-                  de panes redondos o alargados. También se preparaban panes especiales 
-                  para ocasiones festivas.
+                    El pan era un alimento básico en la dieta egipcia antigua.
+                    Se elaboraba principalmente con trigo y se horneaba en forma
+                    de panes redondos o alargados. También se preparaban panes
+                    especiales para ocasiones festivas.
                   </Typography>
                 </Grid>
               </Grid>
@@ -229,12 +212,11 @@ const Gastronomia = () => {
       </AnimatePresence>
     ),
 
-//-------------------------------------------------------------------
+    //-------------------------------------------------------------------
     2: (
       <AnimatePresence>
         {indice === 2 && (
           <Box sx={{ position: "absolute", top: "2rem" }}>
-           
             <motion.div
               initial={{ y: "-10vh", opacity: 0 }}
               whileInView={{
@@ -245,7 +227,7 @@ const Gastronomia = () => {
               exit={{ opacity: 0 }}
             >
               <Typography variant="h4" sx={{ mt: 4 }}>
-              Cerveza
+                Cerveza
               </Typography>
               <Grid
                 container
@@ -275,10 +257,10 @@ const Gastronomia = () => {
                 )}
                 <Grid item md={6} sm={12} sx={{ width: "20rem" }}>
                   <Typography variant="body1" sx={{ textAlign: "justify" }}>
-                  La cerveza era la bebida más común en el antiguo Egipto. 
-                  Se elaboraba a partir de cebada y se consumía tanto por niños 
-                  como por adultos. Era una parte esencial de la vida diaria y 
-                  también se usaba en rituales religiosos.
+                    La cerveza era la bebida más común en el antiguo Egipto. Se
+                    elaboraba a partir de cebada y se consumía tanto por niños
+                    como por adultos. Era una parte esencial de la vida diaria y
+                    también se usaba en rituales religiosos.
                   </Typography>
                 </Grid>
               </Grid>
@@ -288,389 +270,387 @@ const Gastronomia = () => {
       </AnimatePresence>
     ),
 
- //-------------------------------------------------------------------   
- 3: (
-  <AnimatePresence>
-    {indice === 3 && (
-      <Box sx={{ position: "absolute", top: "2rem" }}>
-       
-        <motion.div
-          initial={{ y: "-10vh", opacity: 0 }}
-          whileInView={{
-            y: 0,
-            opacity: 1,
-            transition: { duration: 2, type: "spring" },
-          }}
-          exit={{ opacity: 0 }}
-        >
-          <Typography variant="h4" sx={{ mt: 4 }}>
-          Vino
-          </Typography>
-          <Grid
-            container
-            sx={{
-              mt: 5,
-              "& .MuiGrid-item": {
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                px: 4,
-              },
-            }}
-          >
-            {!small && (
-              <Grid
-                item
-                md={6}
-                sx={{
-                  width: "500px",
-                  height: "300px",
-                  backgroundImage: `url(${vino})`,
-                  backgroundSize: "contain",
-                  backgroundPosition: "center",
-                  backgroundRepeat: "no-repeat",
-                }}
-              />
-            )}
-            <Grid item md={6} sm={12} sx={{ width: "20rem" }}>
-              <Typography variant="body1" sx={{ textAlign: "justify" }}>
-              El vino también era una bebida popular, aunque estaba más asociado 
-              con la élite y las clases altas. Se producía a partir de uvas y se 
-              almacenaba en ánforas de cerámica.
-              </Typography>
-            </Grid>
-          </Grid>
-        </motion.div>
-      </Box>
-    )}
-  </AnimatePresence>               
-    ),
-
-//-------------------------------------------------------------------
-4: (
-  <AnimatePresence>
-    {indice === 4 && (
-      <Box sx={{ position: "absolute", top: "2rem" }}>
-       
-        <motion.div
-          initial={{ y: "-10vh", opacity: 0 }}
-          whileInView={{
-            y: 0,
-            opacity: 1,
-            transition: { duration: 2, type: "spring" },
-          }}
-          exit={{ opacity: 0 }}
-        >
-          <Typography variant="h4" sx={{ mt: 4 }}>
-          Pescado del Nilo
-          </Typography>
-          <Grid
-            container
-            sx={{
-              mt: 5,
-              "& .MuiGrid-item": {
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                px: 4,
-              },
-            }}
-          >
-            {!small && (
-              <Grid
-                item
-                md={6}
-                sx={{
-                  width: "500px",
-                  height: "300px",
-                  backgroundImage: `url(${pescado})`,
-                  backgroundSize: "contain",
-                  backgroundPosition: "center",
-                  backgroundRepeat: "no-repeat",
-                }}
-              />
-            )}
-            <Grid item md={6} sm={12} sx={{ width: "20rem" }}>
-              <Typography variant="body1" sx={{ textAlign: "justify" }}>
-              El río Nilo proporcionaba una fuente abundante de pescado 
-              en la dieta egipcia antigua. Los egipcios pescaban diferentes 
-              tipos de peces, como tilapia, carpa y anguila, y los preparaban 
-              asados, ahumados o hervidos.
-              </Typography>
-            </Grid>
-          </Grid>
-        </motion.div>
-      </Box>
-    )}
-  </AnimatePresence>               
-    ),
-
-//------------------------------------------------------------------- 
-
-5: (
-  <AnimatePresence>
-    {indice === 5 && (
-      <Box sx={{ position: "absolute", top: "2rem" }}>
-       
-        <motion.div
-          initial={{ y: "-10vh", opacity: 0 }}
-          whileInView={{
-            y: 0,
-            opacity: 1,
-            transition: { duration: 2, type: "spring" },
-          }}
-          exit={{ opacity: 0 }}
-        >
-          <Typography variant="h4" sx={{ mt: 4 }}>
-          Carne
-          </Typography>
-          <Grid
-            container
-            sx={{
-              mt: 5,
-              "& .MuiGrid-item": {
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                px: 4,
-              },
-            }}
-          >
-            {!small && (
-              <Grid
-                item
-                md={6}
-                sx={{
-                  width: "500px",
-                  height: "300px",
-                  backgroundImage: `url(${carne})`,
-                  backgroundSize: "contain",
-                  backgroundPosition: "center",
-                  backgroundRepeat: "no-repeat",
-                }}
-              />
-            )}
-            <Grid item md={6} sm={12} sx={{ width: "20rem" }}>
-              <Typography variant="body1" sx={{ textAlign: "justify" }}>
-              La carne, especialmente la de res, cerdo y aves de corral, 
-              también se consumía en el antiguo Egipto. Sin embargo, 
-              debido a su costo y disponibilidad limitada, era más común 
-              entre la élite y los nobles.
-              </Typography>
-            </Grid>
-          </Grid>
-        </motion.div>
-      </Box>
-    )}
-  </AnimatePresence>               
-    ),
-
-//-------------------------------------------------------------------
-6: (
-  <AnimatePresence>
-    {indice === 6 && (
-      <Box sx={{ position: "absolute", top: "2rem" }}>
-       
-        <motion.div
-          initial={{ y: "-10vh", opacity: 0 }}
-          whileInView={{
-            y: 0,
-            opacity: 1,
-            transition: { duration: 2, type: "spring" },
-          }}
-          exit={{ opacity: 0 }}
-        >
-          <Typography variant="h4" sx={{ mt: 4 }}>
-          Frutas y Verduras
-          </Typography>
-          <Grid
-            container
-            sx={{
-              mt: 5,
-              "& .MuiGrid-item": {
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                px: 4,
-              },
-            }}
-          >
-            {!small && (
-              <Grid
-                item
-                md={6}
-                sx={{
-                  width: "500px",
-                  height: "300px",
-                  backgroundImage: `url(${frutas})`,
-                  backgroundSize: "contain",
-                  backgroundPosition: "center",
-                  backgroundRepeat: "no-repeat",
-                }}
-              />
-            )}
-            <Grid item md={6} sm={12} sx={{ width: "20rem" }}>
-              <Typography variant="body1" sx={{ textAlign: "justify" }}>
-              Los egipcios consumían una variedad de frutas y vegetales frescos, 
-              incluyendo dátiles, uvas, higos, melones, lechugas, cebollas y ajos. 
-              Estos productos agrícolas se utilizaban en platos diversos y también 
-              se consumían solos.
-              </Typography>
-            </Grid>
-          </Grid>
-        </motion.div>
-      </Box>
-    )}
-  </AnimatePresence>               
-    ),
-
-//-------------------------------------------------------------------
-7: (
-  <AnimatePresence>
-    {indice === 7 && (
-      <Box sx={{ position: "absolute", top: "2rem" }}>
-       
-        <motion.div
-          initial={{ y: "-10vh", opacity: 0 }}
-          whileInView={{
-            y: 0,
-            opacity: 1,
-            transition: { duration: 2, type: "spring" },
-          }}
-          exit={{ opacity: 0 }}
-        >
-          <Typography variant="h4" sx={{ mt: 4 }}>
-          Miel
-          </Typography>
-          <Grid
-            container
-            sx={{
-              mt: 5,
-              "& .MuiGrid-item": {
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                px: 4,
-              },
-            }}
-          >
-            {!small && (
-              <Grid
-                item
-                md={6}
-                sx={{
-                  width: "500px",
-                  height: "300px",
-                  backgroundImage: `url(${miel})`,
-                  backgroundSize: "contain",
-                  backgroundPosition: "center",
-                  backgroundRepeat: "no-repeat",
-                }}
-              />
-            )}
-            <Grid item md={6} sm={12} sx={{ width: "20rem" }}>
-              <Typography variant="body1" sx={{ textAlign: "justify" }}>
-              La miel se utilizaba como endulzante en la cocina del antiguo Egipto. 
-              También se usaba para hacer bebidas y se consideraba un ingrediente 
-              valioso y apreciado.",
-              </Typography>
-            </Grid>
-          </Grid>
-        </motion.div>
-      </Box>
-    )}
-  </AnimatePresence>               
-    ),
-
-//-------------------------------------------------------------------
-    8: (
+    //-------------------------------------------------------------------
+    3: (
       <AnimatePresence>
-  {indice === 8 && (
-    <Box sx={{ position: "absolute", top: "2rem" }}>
-      <motion.div
-        initial={{ y: "-10vh", opacity: 0 }}
-        whileInView={{
-          y: 0,
-          opacity: 1,
-          transition: { duration: 2, type: "spring" },
-        }}
-        exit={{ opacity: 0 }}
-      >
-        <Typography variant="h4" sx={{ mt: 4 }}>
-        Conclusión
-        </Typography>
-        <Grid
-          container
-          sx={{
-            mt: 5,
-            "& .MuiGrid-item": {
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              px: 4,
-            },
-          }}
-        >
-          {!small && (
-            <Grid
-              item
-              md={6}
-              sx={{
-                width: "500px",
-                height: "300px",
-                backgroundImage: `url(${Gato})`,
-                backgroundSize: "contain",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
+        {indice === 3 && (
+          <Box sx={{ position: "absolute", top: "2rem" }}>
+            <motion.div
+              initial={{ y: "-10vh", opacity: 0 }}
+              whileInView={{
+                y: 0,
+                opacity: 1,
+                transition: { duration: 2, type: "spring" },
               }}
-            />
-          )}
-          <Grid item md={6} sx={{ width: "20rem", display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-            <Typography
-              variant="body1"
-              sx={{ textAlign: "justify", pl: { md: 4, xs: 0 } }}
+              exit={{ opacity: 0 }}
             >
-              Los faraones y la élite tenían acceso a una mayor variedad de alimentos y platos,
-              mientras que la población común dependía en gran medida de los productos básicos 
-              disponibles localmente. La comida desempeñaba un papel central en la vida y las creencias
-              religiosas de los antiguos egipcios, y se le daba una gran importancia en festivales y rituales.
-
-</Typography>
-            <Box
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                mt: 4,
-                width: '100%',
-              }}
-            >
-              <Button
-                onClick={() => navigate('/quizgastronomia')}
+              <Typography variant="h4" sx={{ mt: 4 }}>
+                Vino
+              </Typography>
+              <Grid
+                container
                 sx={{
-                  color: "brown",
-                  outline: "1px solid #DBB489",
-                  backgroundColor: "rgba(219, 180, 137, 0.1)",
-                  width: '100%',
+                  mt: 5,
+                  "& .MuiGrid-item": {
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    px: 4,
+                  },
                 }}
               >
-                Evalua tus conocimientos
-              </Button>
-              
-            </Box>
-          </Grid>
-        </Grid>
-      </motion.div>
+                {!small && (
+                  <Grid
+                    item
+                    md={6}
+                    sx={{
+                      width: "500px",
+                      height: "300px",
+                      backgroundImage: `url(${vino})`,
+                      backgroundSize: "contain",
+                      backgroundPosition: "center",
+                      backgroundRepeat: "no-repeat",
+                    }}
+                  />
+                )}
+                <Grid item md={6} sm={12} sx={{ width: "20rem" }}>
+                  <Typography variant="body1" sx={{ textAlign: "justify" }}>
+                    El vino también era una bebida popular, aunque estaba más
+                    asociado con la élite y las clases altas. Se producía a
+                    partir de uvas y se almacenaba en ánforas de cerámica.
+                  </Typography>
+                </Grid>
+              </Grid>
+            </motion.div>
+          </Box>
+        )}
+      </AnimatePresence>
+    ),
 
-      
-    </Box>
-  )}
-</AnimatePresence>
+    //-------------------------------------------------------------------
+    4: (
+      <AnimatePresence>
+        {indice === 4 && (
+          <Box sx={{ position: "absolute", top: "2rem" }}>
+            <motion.div
+              initial={{ y: "-10vh", opacity: 0 }}
+              whileInView={{
+                y: 0,
+                opacity: 1,
+                transition: { duration: 2, type: "spring" },
+              }}
+              exit={{ opacity: 0 }}
+            >
+              <Typography variant="h4" sx={{ mt: 4 }}>
+                Pescado del Nilo
+              </Typography>
+              <Grid
+                container
+                sx={{
+                  mt: 5,
+                  "& .MuiGrid-item": {
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    px: 4,
+                  },
+                }}
+              >
+                {!small && (
+                  <Grid
+                    item
+                    md={6}
+                    sx={{
+                      width: "500px",
+                      height: "300px",
+                      backgroundImage: `url(${pescado})`,
+                      backgroundSize: "contain",
+                      backgroundPosition: "center",
+                      backgroundRepeat: "no-repeat",
+                    }}
+                  />
+                )}
+                <Grid item md={6} sm={12} sx={{ width: "20rem" }}>
+                  <Typography variant="body1" sx={{ textAlign: "justify" }}>
+                    El río Nilo proporcionaba una fuente abundante de pescado en
+                    la dieta egipcia antigua. Los egipcios pescaban diferentes
+                    tipos de peces, como tilapia, carpa y anguila, y los
+                    preparaban asados, ahumados o hervidos.
+                  </Typography>
+                </Grid>
+              </Grid>
+            </motion.div>
+          </Box>
+        )}
+      </AnimatePresence>
+    ),
 
+    //-------------------------------------------------------------------
 
-    
-    
-    )
+    5: (
+      <AnimatePresence>
+        {indice === 5 && (
+          <Box sx={{ position: "absolute", top: "2rem" }}>
+            <motion.div
+              initial={{ y: "-10vh", opacity: 0 }}
+              whileInView={{
+                y: 0,
+                opacity: 1,
+                transition: { duration: 2, type: "spring" },
+              }}
+              exit={{ opacity: 0 }}
+            >
+              <Typography variant="h4" sx={{ mt: 4 }}>
+                Carne
+              </Typography>
+              <Grid
+                container
+                sx={{
+                  mt: 5,
+                  "& .MuiGrid-item": {
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    px: 4,
+                  },
+                }}
+              >
+                {!small && (
+                  <Grid
+                    item
+                    md={6}
+                    sx={{
+                      width: "500px",
+                      height: "300px",
+                      backgroundImage: `url(${carne})`,
+                      backgroundSize: "contain",
+                      backgroundPosition: "center",
+                      backgroundRepeat: "no-repeat",
+                    }}
+                  />
+                )}
+                <Grid item md={6} sm={12} sx={{ width: "20rem" }}>
+                  <Typography variant="body1" sx={{ textAlign: "justify" }}>
+                    La carne, especialmente la de res, cerdo y aves de corral,
+                    también se consumía en el antiguo Egipto. Sin embargo,
+                    debido a su costo y disponibilidad limitada, era más común
+                    entre la élite y los nobles.
+                  </Typography>
+                </Grid>
+              </Grid>
+            </motion.div>
+          </Box>
+        )}
+      </AnimatePresence>
+    ),
+
+    //-------------------------------------------------------------------
+    6: (
+      <AnimatePresence>
+        {indice === 6 && (
+          <Box sx={{ position: "absolute", top: "2rem" }}>
+            <motion.div
+              initial={{ y: "-10vh", opacity: 0 }}
+              whileInView={{
+                y: 0,
+                opacity: 1,
+                transition: { duration: 2, type: "spring" },
+              }}
+              exit={{ opacity: 0 }}
+            >
+              <Typography variant="h4" sx={{ mt: 4 }}>
+                Frutas y Verduras
+              </Typography>
+              <Grid
+                container
+                sx={{
+                  mt: 5,
+                  "& .MuiGrid-item": {
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    px: 4,
+                  },
+                }}
+              >
+                {!small && (
+                  <Grid
+                    item
+                    md={6}
+                    sx={{
+                      width: "500px",
+                      height: "300px",
+                      backgroundImage: `url(${frutas})`,
+                      backgroundSize: "contain",
+                      backgroundPosition: "center",
+                      backgroundRepeat: "no-repeat",
+                    }}
+                  />
+                )}
+                <Grid item md={6} sm={12} sx={{ width: "20rem" }}>
+                  <Typography variant="body1" sx={{ textAlign: "justify" }}>
+                    Los egipcios consumían una variedad de frutas y vegetales
+                    frescos, incluyendo dátiles, uvas, higos, melones, lechugas,
+                    cebollas y ajos. Estos productos agrícolas se utilizaban en
+                    platos diversos y también se consumían solos.
+                  </Typography>
+                </Grid>
+              </Grid>
+            </motion.div>
+          </Box>
+        )}
+      </AnimatePresence>
+    ),
+
+    //-------------------------------------------------------------------
+    7: (
+      <AnimatePresence>
+        {indice === 7 && (
+          <Box sx={{ position: "absolute", top: "2rem" }}>
+            <motion.div
+              initial={{ y: "-10vh", opacity: 0 }}
+              whileInView={{
+                y: 0,
+                opacity: 1,
+                transition: { duration: 2, type: "spring" },
+              }}
+              exit={{ opacity: 0 }}
+            >
+              <Typography variant="h4" sx={{ mt: 4 }}>
+                Miel
+              </Typography>
+              <Grid
+                container
+                sx={{
+                  mt: 5,
+                  "& .MuiGrid-item": {
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    px: 4,
+                  },
+                }}
+              >
+                {!small && (
+                  <Grid
+                    item
+                    md={6}
+                    sx={{
+                      width: "500px",
+                      height: "300px",
+                      backgroundImage: `url(${miel})`,
+                      backgroundSize: "contain",
+                      backgroundPosition: "center",
+                      backgroundRepeat: "no-repeat",
+                    }}
+                  />
+                )}
+                <Grid item md={6} sm={12} sx={{ width: "20rem" }}>
+                  <Typography variant="body1" sx={{ textAlign: "justify" }}>
+                    La miel se utilizaba como endulzante en la cocina del
+                    antiguo Egipto. También se usaba para hacer bebidas y se
+                    consideraba un ingrediente valioso y apreciado.",
+                  </Typography>
+                </Grid>
+              </Grid>
+            </motion.div>
+          </Box>
+        )}
+      </AnimatePresence>
+    ),
+
+    //-------------------------------------------------------------------
+    8: (
+      <AnimatePresence>
+        {indice === 8 && (
+          <Box sx={{ position: "absolute", top: "2rem" }}>
+            <motion.div
+              initial={{ y: "-10vh", opacity: 0 }}
+              whileInView={{
+                y: 0,
+                opacity: 1,
+                transition: { duration: 2, type: "spring" },
+              }}
+              exit={{ opacity: 0 }}
+            >
+              <Typography variant="h4" sx={{ mt: 4 }}>
+                Conclusión
+              </Typography>
+              <Grid
+                container
+                sx={{
+                  mt: 5,
+                  "& .MuiGrid-item": {
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    px: 4,
+                  },
+                }}
+              >
+                {!small && (
+                  <Grid
+                    item
+                    md={6}
+                    sx={{
+                      width: "500px",
+                      height: "300px",
+                      backgroundImage: `url(${Gato})`,
+                      backgroundSize: "contain",
+                      backgroundPosition: "center",
+                      backgroundRepeat: "no-repeat",
+                    }}
+                  />
+                )}
+                <Grid
+                  item
+                  md={6}
+                  sx={{
+                    width: "20rem",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <Typography
+                    variant="body1"
+                    sx={{ textAlign: "justify", pl: { md: 4, xs: 0 } }}
+                  >
+                    Los faraones y la élite tenían acceso a una mayor variedad
+                    de alimentos y platos, mientras que la población común
+                    dependía en gran medida de los productos básicos disponibles
+                    localmente. La comida desempeñaba un papel central en la
+                    vida y las creencias religiosas de los antiguos egipcios, y
+                    se le daba una gran importancia en festivales y rituales.
+                  </Typography>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      mt: 4,
+                      width: "100%",
+                    }}
+                  >
+                    <Button
+                      onClick={() => navigate("/quizgastronomia")}
+                      sx={{
+                        color: "brown",
+                        outline: "1px solid #DBB489",
+                        backgroundColor: "rgba(219, 180, 137, 0.1)",
+                        width: "100%",
+                      }}
+                    >
+                      Evalua tus conocimientos
+                    </Button>
+                  </Box>
+                </Grid>
+              </Grid>
+            </motion.div>
+          </Box>
+        )}
+      </AnimatePresence>
+    ),
   };
 
   useEffect(() => {
@@ -723,6 +703,3 @@ const styles = {
 };
 
 // eslint-disable-next-line react/prop-types
-
-
-

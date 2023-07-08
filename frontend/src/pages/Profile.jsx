@@ -158,12 +158,11 @@ const Profile = () => {
     console.log(error);
   };
 
+  
+
   return (
     <Grid justifyContent="center">
       <Box
-        m={4}
-        display="flex"
-        justifyContent="center"
         sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
       >
         <Card sx={{ width: 900, borderRadius: "20px", mt: 8 }} elevation={4}>
@@ -175,185 +174,187 @@ const Profile = () => {
               flexGrow: 1,
             }}
           >
-            <Typography fontSize="1.8rem" fontWeight={600} color="#987E62">
-              Cuenta de usuario
-            </Typography>
-
-            <Box my={2} display="flex" justifyContent="center">
-              <UploadableAvatar
-                avatar={avatar}
-                setAvatar={setAvatar}
-                usersData={usersData}
-                file={file}
-                setFile={setFile}
-              />
-            </Box>
-
-            <Divider />
-
-            <Typography fontSize="1.8rem" fontWeight={600} color="#987E62">
-              Progreso
-            </Typography>
-
-            <Typography id="non-linear-slider" gutterBottom>
-              Porcentaje de progreso: {"0%"}
-            </Typography>
-
-            <Slider
-              disabled
-              defaultValue={0}
-              aria-label="Disabled slider"
-              color="secondary"
-            />
-
-            <Typography id="non-linear-slider" gutterBottom>
-              Temas completados: {"0/6"}
-            </Typography>
-
-            <Typography id="non-linear-slider" gutterBottom>
-              Puntaje por Tema: {"0.0"}
-            </Typography>
-
-            <Divider />
-
-            <Typography fontSize="1.8rem" fontWeight={600} color="#987E62">
-              Editar Perfil
-            </Typography>
-
-            <Stack spacing={2} sx={{ mb: 1 }}>
-              <TextField
-                size="small"
-                id="nickname"
-                label="Nickname"
-                InputLabelProps={{ shrink: true }}
-                value={nickName}
-                name="nickname"
-                variant="outlined"
-                inputProps={{
-                  style: {
-                    backgroundColor: "#FFF8E1",
-                  },
-                }}
-                onChange={(e) => setTextfield_nick(e.target.value)}
-              />
-
-              <TextField
-                size="small"
-                id="fullname"
-                label={"Nombre"}
-                name="fullname"
-                value={fullName}
-                InputLabelProps={{ shrink: true }}
-                variant="outlined"
-                inputProps={{
-                  style: {
-                    backgroundColor: "#FFF8E1",
-                  },
-                }}
-                onChange={(e) => setTextfield_name(e.target.value)}
-              />
-
-              <TextField
-                required
-                size="small"
-                id="email"
-                label={email}
-                name="email"
-                variant="outlined"
-                inputProps={{
-                  style: {
-                    backgroundColor: "#FFF8E1",
-                  },
-                }}
-                disabled
-              />
-            </Stack>
-
-            <Box mt={3} display="flex" justifyContent="space-between">
-              <Button
-                onClick={handleUpdateUser}
-                variant="contained"
+            <Grid container>
+              <Grid
+                item
+                md={6}
                 sx={{
-                  textTransform: "none",
-                  py: 1,
-                  borderRadius: "20px",
-                  backgroundColor: "#DBB489",
-                  fontSize: "1rem",
-                  fontWeight: 600,
-                  "&:hover": {
-                    backgroundColor: "darkslategrey",
-                  },
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  px: 4,
+                  gap: 1,
                 }}
               >
-                Guardar
-              </Button>
-              <Button
-                onClick={() => navigate("/mainpage")}
-                variant="contained"
-                sx={{
-                  textTransform: "none",
-                  py: 1,
-                  borderRadius: "20px",
-                  backgroundColor: "#black",
-                  fontSize: "1rem",
-                  fontWeight: 600,
-                  "&:hover": {
-                    backgroundColor: "black",
-                  },
-                }}
-              >
-                Regresar
-              </Button>
-              <Button
-                variant="contained"
-                color="error"
-                onClick={() => setShowConfirmation(true)}
-                sx={{
-                  textTransform: "none",
-                  py: 1,
-                  borderRadius: "20px",
-                  fontSize: "1rem",
-                  fontWeight: 600,
-                  "&:hover": {
-                    backgroundColor: "#8B0000",
-                  },
-                }}
-              >
-                Borrar Cuenta
-              </Button>
-            </Box>
-            {/* Confirmation Dialog */}
-            <Dialog
-              open={showConfirmation}
-              onClose={() => setShowConfirmation(false)}
-            >
-              <DialogTitle>
-                ¿Estás seguro que quieres borrar tu cuenta?
-              </DialogTitle>
-              <DialogContent>
-                <Typography>
-                  Esta acción no se puede deshacer y los datos de tu cuenta
-                  serán eliminados permanentemente.
+                <Typography
+                  fontSize="1.5rem"
+                  fontWeight={600}
+                  color="#987E62"
+                  textAlign="center"
+                >
+                  Cuenta de usuario
                 </Typography>
-              </DialogContent>
-              <DialogActions>
-                <Button onClick={() => setShowConfirmation(false)}>No</Button>
-                <Button onClick={handleDeleteUser} autoFocus>
-                  Sí
-                </Button>
-              </DialogActions>
-            </Dialog>
+                <Box my={2} display="flex" justifyContent="center">
+                  <UploadableAvatar
+                    avatar={avatar}
+                    setAvatar={setAvatar}
+                    usersData={usersData}
+                    file={file}
+                    setFile={setFile}
+                  />
+                </Box>
+                <Divider />
+                <Typography fontSize="1.3rem" fontWeight={600} color="#987E62">
+                  Progreso
+                </Typography>
+                <Typography id="non-linear-slider" gutterBottom>
+                  Porcentaje de progreso: {"0%"}
+                </Typography>
+                <Slider
+                  defaultValue={0}
+                  aria-label="Disabled slider"
+                  sx={{ color: "#DBB489" }}
+                />
+                <Typography id="non-linear-slider" gutterBottom>
+                  Temas completados: {"0/6"}
+                </Typography>
+                <Typography id="non-linear-slider" gutterBottom>
+                  Puntaje por Tema: {"0.0"}
+                </Typography>
+              </Grid>
 
-            {/* Alert Snackbar */}
-            <Snackbar
-              open={showAlert}
-              autoHideDuration={3000}
-              onClose={handleCloseAlert}
-            >
-              <Alert onClose={handleCloseAlert} severity="success">
-                Actualización exitosa
-              </Alert>
-            </Snackbar>
+              <Grid
+                item
+                md={6}
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  px: 4,
+                  gap: 3,
+                }}
+              >
+                <Typography fontSize="1.3rem" fontWeight={600} color="#987E62">
+                  Editar Perfil
+                </Typography>
+                <Stack spacing={3} sx={{ mb: 1 }}>
+                  <TextField
+                    size="small"
+                    id="nickname"
+                    label="Nickname"
+                    InputLabelProps={{ shrink: true }}
+                    value={nickName}
+                    name="nickname"
+                    variant="outlined"
+                    inputProps={{
+                      style: {
+                        backgroundColor: "#FFF8E1",
+                      },
+                    }}
+                    onChange={(e) => setTextfield_nick(e.target.value)}
+                  />
+                  <TextField
+                    size="small"
+                    id="fullname"
+                    label={"Nombre"}
+                    name="fullname"
+                    value={fullName}
+                    InputLabelProps={{ shrink: true }}
+                    variant="outlined"
+                    inputProps={{
+                      style: {
+                        backgroundColor: "#FFF8E1",
+                      },
+                    }}
+                    onChange={(e) => setTextfield_name(e.target.value)}
+                  />
+                  <TextField
+                    required
+                    size="small"
+                    id="email"
+                    label={email}
+                    name="email"
+                    variant="outlined"
+                    inputProps={{
+                      style: {
+                        backgroundColor: "#FFF8E1",
+                      },
+                    }}
+                    disabled
+                  />
+                </Stack>
+                <Box display="flex" justifyContent="space-between">
+                  <Button
+                    onClick={handleUpdateUser}
+                    variant="contained"
+                    sx={{
+                      textTransform: "none",
+                      py: 1,
+                      borderRadius: "20px",
+                      backgroundColor: "#DBB489",
+                      fontSize: "1rem",
+                      fontWeight: 600,
+                      "&:hover": {
+                        backgroundColor: "darkslategrey",
+                      },
+                    }}
+                  >
+                    Guardar
+                  </Button>
+
+                  <Button
+                    variant="contained"
+                    color="error"
+                    onClick={() => setShowConfirmation(true)}
+                    sx={{
+                      textTransform: "none",
+                      py: 1,
+                      borderRadius: "20px",
+                      fontSize: "1rem",
+                      fontWeight: 600,
+                      "&:hover": {
+                        backgroundColor: "#8B0000",
+                      },
+                    }}
+                  >
+                    Borrar Cuenta
+                  </Button>
+                </Box>
+                {/* Confirmation Dialog */}
+                <Dialog
+                  open={showConfirmation}
+                  onClose={() => setShowConfirmation(false)}
+                >
+                  <DialogTitle>
+                    ¿Estás seguro que quieres borrar tu cuenta?
+                  </DialogTitle>
+                  <DialogContent>
+                    <Typography>
+                      Esta acción no se puede deshacer y los datos de tu cuenta
+                      serán eliminados permanentemente.
+                    </Typography>
+                  </DialogContent>
+                  <DialogActions>
+                    <Button onClick={() => setShowConfirmation(false)}>
+                      No
+                    </Button>
+                    <Button onClick={handleDeleteUser} autoFocus>
+                      Sí
+                    </Button>
+                  </DialogActions>
+                </Dialog>
+                {/* Alert Snackbar */}
+                <Snackbar
+                  open={showAlert}
+                  autoHideDuration={3000}
+                  onClose={handleCloseAlert}
+                >
+                  <Alert onClose={handleCloseAlert} severity="success">
+                    Actualización exitosa
+                  </Alert>
+                </Snackbar>
+              </Grid>
+            </Grid>
           </CardContent>
         </Card>
       </Box>

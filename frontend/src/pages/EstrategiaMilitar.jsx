@@ -5,7 +5,7 @@ import Infanteria from "../../assets/infanteria.png";
 import Murallas from "../../assets/murallas.jpg";
 import Barco from "../../assets/barco.jpg";
 import Diplomacia from "../../assets/diplomacia.jpg";
-import Gato from "../../assets/complete_cat.png"
+import Gato from "../../assets/complete_cat.png";
 
 import { useRef, useEffect, useState } from "react";
 import Slider from "react-slick";
@@ -22,19 +22,20 @@ import {
   Paper,
   Typography,
   useMediaQuery,
-  Button
+  Button,
 } from "@mui/material";
 import { toast } from "react-hot-toast";
 
 import TouchAppIcon from "@mui/icons-material/TouchApp";
 import { useNavigate } from "react-router-dom";
+import CircleIcon from "@mui/icons-material/Circle";
 
-const estrategiaMilitar = () => {
+const EstrategiaMilitar = () => {
   const sliderRef = useRef();
   const navigate = useNavigate();
 
   const settings = {
-    dots: false,
+    dots: true,
     infinite: false,
     speed: 500,
     slidesToShow: 1,
@@ -43,6 +44,19 @@ const estrategiaMilitar = () => {
     lazyLoad: "ondemand",
     adaptiveHeight: true,
     beforeChange: (oldIndex, newIndex) => setIndice(newIndex),
+    customPaging: (i) => (
+      <div
+        style={{
+          position: "fixed",
+          bottom: 30,
+          width: "30px",
+          color: i === indice ? "#DBB489" : "gray",
+          transition: "color .5s ease-in-out",
+        }}
+      >
+        <CircleIcon fontSize="14px" />
+      </div>
+    ),
   };
 
   useEffect(() => {
@@ -80,27 +94,11 @@ const estrategiaMilitar = () => {
 
   const [indice, setIndice] = useState(0);
 
-
   const temas = {
-
     0: (
-     
       <AnimatePresence>
         {indice === 0 && (
           <Box sx={{ position: "absolute", top: "2rem" }}>
-            {!small && (
-              <motion.div
-                initial={{ y: "-10vh", opacity: 0 }}
-                whileInView={{
-                  y: 0,
-                  opacity: 1,
-                  transition: { duration: 1.5, type: "spring" },
-                }}
-                exit={{ opacity: 0 }}
-              >
-                <Typography variant="h4">Temas de estudio</Typography>
-              </motion.div>
-            )}
             <motion.div
               initial={{ y: "-10vh", opacity: 0 }}
               whileInView={{
@@ -110,7 +108,7 @@ const estrategiaMilitar = () => {
               }}
             >
               <Typography variant="h4" sx={{ mt: 4 }}>
-              Estrategia militar del antiguo Egipto
+                Estrategia militar del antiguo Egipto
               </Typography>
               <Grid
                 container
@@ -140,10 +138,11 @@ const estrategiaMilitar = () => {
                 )}
                 <Grid item md={6} sx={{ width: "20rem" }}>
                   <Typography variant="body1" sx={{ textAlign: "justify" }}>
-                  Aunque los egipcios eran hábiles en la guerra, preferían la diplomacia
-                  y el establecimiento de alianzas como medio para resolver conflictos.
-                  La guerra se consideraba el último recurso y se buscaban soluciones
-                  pacíficas cuando era posible.
+                    Aunque los egipcios eran hábiles en la guerra, preferían la
+                    diplomacia y el establecimiento de alianzas como medio para
+                    resolver conflictos. La guerra se consideraba el último
+                    recurso y se buscaban soluciones pacíficas cuando era
+                    posible.
                   </Typography>
                 </Grid>
               </Grid>
@@ -153,28 +152,11 @@ const estrategiaMilitar = () => {
       </AnimatePresence>
     ),
 
-
-
-
-//-------------------------------------------------------------------
+    //-------------------------------------------------------------------
     1: (
-     
       <AnimatePresence>
         {indice === 1 && (
           <Box sx={{ position: "absolute", top: "2rem" }}>
-            {!small && (
-              <motion.div
-                initial={{ y: "-10vh", opacity: 0 }}
-                whileInView={{
-                  y: 0,
-                  opacity: 1,
-                  transition: { duration: 1.5, type: "spring" },
-                }}
-                exit={{ opacity: 0 }}
-              >
-                <Typography variant="h4">Temas de estudio</Typography>
-              </motion.div>
-            )}
             <motion.div
               initial={{ y: "-10vh", opacity: 0 }}
               whileInView={{
@@ -184,7 +166,7 @@ const estrategiaMilitar = () => {
               }}
             >
               <Typography variant="h4" sx={{ mt: 4 }}>
-              Organización militar y jerarquía
+                Organización militar y jerarquía
               </Typography>
               <Grid
                 container
@@ -214,10 +196,12 @@ const estrategiaMilitar = () => {
                 )}
                 <Grid item md={6} sx={{ width: "20rem" }}>
                   <Typography variant="body1" sx={{ textAlign: "justify" }}>
-                  El ejército egipcio estaba altamente organizado y jerarquizado. Los soldados 
-                  eran reclutados de entre la población masculina y se dividían en unidades, 
-                  como la infantería, la caballería y los arqueros. Había rangos militares que 
-                  iban desde soldados rasos hasta altos oficiales, y el faraón era el comandante supremo.
+                    El ejército egipcio estaba altamente organizado y
+                    jerarquizado. Los soldados eran reclutados de entre la
+                    población masculina y se dividían en unidades, como la
+                    infantería, la caballería y los arqueros. Había rangos
+                    militares que iban desde soldados rasos hasta altos
+                    oficiales, y el faraón era el comandante supremo.
                   </Typography>
                 </Grid>
               </Grid>
@@ -227,12 +211,11 @@ const estrategiaMilitar = () => {
       </AnimatePresence>
     ),
 
-//-------------------------------------------------------------------
+    //-------------------------------------------------------------------
     2: (
       <AnimatePresence>
         {indice === 2 && (
           <Box sx={{ position: "absolute", top: "2rem" }}>
-           
             <motion.div
               initial={{ y: "-10vh", opacity: 0 }}
               whileInView={{
@@ -243,7 +226,7 @@ const estrategiaMilitar = () => {
               exit={{ opacity: 0 }}
             >
               <Typography variant="h4" sx={{ mt: 4 }}>
-              El poder de los carros de guerra
+                El poder de los carros de guerra
               </Typography>
               <Grid
                 container
@@ -273,10 +256,12 @@ const estrategiaMilitar = () => {
                 )}
                 <Grid item md={6} sm={12} sx={{ width: "20rem" }}>
                   <Typography variant="body1" sx={{ textAlign: "justify" }}>
-                  Los carros de guerra eran una de las armas más importantes del ejército egipcio. 
-                  Estos vehículos ligeros eran tirados por caballos y llevaban a dos guerreros: un conductor
-                  y un arquero o lanza. Los carros eran utilizados para el ataque rápido y la movilidad en el 
-                  campo de batalla, brindando a los egipcios una ventaja táctica.
+                    Los carros de guerra eran una de las armas más importantes
+                    del ejército egipcio. Estos vehículos ligeros eran tirados
+                    por caballos y llevaban a dos guerreros: un conductor y un
+                    arquero o lanza. Los carros eran utilizados para el ataque
+                    rápido y la movilidad en el campo de batalla, brindando a
+                    los egipcios una ventaja táctica.
                   </Typography>
                 </Grid>
               </Grid>
@@ -286,338 +271,344 @@ const estrategiaMilitar = () => {
       </AnimatePresence>
     ),
 
- //-------------------------------------------------------------------   
- 3: (
-  <AnimatePresence>
-    {indice === 3 && (
-      <Box sx={{ position: "absolute", top: "2rem" }}>
-       
-        <motion.div
-          initial={{ y: "-10vh", opacity: 0 }}
-          whileInView={{
-            y: 0,
-            opacity: 1,
-            transition: { duration: 2, type: "spring" },
-          }}
-          exit={{ opacity: 0 }}
-        >
-          <Typography variant="h4" sx={{ mt: 4 }}>
-          Infantería y arqueros
-          </Typography>
-          <Grid
-            container
-            sx={{
-              mt: 5,
-              "& .MuiGrid-item": {
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                px: 4,
-              },
-            }}
-          >
-            {!small && (
-              <Grid
-                item
-                md={6}
-                sx={{
-                  width: "500px",
-                  height: "300px",
-                  backgroundImage: `url(${Infanteria})`,
-                  backgroundSize: "contain",
-                  backgroundPosition: "center",
-                  backgroundRepeat: "no-repeat",
-                }}
-              />
-            )}
-            <Grid item md={6} sm={12} sx={{ width: "20rem" }}>
-              <Typography variant="body1" sx={{ textAlign: "justify" }}>
-              La infantería egipcia desempeñaba un papel crucial en las batallas. 
-              Los soldados de infantería llevaban lanzas, espadas y escudos para el combate 
-              cuerpo a cuerpo. Los arqueros egipcios eran especialmente hábiles y se destacaban 
-              por su precisión y velocidad en el disparo de flechas. La combinación de infantería 
-              y arqueros permitía a los egipcios mantener una defensa sólida y un ataque eficiente
-              </Typography>
-            </Grid>
-          </Grid>
-        </motion.div>
-      </Box>
-    )}
-  </AnimatePresence>               
-    ),
-
-//-------------------------------------------------------------------
-4: (
-  <AnimatePresence>
-    {indice === 4 && (
-      <Box sx={{ position: "absolute", top: "2rem" }}>
-       
-        <motion.div
-          initial={{ y: "-10vh", opacity: 0 }}
-          whileInView={{
-            y: 0,
-            opacity: 1,
-            transition: { duration: 2, type: "spring" },
-          }}
-          exit={{ opacity: 0 }}
-        >
-          <Typography variant="h4" sx={{ mt: 4 }}>
-          Fortificaciones y estrategia defensiva
-          </Typography>
-          <Grid
-            container
-            sx={{
-              mt: 5,
-              "& .MuiGrid-item": {
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                px: 4,
-              },
-            }}
-          >
-            {!small && (
-              <Grid
-                item
-                md={6}
-                sx={{
-                  width: "500px",
-                  height: "300px",
-                  backgroundImage: `url(${Murallas})`,
-                  backgroundSize: "contain",
-                  backgroundPosition: "center",
-                  backgroundRepeat: "no-repeat",
-                }}
-              />
-            )}
-            <Grid item md={6} sm={12} sx={{ width: "20rem" }}>
-              <Typography variant="body1" sx={{ textAlign: "justify" }}>
-              La estrategia defensiva desempeñaba un papel importante en el Antiguo Egipto. 
-              Para proteger su territorio, los egipcios construían fortificaciones y ciudades amuralladas. 
-              Estas estructuras defensivas eran diseñadas para resistir los ataques enemigos y proporcionar 
-              puntos de observación estratégicos. La ubicación geográfica también era considerada, 
-              utilizando ríos y pantanos como barreras naturales.
-              </Typography>
-            </Grid>
-          </Grid>
-        </motion.div>
-      </Box>
-    )}
-  </AnimatePresence>               
-    ),
-
-//------------------------------------------------------------------- 
-
-5: (
-  <AnimatePresence>
-    {indice === 5 && (
-      <Box sx={{ position: "absolute", top: "2rem" }}>
-       
-        <motion.div
-          initial={{ y: "-10vh", opacity: 0 }}
-          whileInView={{
-            y: 0,
-            opacity: 1,
-            transition: { duration: 2, type: "spring" },
-          }}
-          exit={{ opacity: 0 }}
-        >
-          <Typography variant="h4" sx={{ mt: 4 }}>
-          La flota naval
-          </Typography>
-          <Grid
-            container
-            sx={{
-              mt: 5,
-              "& .MuiGrid-item": {
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                px: 4,
-              },
-            }}
-          >
-            {!small && (
-              <Grid
-                item
-                md={6}
-                sx={{
-                  width: "500px",
-                  height: "300px",
-                  backgroundImage: `url(${Barco})`,
-                  backgroundSize: "contain",
-                  backgroundPosition: "center",
-                  backgroundRepeat: "no-repeat",
-                }}
-              />
-            )}
-            <Grid item md={6} sm={12} sx={{ width: "20rem" }}>
-              <Typography variant="body1" sx={{ textAlign: "justify" }}>
-              El Antiguo Egipto también tenía una flota naval para proteger sus costas 
-              y controlar el comercio marítimo. Las embarcaciones egipcias estaban 
-              equipadas con remos y velas, y se utilizaban para el transporte de tropas 
-              y suministros, así como para el combate naval. La flota naval egipcia jugó un papel 
-              clave en la expansión y defensa del imperio.
-              </Typography>
-            </Grid>
-          </Grid>
-        </motion.div>
-      </Box>
-    )}
-  </AnimatePresence>               
-    ),
-
-//-------------------------------------------------------------------
-6: (
-  <AnimatePresence>
-    {indice === 6 && (
-      <Box sx={{ position: "absolute", top: "2rem" }}>
-       
-        <motion.div
-          initial={{ y: "-10vh", opacity: 0 }}
-          whileInView={{
-            y: 0,
-            opacity: 1,
-            transition: { duration: 2, type: "spring" },
-          }}
-          exit={{ opacity: 0 }}
-        >
-          <Typography variant="h4" sx={{ mt: 4 }}>
-          La diplomacia y la guerra como último recurso
-          </Typography>
-          <Grid
-            container
-            sx={{
-              mt: 5,
-              "& .MuiGrid-item": {
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                px: 4,
-              },
-            }}
-          >
-            {!small && (
-              <Grid
-                item
-                md={6}
-                sx={{
-                  width: "500px",
-                  height: "300px",
-                  backgroundImage: `url(${Diplomacia})`,
-                  backgroundSize: "contain",
-                  backgroundPosition: "center",
-                  backgroundRepeat: "no-repeat",
-                }}
-              />
-            )}
-            <Grid item md={6} sm={12} sx={{ width: "20rem" }}>
-              <Typography variant="body1" sx={{ textAlign: "justify" }}>
-              Aunque los egipcios eran hábiles en la guerra, preferían la diplomacia 
-              y el establecimiento de alianzas como medio para resolver conflictos. 
-              La guerra se consideraba el último recurso y se buscaban soluciones 
-              pacíficas cuando era posible.
-              </Typography>
-            </Grid>
-          </Grid>
-        </motion.div>
-      </Box>
-    )}
-  </AnimatePresence>               
-    ),
-
-//-------------------------------------------------------------------
-    7: (
+    //-------------------------------------------------------------------
+    3: (
       <AnimatePresence>
-  {indice === 7 && (
-    <Box sx={{ position: "absolute", top: "2rem" }}>
-      <motion.div
-        initial={{ y: "-10vh", opacity: 0 }}
-        whileInView={{
-          y: 0,
-          opacity: 1,
-          transition: { duration: 2, type: "spring" },
-        }}
-        exit={{ opacity: 0 }}
-      >
-        <Typography variant="h4" sx={{ mt: 4 }}>
-        Conclusión
-        </Typography>
-        <Grid
-          container
-          sx={{
-            mt: 5,
-            "& .MuiGrid-item": {
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              px: 4,
-            },
-          }}
-        >
-          {!small && (
-            <Grid
-              item
-              md={6}
-              sx={{
-                width: "500px",
-                height: "300px",
-                backgroundImage: `url(${Gato})`,
-                backgroundSize: "contain",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
+        {indice === 3 && (
+          <Box sx={{ position: "absolute", top: "2rem" }}>
+            <motion.div
+              initial={{ y: "-10vh", opacity: 0 }}
+              whileInView={{
+                y: 0,
+                opacity: 1,
+                transition: { duration: 2, type: "spring" },
               }}
-            />
-          )}
-          <Grid item md={6} sx={{ width: "20rem", display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-            <Typography
-              variant="body1"
-              sx={{ textAlign: "justify", pl: { md: 4, xs: 0 } }}
+              exit={{ opacity: 0 }}
             >
-              la estrategia militar del Antiguo Egipto fue un componente vital para
-              la protección, expansión y supervivencia del imperio. A través de una
-              organización militar bien estructurada, el uso efectivo de armas como
-             carros de guerra, infantería, arqueros y una planificación defensiva
-              sólida, los egipcios lograron mantener el control sobre su territorio
-              y enfrentarse a las amenazas externas. su legado continúa siendo un testimonio
-              de la grandeza y la habilidad militar de esta antigua civilización.
-
-</Typography>
-            <Box
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                mt: 4,
-                width: '100%',
-              }}
-            >
-              <Button
-                onClick={() => navigate('/quizestrategia')}
+              <Typography variant="h4" sx={{ mt: 4 }}>
+                Infantería y arqueros
+              </Typography>
+              <Grid
+                container
                 sx={{
-                  color: "brown",
-                  outline: "1px solid #DBB489",
-                  backgroundColor: "rgba(219, 180, 137, 0.1)",
-                  width: '100%',
+                  mt: 5,
+                  "& .MuiGrid-item": {
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    px: 4,
+                  },
                 }}
               >
-                Evalua tus conocimientos
-              </Button>
-              
-            </Box>
-          </Grid>
-        </Grid>
-      </motion.div>
+                {!small && (
+                  <Grid
+                    item
+                    md={6}
+                    sx={{
+                      width: "500px",
+                      height: "300px",
+                      backgroundImage: `url(${Infanteria})`,
+                      backgroundSize: "contain",
+                      backgroundPosition: "center",
+                      backgroundRepeat: "no-repeat",
+                    }}
+                  />
+                )}
+                <Grid item md={6} sm={12} sx={{ width: "20rem" }}>
+                  <Typography variant="body1" sx={{ textAlign: "justify" }}>
+                    La infantería egipcia desempeñaba un papel crucial en las
+                    batallas. Los soldados de infantería llevaban lanzas,
+                    espadas y escudos para el combate cuerpo a cuerpo. Los
+                    arqueros egipcios eran especialmente hábiles y se destacaban
+                    por su precisión y velocidad en el disparo de flechas. La
+                    combinación de infantería y arqueros permitía a los egipcios
+                    mantener una defensa sólida y un ataque eficiente
+                  </Typography>
+                </Grid>
+              </Grid>
+            </motion.div>
+          </Box>
+        )}
+      </AnimatePresence>
+    ),
 
-      
-    </Box>
-  )}
-</AnimatePresence>
+    //-------------------------------------------------------------------
+    4: (
+      <AnimatePresence>
+        {indice === 4 && (
+          <Box sx={{ position: "absolute", top: "2rem" }}>
+            <motion.div
+              initial={{ y: "-10vh", opacity: 0 }}
+              whileInView={{
+                y: 0,
+                opacity: 1,
+                transition: { duration: 2, type: "spring" },
+              }}
+              exit={{ opacity: 0 }}
+            >
+              <Typography variant="h4" sx={{ mt: 4 }}>
+                Fortificaciones y estrategia defensiva
+              </Typography>
+              <Grid
+                container
+                sx={{
+                  mt: 5,
+                  "& .MuiGrid-item": {
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    px: 4,
+                  },
+                }}
+              >
+                {!small && (
+                  <Grid
+                    item
+                    md={6}
+                    sx={{
+                      width: "500px",
+                      height: "300px",
+                      backgroundImage: `url(${Murallas})`,
+                      backgroundSize: "contain",
+                      backgroundPosition: "center",
+                      backgroundRepeat: "no-repeat",
+                    }}
+                  />
+                )}
+                <Grid item md={6} sm={12} sx={{ width: "20rem" }}>
+                  <Typography variant="body1" sx={{ textAlign: "justify" }}>
+                    La estrategia defensiva desempeñaba un papel importante en
+                    el Antiguo Egipto. Para proteger su territorio, los egipcios
+                    construían fortificaciones y ciudades amuralladas. Estas
+                    estructuras defensivas eran diseñadas para resistir los
+                    ataques enemigos y proporcionar puntos de observación
+                    estratégicos. La ubicación geográfica también era
+                    considerada, utilizando ríos y pantanos como barreras
+                    naturales.
+                  </Typography>
+                </Grid>
+              </Grid>
+            </motion.div>
+          </Box>
+        )}
+      </AnimatePresence>
+    ),
 
+    //-------------------------------------------------------------------
 
-    
-    
-    )
+    5: (
+      <AnimatePresence>
+        {indice === 5 && (
+          <Box sx={{ position: "absolute", top: "2rem" }}>
+            <motion.div
+              initial={{ y: "-10vh", opacity: 0 }}
+              whileInView={{
+                y: 0,
+                opacity: 1,
+                transition: { duration: 2, type: "spring" },
+              }}
+              exit={{ opacity: 0 }}
+            >
+              <Typography variant="h4" sx={{ mt: 4 }}>
+                La flota naval
+              </Typography>
+              <Grid
+                container
+                sx={{
+                  mt: 5,
+                  "& .MuiGrid-item": {
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    px: 4,
+                  },
+                }}
+              >
+                {!small && (
+                  <Grid
+                    item
+                    md={6}
+                    sx={{
+                      width: "500px",
+                      height: "300px",
+                      backgroundImage: `url(${Barco})`,
+                      backgroundSize: "contain",
+                      backgroundPosition: "center",
+                      backgroundRepeat: "no-repeat",
+                    }}
+                  />
+                )}
+                <Grid item md={6} sm={12} sx={{ width: "20rem" }}>
+                  <Typography variant="body1" sx={{ textAlign: "justify" }}>
+                    El Antiguo Egipto también tenía una flota naval para
+                    proteger sus costas y controlar el comercio marítimo. Las
+                    embarcaciones egipcias estaban equipadas con remos y velas,
+                    y se utilizaban para el transporte de tropas y suministros,
+                    así como para el combate naval. La flota naval egipcia jugó
+                    un papel clave en la expansión y defensa del imperio.
+                  </Typography>
+                </Grid>
+              </Grid>
+            </motion.div>
+          </Box>
+        )}
+      </AnimatePresence>
+    ),
+
+    //-------------------------------------------------------------------
+    6: (
+      <AnimatePresence>
+        {indice === 6 && (
+          <Box sx={{ position: "absolute", top: "2rem" }}>
+            <motion.div
+              initial={{ y: "-10vh", opacity: 0 }}
+              whileInView={{
+                y: 0,
+                opacity: 1,
+                transition: { duration: 2, type: "spring" },
+              }}
+              exit={{ opacity: 0 }}
+            >
+              <Typography variant="h4" sx={{ mt: 4 }}>
+                La diplomacia y la guerra como último recurso
+              </Typography>
+              <Grid
+                container
+                sx={{
+                  mt: 5,
+                  "& .MuiGrid-item": {
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    px: 4,
+                  },
+                }}
+              >
+                {!small && (
+                  <Grid
+                    item
+                    md={6}
+                    sx={{
+                      width: "500px",
+                      height: "300px",
+                      backgroundImage: `url(${Diplomacia})`,
+                      backgroundSize: "contain",
+                      backgroundPosition: "center",
+                      backgroundRepeat: "no-repeat",
+                    }}
+                  />
+                )}
+                <Grid item md={6} sm={12} sx={{ width: "20rem" }}>
+                  <Typography variant="body1" sx={{ textAlign: "justify" }}>
+                    Aunque los egipcios eran hábiles en la guerra, preferían la
+                    diplomacia y el establecimiento de alianzas como medio para
+                    resolver conflictos. La guerra se consideraba el último
+                    recurso y se buscaban soluciones pacíficas cuando era
+                    posible.
+                  </Typography>
+                </Grid>
+              </Grid>
+            </motion.div>
+          </Box>
+        )}
+      </AnimatePresence>
+    ),
+
+    //-------------------------------------------------------------------
+    7: (
+      <AnimatePresence>
+        {indice === 7 && (
+          <Box sx={{ position: "absolute", top: "2rem" }}>
+            <motion.div
+              initial={{ y: "-10vh", opacity: 0 }}
+              whileInView={{
+                y: 0,
+                opacity: 1,
+                transition: { duration: 2, type: "spring" },
+              }}
+              exit={{ opacity: 0 }}
+            >
+              <Typography variant="h4" sx={{ mt: 4 }}>
+                Conclusión
+              </Typography>
+              <Grid
+                container
+                sx={{
+                  mt: 5,
+                  "& .MuiGrid-item": {
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    px: 4,
+                  },
+                }}
+              >
+                {!small && (
+                  <Grid
+                    item
+                    md={6}
+                    sx={{
+                      width: "500px",
+                      height: "300px",
+                      backgroundImage: `url(${Gato})`,
+                      backgroundSize: "contain",
+                      backgroundPosition: "center",
+                      backgroundRepeat: "no-repeat",
+                    }}
+                  />
+                )}
+                <Grid
+                  item
+                  md={6}
+                  sx={{
+                    width: "20rem",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <Typography
+                    variant="body1"
+                    sx={{ textAlign: "justify", pl: { md: 4, xs: 0 } }}
+                  >
+                    la estrategia militar del Antiguo Egipto fue un componente
+                    vital para la protección, expansión y supervivencia del
+                    imperio. A través de una organización militar bien
+                    estructurada, el uso efectivo de armas como carros de
+                    guerra, infantería, arqueros y una planificación defensiva
+                    sólida, los egipcios lograron mantener el control sobre su
+                    territorio y enfrentarse a las amenazas externas. su legado
+                    continúa siendo un testimonio de la grandeza y la habilidad
+                    militar de esta antigua civilización.
+                  </Typography>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      mt: 4,
+                      width: "100%",
+                    }}
+                  >
+                    <Button
+                      onClick={() => navigate("/quizestrategia")}
+                      sx={{
+                        color: "brown",
+                        outline: "1px solid #DBB489",
+                        backgroundColor: "rgba(219, 180, 137, 0.1)",
+                        width: "100%",
+                      }}
+                    >
+                      Evalua tus conocimientos
+                    </Button>
+                  </Box>
+                </Grid>
+              </Grid>
+            </motion.div>
+          </Box>
+        )}
+      </AnimatePresence>
+    ),
   };
 
   useEffect(() => {
@@ -635,7 +626,7 @@ const estrategiaMilitar = () => {
   );
 };
 
-export default estrategiaMilitar;
+export default EstrategiaMilitar;
 
 const styles = {
   banner: {
@@ -670,5 +661,3 @@ const styles = {
 };
 
 // eslint-disable-next-line react/prop-types
-
-

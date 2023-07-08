@@ -34,7 +34,6 @@ const Navbar = () => {
     navigate("/");
   };
 
-  const routes = ["/login", "/signup"];
 
   return (
     <Box sx={{ mb: "60px", width: "100vw" }}>
@@ -58,13 +57,13 @@ const Navbar = () => {
               alignItems: "center",
               cursor: "pointer",
             }}
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/mainpage")}
           >
             <IconButton
               size="large"
               edge="start"
               color="inherit"
-              onClick={() => navigate("/")}
+              onClick={() => navigate("/mainpage")}
               aria-label="menu"
               sx={{ mr: 1 }}
               disableRipple

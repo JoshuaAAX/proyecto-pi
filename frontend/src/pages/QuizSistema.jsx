@@ -16,7 +16,12 @@ const QuizSistema = () => {
   const questions = [
     {
       question: "1. ¿Cuál era el papel del faraón en el Antiguo Egipto?",
-      options: ["Solo era una figura religiosa", " Solo era una figura política", "Era una figura religiosa, política y militar", "No tenía un papel específico."],
+      options: [
+        "Solo era una figura religiosa",
+        " Solo era una figura política",
+        "Era una figura religiosa, política y militar",
+        "No tenía un papel específico.",
+      ],
       correctAnswer: "Era una figura religiosa, política y militar",
     },
     {
@@ -28,24 +33,39 @@ const QuizSistema = () => {
         "Un equivalente al primer ministro que asesoraba al faraón y supervisaba la administración del reino.",
       ],
       correctAnswer:
-      "Un equivalente al primer ministro que asesoraba al faraón y supervisaba la administración del reino.",
+        "Un equivalente al primer ministro que asesoraba al faraón y supervisaba la administración del reino.",
     },
     {
       question:
         "3. ¿Qué papel desempeñaban los sacerdotes en la administración del Antiguo Egipto?",
-      options: ["Solo realizaban ceremonias religiosas.", "Solo recolectaban impuestos.", "Recolectaban impuestos y mantenían los proyectos de infraestructura.", "No desempeñaban ningún papel en la administración."],
-      correctAnswer: "Recolectaban impuestos y mantenían los proyectos de infraestructura.",
+      options: [
+        "Solo realizaban ceremonias religiosas.",
+        "Solo recolectaban impuestos.",
+        "Recolectaban impuestos y mantenían los proyectos de infraestructura.",
+        "No desempeñaban ningún papel en la administración.",
+      ],
+      correctAnswer:
+        "Recolectaban impuestos y mantenían los proyectos de infraestructura.",
     },
     {
-      question:
-        "4. ¿Quiénes eran los nomarcas en el antiguo Egipto?",
-      options: ["Eran dioses.", "Eran escribas.", "Eran gobernadores provinciales.", "Eran sacerdotes."],
+      question: "4. ¿Quiénes eran los nomarcas en el antiguo Egipto?",
+      options: [
+        "Eran dioses.",
+        "Eran escribas.",
+        "Eran gobernadores provinciales.",
+        "Eran sacerdotes.",
+      ],
       correctAnswer: "Eran gobernadores provinciales.",
     },
     {
       question:
         "5. ¿Los puestos de nomarcas se volvieron hereditarios con el tiempo?",
-      options: ["No, siempre fueron nombrados por el faraón.", "Sí, con el tiempo los puestos se volvieron hereditarios.", "No, siempre fueron puestos hereditarios.", "Sí, pero solo en ciertas regiones."],
+      options: [
+        "No, siempre fueron nombrados por el faraón.",
+        "Sí, con el tiempo los puestos se volvieron hereditarios.",
+        "No, siempre fueron puestos hereditarios.",
+        "Sí, pero solo en ciertas regiones.",
+      ],
       correctAnswer: "Sí, con el tiempo los puestos se volvieron hereditarios.",
     },
   ];
@@ -146,32 +166,7 @@ const QuizSistema = () => {
               </div>
             ))}
           </Box>
-          <motion.div
-            variants={variants}
-            initial="visible"
-            animate={{
-              opacity: 1,
-              transition: { duration: 1, type: "spring", delay: 1 },
-            }}
-            whileHover="visible"
-          >
-            <Box sx={styles.buttons.container}>
-              <Paper
-                variant="outlined"
-                sx={styles.buttons.previous}
-                onClick={handlePrev}
-              >
-                {"<"}
-              </Paper>
-              <Paper
-                variant="outlined"
-                sx={styles.buttons.next}
-                onClick={handleNext}
-              >
-                {">"}
-              </Paper>
-            </Box>
-          </motion.div>
+
           <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
             <Button onClick={() => setFinished(true)} sx={styles.finishButton}>
               Finalizar quiz
@@ -200,6 +195,7 @@ const styles = {
     outline: "1px solid #DBB489",
     backgroundColor: "rgba(219, 180, 137, 0.1)",
     marginTop: "8%",
+    marginBottom: "40px",
     px: 3,
   },
   container: {
@@ -208,7 +204,8 @@ const styles = {
     alignItems: "center",
     flexDirection: "column",
     background: amber[50],
-    py: 5,
+    pb: 5,
+    pt: 8,
     overflow: "hidden",
   },
   questions: {

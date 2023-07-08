@@ -15,26 +15,25 @@ const QuizArte = () => {
 
   const questions = [
     {
-      question:
-        "1. ¿Cuál era una característica distintiva del arte egipcio?",
+      question: "1. ¿Cuál era una característica distintiva del arte egipcio?",
       options: [
         "Estilo abstracto y abstracto.",
         "Uso predominante de colores pastel.",
         "Representación precisa y jerárquica de figuras humanas y divinas.",
         "Uso de técnicas de sombreado y perspectiva.",
       ],
-      correctAnswer:    "Representación precisa y jerárquica de figuras humanas y divinas.",
+      correctAnswer:
+        "Representación precisa y jerárquica de figuras humanas y divinas.",
     },
     {
-      question:
-        "2. ¿En qué se enfocaba principalmente la pintura egipcia?",
+      question: "2. ¿En qué se enfocaba principalmente la pintura egipcia?",
       options: [
         "Escenas mitológicas.",
         "Paisajes naturales.",
         "Retratos realistas.",
         "Murales en tumbas y templos.",
       ],
-      correctAnswer:   "Murales en tumbas y templos.",
+      correctAnswer: "Murales en tumbas y templos.",
     },
     {
       question:
@@ -45,21 +44,22 @@ const QuizArte = () => {
         "Representar escenas de la vida cotidiana.",
         "Asegurar una vida placentera y eterna para el difunto en el más allá.",
       ],
-      correctAnswer: "Asegurar una vida placentera y eterna para el difunto en el más allá.",
+      correctAnswer:
+        "Asegurar una vida placentera y eterna para el difunto en el más allá.",
     },
     {
       question:
         "4. ¿Cuál de las siguientes afirmaciones es verdadera sobre la joyería en el antiguo Egipto?",
       options: [
-      "Se utilizaban principalmente metales como el hierro y el cobre.", 
-      "Las joyas eran exclusivamente para la nobleza y la élite.", 
-      "Se utilizaban piedras preciosas y vidrio coloreado.", 
-      "La joyería no tenía ningún significado simbólico o religioso."],
-      correctAnswer:       "Se utilizaban piedras preciosas y vidrio coloreado.", 
+        "Se utilizaban principalmente metales como el hierro y el cobre.",
+        "Las joyas eran exclusivamente para la nobleza y la élite.",
+        "Se utilizaban piedras preciosas y vidrio coloreado.",
+        "La joyería no tenía ningún significado simbólico o religioso.",
+      ],
+      correctAnswer: "Se utilizaban piedras preciosas y vidrio coloreado.",
     },
     {
-      question:
-        "5. ¿Cuál es el legado duradero del arte egipcio?",
+      question: "5. ¿Cuál es el legado duradero del arte egipcio?",
       options: [
         "No ha dejado ningún impacto en las culturas posteriores.",
         "Sus obras de arte se han perdido con el tiempo.",
@@ -67,7 +67,7 @@ const QuizArte = () => {
         "Su estilo artístico ha sido olvidado y no se considera relevante en la actualidad.",
       ],
       correctAnswer:
-      "Ha influido en muchas culturas posteriores y ha dejado ejemplos sobrevivientes.",
+        "Ha influido en muchas culturas posteriores y ha dejado ejemplos sobrevivientes.",
     },
   ];
 
@@ -167,32 +167,7 @@ const QuizArte = () => {
               </div>
             ))}
           </Box>
-          <motion.div
-            variants={variants}
-            initial="visible"
-            animate={{
-              opacity: 0,
-              transition: { duration: 1, type: "spring", delay: 1 },
-            }}
-            whileHover="visible"
-          >
-            <Box sx={styles.buttons.container}>
-              <Paper
-                variant="outlined"
-                sx={styles.buttons.previous}
-                onClick={handlePrev}
-              >
-                {"<"}
-              </Paper>
-              <Paper
-                variant="outlined"
-                sx={styles.buttons.next}
-                onClick={handleNext}
-              >
-                {">"}
-              </Paper>
-            </Box>
-          </motion.div>
+
           <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
             <Button onClick={() => setFinished(true)} sx={styles.finishButton}>
               Finalizar quiz
@@ -221,6 +196,7 @@ const styles = {
     outline: "1px solid #DBB489",
     backgroundColor: "rgba(219, 180, 137, 0.1)",
     marginTop: "8%",
+    marginBottom: "40px",
     px: 3,
   },
   container: {
@@ -229,7 +205,8 @@ const styles = {
     alignItems: "center",
     flexDirection: "column",
     background: amber[50],
-    py: 5,
+    pb: 5,
+    pt: 8,
     overflow: "hidden",
   },
   questions: {

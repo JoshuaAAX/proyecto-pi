@@ -27,13 +27,14 @@ import { toast } from "react-hot-toast";
 
 import TouchAppIcon from "@mui/icons-material/TouchApp";
 import { useNavigate } from "react-router-dom";
+import CircleIcon from "@mui/icons-material/Circle";
 
 const SistemaPolitico = () => {
   const sliderRef = useRef();
   const navigate = useNavigate();
 
   const settings = {
-    dots: false,
+    dots: true,
     infinite: false,
     speed: 500,
     slidesToShow: 1,
@@ -42,6 +43,19 @@ const SistemaPolitico = () => {
     lazyLoad: "ondemand",
     adaptiveHeight: true,
     beforeChange: (oldIndex, newIndex) => setIndice(newIndex),
+    customPaging: (i) => (
+      <div
+        style={{
+          position: "fixed",
+          bottom: 30,
+          width: "30px",
+          color: i === indice ? "#DBB489" : "gray",
+          transition: "color .5s ease-in-out",
+        }}
+      >
+        <CircleIcon fontSize="14px" />
+      </div>
+    ),
   };
 
   useEffect(() => {
@@ -84,19 +98,7 @@ const SistemaPolitico = () => {
       <AnimatePresence>
         {initialRender && (
           <Box sx={{ position: "absolute", top: "2rem" }}>
-            {!small && (
-              <motion.div
-                initial={{ y: "-10vh", opacity: 0 }}
-                whileInView={{
-                  y: 0,
-                  opacity: 1,
-                  transition: { duration: 1.5, type: "spring" },
-                }}
-                exit={{ opacity: 0 }}
-              >
-                <Typography variant="h4">Temas de estudio</Typography>
-              </motion.div>
-            )}
+          
             <motion.div
               initial={{ y: "-10vh", opacity: 0 }}
               whileInView={{
@@ -157,19 +159,7 @@ const SistemaPolitico = () => {
       <AnimatePresence>
         {indice === 0 && (
           <Box sx={{ position: "absolute", top: "2rem" }}>
-            {!small && (
-              <motion.div
-                initial={{ y: "-10vh", opacity: 0 }}
-                whileInView={{
-                  y: 0,
-                  opacity: 1,
-                  transition: { duration: 1.5, type: "spring" },
-                }}
-                exit={{ opacity: 0 }}
-              >
-                <Typography variant="h4">Temas de estudio</Typography>
-              </motion.div>
-            )}
+           
             <motion.div
               initial={{ y: "-10vh", opacity: 0 }}
               whileInView={{
@@ -350,101 +340,108 @@ const SistemaPolitico = () => {
     ),
     3: (
       <AnimatePresence>
-  {indice === 3 && (
-    <Box sx={{ position: "absolute", top: "2rem" }}>
-      <motion.div
-        initial={{ y: "-10vh", opacity: 0 }}
-        whileInView={{
-          y: 0,
-          opacity: 1,
-          transition: { duration: 2, type: "spring" },
-        }}
-        exit={{ opacity: 0 }}
-      >
-        <Typography variant="h4" sx={{ mt: 4 }}>
-          Los Nomarcas: Gobernadores Provinciales
-        </Typography>
-        <Grid
-          container
-          sx={{
-            mt: 5,
-            "& .MuiGrid-item": {
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              px: 4,
-            },
-          }}
-        >
-          {!small && (
-            <Grid
-              item
-              md={6}
-              sx={{
-                width: "500px",
-                height: "300px",
-                backgroundImage: `url(${nomarca})`,
-                backgroundSize: "contain",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
+        {indice === 3 && (
+          <Box sx={{ position: "absolute", top: "2rem" }}>
+            <motion.div
+              initial={{ y: "-10vh", opacity: 0 }}
+              whileInView={{
+                y: 0,
+                opacity: 1,
+                transition: { duration: 2, type: "spring" },
               }}
-            />
-          )}
-          <Grid item md={6} sx={{ width: "20rem", display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-            <Typography
-              variant="body1"
-              sx={{ textAlign: "justify", pl: { md: 4, xs: 0 } }}
+              exit={{ opacity: 0 }}
             >
-Otra figura importante en el sistema político del antiguo Egipto era el nomarca, o gobernador provincial. Los nomarcas eran responsables de administrar las diferentes regiones del antiguo Egipto. Originalmente eran miembros de la familia real, pero con el tiempo, los puestos se volvieron hereditarios, lo que llevó a la formación de dinastías locales poderosas.
-
-</Typography>
-            <Box
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                mt: 4,
-                width: '100%',
-              }}
-            >
-              <Button
-                onClick={() => navigate('/mainpage')}
+              <Typography variant="h4" sx={{ mt: 4 }}>
+                Los Nomarcas: Gobernadores Provinciales
+              </Typography>
+              <Grid
+                container
                 sx={{
-                  color: "brown",
-                  outline: "1px solid #DBB489",
-                  backgroundColor: "rgba(219, 180, 137, 0.1)",
-                  mb: 2,
-                  width: '100%',
+                  mt: 5,
+                  "& .MuiGrid-item": {
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    px: 4,
+                  },
                 }}
               >
-                Ir a la página principal
-              </Button>
-              <Button
-                onClick={() => navigate('/quizpolitica')}
-                sx={{
-                  color: "brown",
-                  outline: "1px solid #DBB489",
-                  backgroundColor: "rgba(219, 180, 137, 0.1)",
-                  width: '100%',
-                }}
-              >
-                Evalua tus conocimientos
-              </Button>
-              
-            </Box>
-          </Grid>
-        </Grid>
-      </motion.div>
-
-      
-    </Box>
-  )}
-</AnimatePresence>
-
-
-    
-    
-    )
+                {!small && (
+                  <Grid
+                    item
+                    md={6}
+                    sx={{
+                      width: "500px",
+                      height: "300px",
+                      backgroundImage: `url(${nomarca})`,
+                      backgroundSize: "contain",
+                      backgroundPosition: "center",
+                      backgroundRepeat: "no-repeat",
+                    }}
+                  />
+                )}
+                <Grid
+                  item
+                  md={6}
+                  sx={{
+                    width: "20rem",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <Typography
+                    variant="body1"
+                    sx={{ textAlign: "justify", pl: { md: 4, xs: 0 } }}
+                  >
+                    Otra figura importante en el sistema político del antiguo
+                    Egipto era el nomarca, o gobernador provincial. Los nomarcas
+                    eran responsables de administrar las diferentes regiones del
+                    antiguo Egipto. Originalmente eran miembros de la familia
+                    real, pero con el tiempo, los puestos se volvieron
+                    hereditarios, lo que llevó a la formación de dinastías
+                    locales poderosas.
+                  </Typography>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      mt: 4,
+                      width: "100%",
+                    }}
+                  >
+                    <Button
+                      onClick={() => navigate("/mainpage")}
+                      sx={{
+                        color: "brown",
+                        outline: "1px solid #DBB489",
+                        backgroundColor: "rgba(219, 180, 137, 0.1)",
+                        mb: 2,
+                        width: "100%",
+                      }}
+                    >
+                      Ir a la página principal
+                    </Button>
+                    <Button
+                      onClick={() => navigate("/quizpolitica")}
+                      sx={{
+                        color: "brown",
+                        outline: "1px solid #DBB489",
+                        backgroundColor: "rgba(219, 180, 137, 0.1)",
+                        width: "100%",
+                      }}
+                    >
+                      Evalua tus conocimientos
+                    </Button>
+                  </Box>
+                </Grid>
+              </Grid>
+            </motion.div>
+          </Box>
+        )}
+      </AnimatePresence>
+    ),
   };
 
   useEffect(() => {
