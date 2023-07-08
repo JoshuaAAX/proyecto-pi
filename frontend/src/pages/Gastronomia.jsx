@@ -646,7 +646,7 @@ const Gastronomia = () => {
               }}
             >
               <Button
-                onClick={() => navigate('/quizarquitectura')}
+                onClick={() => navigate('/quizgastronomia')}
                 sx={{
                   color: "brown",
                   outline: "1px solid #DBB489",

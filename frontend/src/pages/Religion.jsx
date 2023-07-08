@@ -291,12 +291,7 @@ const Gastronomia = () => {
                     a las almas de los difuntos hacia el más allá. Por esta
                     razón, Anubis era considerado el guardián de las tumbas y el
                     encargado de juzgar el corazón de los fallecidos en el
-                    proceso de juicio de los muertos. Durante el proceso de
-                    momificación, los embalsamadores buscaban la protección de
-                    Anubis y llevaban máscaras y amuletos que representaban su
-                    imagen. Se creía que Anubis supervisaba el proceso de
-                    momificación y protegía el cuerpo embalsamado hasta que el
-                    difunto alcanzara la vida después de la muerte.
+                    proceso de juicio de los muertos. 
                   </Typography>
                 </Grid>
               </Grid>
@@ -364,9 +359,7 @@ const Gastronomia = () => {
                     al mismo tiempo, reunió los fragmentos del cuerpo de Osiris
                     y lo resucitó utilizando magia. Osiris se convirtió entonces
                     en el rey del inframundo y el juez supremo de las almas en
-                    el juicio de los muertos. Se creía que solo aquellos cuyos
-                    corazones fueran ligeros como una pluma y pasaran el juicio
-                    podrían alcanzar la vida eterna en el más allá.
+                    el juicio de los muertos.
                   </Typography>
                 </Grid>
               </Grid>
@@ -631,10 +624,7 @@ const Gastronomia = () => {
                     Maat radicaba en su papel como principio fundamental que
                     regía la existencia y el funcionamiento del universo. Se
                     creía que el equilibrio y el orden cósmico dependían de la
-                    preservación de Maat. La armonía social, la estabilidad
-                    política y el bienestar general estaban estrechamente
-                    vinculados a la práctica y el respeto de Maat en la vida
-                    cotidiana.
+                    preservación de Maat.
                   </Typography>
                 </Grid>
               </Grid>
@@ -696,16 +686,13 @@ const Gastronomia = () => {
                     era representada como una mujer con un trono o un disco
                     solar en la cabeza, a menudo coronada con cuernos de vaca y
                     rodeada de serpientes. Isis jugó un papel significativo en
-                    los mitos egipcios. Era la esposa de Osiris y madre de
-                    Horus. Después de la muerte de Osiris a manos de su hermano
+                    los mitos egipcios. Después de la muerte de Osiris a manos de su hermano
                     Seth, Isis utilizó su magia para resucitarlo y concebir a su
                     hijo Horus. Se le atribuía la capacidad de controlar los
                     elementos y de usar su magia para proteger y curar. Isis era
                     venerada como una diosa compasiva y amorosa. Se creía que
                     escuchaba las plegarias y brindaba consuelo y ayuda a
-                    aquellos que la invocaban. Su papel como diosa de la
-                    maternidad y la protección la convirtió en una figura
-                    importante en la vida cotidiana de los egipcios.
+                    aquellos que la invocaban.
                   </Typography>
                 </Grid>
               </Grid>
@@ -786,7 +773,7 @@ const Gastronomia = () => {
                     }}
                   >
                     <Button
-                      onClick={() => navigate("/quizarquitectura")}
+                      onClick={() => navigate("/quizreligion")}
                       sx={{
                         color: "brown",
                         outline: "1px solid #DBB489",

@@ -18,17 +18,21 @@ import { useInView } from "react-intersection-observer";
 
 const QuestionCard = ({ data, points, setPoints }) => {
   const [value, setValue] = useState();
+  const [previousValue, setPreviousValue] = useState();
 
   const { question, options, correctAnswer } = data;
 
   const handleChange = ({ target }) => {
     const { value } = target;
     setValue(value);
-    if (correctAnswer === value) {
+
+    if (previousValue !== correctAnswer && correctAnswer === value) {
       setPoints(points + 1);
-    } else if (value && correctAnswer !== value) {
+    } else if (previousValue === correctAnswer && correctAnswer !== value) {
       setPoints(points - 1);
     }
+
+    setPreviousValue(value);
   };
 
   const controls = useAnimation();

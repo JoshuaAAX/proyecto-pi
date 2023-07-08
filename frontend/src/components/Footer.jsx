@@ -1,6 +1,7 @@
 import { Box, Grid, Link, Typography } from "@mui/material";
-
+import { useNavigate } from "react-router-dom";
 const Footer = () => {
+  const navigate = useNavigate();
   return (
     <Box
       component="footer"
@@ -24,17 +25,12 @@ const Footer = () => {
         }}
       >
         <Grid item xs={6} md={3}>
-          <Typography>Contacto</Typography>
+          <Typography onClick={() => navigate("/about")}> <Link>Sobre Nosotros</Link></Typography>
         </Grid>
         <Grid item xs={6} md={3}>
-          <Typography>Términos y condiciones</Typography>
+          <Typography onClick={() => navigate("/faq")}> <Link>Preguntas Frecuentes</Link></Typography>
         </Grid>
-        <Grid item xs={6} md={3}>
-          <Typography>Políticas de Privacidad</Typography>
-        </Grid>
-        <Grid item xs={6} md={3}>
-          <Typography>Guía de Uso</Typography>
-        </Grid>
+        
       </Grid>
       <Copyright />
     </Box>
@@ -46,8 +42,8 @@ export default Footer;
 const Copyright = () => {
   const date = new Date().getFullYear();
   return (
-    <Box>
-      <Typography align="center" fontSize="0.9rem">
+    <Box >
+      <Typography align="center" fontSize="0.9rem" >
         Copyright © <Link>Nilearn</Link> {date}.
       </Typography>
     </Box>

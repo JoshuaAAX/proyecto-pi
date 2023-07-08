@@ -27,7 +27,7 @@ const QuizzArquitectura = () => {
     },
     {
       question:
-        "2. Cuales eran los centro de la vida religiosa y social en el Antiguo Egipto?",
+        "2. Cuales eran los centros de la vida religiosa y social en el Antiguo Egipto?",
       options: [
         "Las piramides",
         "Los obelisco",
