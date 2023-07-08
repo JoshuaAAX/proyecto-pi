@@ -146,32 +146,7 @@ const QuizReligion = () => {
               </div>
             ))}
           </Box>
-          <motion.div
-            variants={variants}
-            initial="visible"
-            animate={{
-              opacity: 0,
-              transition: { duration: 1, type: "spring", delay: 1 },
-            }}
-     
-          >
-            <Box sx={styles.buttons.container}>
-              <Paper
-                variant="outlined"
-                sx={styles.buttons.previous}
-                onClick={handlePrev}
-              >
-                {"<"}
-              </Paper>
-              <Paper
-                variant="outlined"
-                sx={styles.buttons.next}
-                onClick={handleNext}
-              >
-                {">"}
-              </Paper>
-            </Box>
-          </motion.div>
+
           <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
             <Button onClick={() => setFinished(true)} sx={styles.finishButton}>
               Finalizar quiz
@@ -200,6 +175,7 @@ const styles = {
     outline: "1px solid #DBB489",
     backgroundColor: "rgba(219, 180, 137, 0.1)",
     marginTop: "8%",
+    marginBottom: "40px",
     px: 3,
   },
   container: {
@@ -208,7 +184,8 @@ const styles = {
     alignItems: "center",
     flexDirection: "column",
     background: amber[50],
-    py: 5,
+    pb: 5,
+    pt: 8,
     overflow: "hidden",
   },
   questions: {

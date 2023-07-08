@@ -30,13 +30,14 @@ import { toast } from "react-hot-toast";
 
 import TouchAppIcon from "@mui/icons-material/TouchApp";
 import { useNavigate } from "react-router-dom";
+import CircleIcon from "@mui/icons-material/Circle";
 
 const Gastronomia = () => {
   const sliderRef = useRef();
   const navigate = useNavigate();
 
   const settings = {
-    dots: false,
+    dots: true,
     infinite: false,
     speed: 500,
     slidesToShow: 1,
@@ -45,6 +46,20 @@ const Gastronomia = () => {
     lazyLoad: "ondemand",
     adaptiveHeight: true,
     beforeChange: (oldIndex, newIndex) => setIndice(newIndex),
+    customPaging: (i) => (
+      <div
+        style={{
+          position: "fixed",
+          bottom: 30,
+          width: "30px",
+          color:
+            i === indice ? "#DBB489" : "gray",
+          transition: "color .5s ease-in-out",
+        }}
+      >
+        <CircleIcon fontSize="14px" />
+      </div>
+    ),
   };
 
   useEffect(() => {
@@ -87,19 +102,7 @@ const Gastronomia = () => {
       <AnimatePresence>
         {indice === 0 && (
           <Box sx={{ position: "absolute", top: "2rem" }}>
-            {!small && (
-              <motion.div
-                initial={{ y: "-10vh", opacity: 0 }}
-                whileInView={{
-                  y: 0,
-                  opacity: 1,
-                  transition: { duration: 1.5, type: "spring" },
-                }}
-                exit={{ opacity: 0 }}
-              >
-                <Typography variant="h4">Temas de estudio</Typography>
-              </motion.div>
-            )}
+           
             <motion.div
               initial={{ y: "-10vh", opacity: 0 }}
               whileInView={{
@@ -164,19 +167,7 @@ const Gastronomia = () => {
       <AnimatePresence>
         {indice === 1 && (
           <Box sx={{ position: "absolute", top: "2rem" }}>
-            {!small && (
-              <motion.div
-                initial={{ y: "-10vh", opacity: 0 }}
-                whileInView={{
-                  y: 0,
-                  opacity: 1,
-                  transition: { duration: 1.5, type: "spring" },
-                }}
-                exit={{ opacity: 0 }}
-              >
-                <Typography variant="h4">Temas de estudio</Typography>
-              </motion.div>
-            )}
+            
             <motion.div
               initial={{ y: "-10vh", opacity: 0 }}
               whileInView={{

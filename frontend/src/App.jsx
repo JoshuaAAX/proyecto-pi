@@ -1,7 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 
 // layouts and pages
-import Page from "./pages/Page";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Profile from "./pages/Profile";
@@ -25,12 +24,13 @@ import QuizArquitectura from "./pages/QuizArquitectura";
 import QuizGastronomia from "./pages/QuizGastronomia.jsx";
 
 import "./App.css";
+import Home from './components/Home';
 
 const App = () => {
   return (
     <div style={{ flex: 1, overflowX: "hidden" }}>
       <Routes>
-        <Route path="/" element={<Page />} />
+        <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/mainpage" element={<MainPage />} />

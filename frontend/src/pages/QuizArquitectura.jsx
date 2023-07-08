@@ -6,12 +6,21 @@ import QuestionCard from "../components/QuestionCard";
 import { useEffect, useRef, useState } from "react";
 
 import cat from "../../assets/complete_cat.png";
+import { toast } from "react-hot-toast";
 
 const QuizzArquitectura = () => {
   const navigate = useNavigate();
 
   const [points, setPoints] = useState(0);
   const [finished, setFinished] = useState(false);
+
+  const finishQuiz = async () => {
+    const { error: insertError } = await supabase
+      .from("countries")
+      .insert({ id: 1, name: "Denmark" });
+
+    insertError && toast.error(insertError.message);
+  };
 
   const questions = [
     {
@@ -28,13 +37,8 @@ const QuizzArquitectura = () => {
     {
       question:
         "2. Cuales eran los centros de la vida religiosa y social en el Antiguo Egipto?",
-      options: [
-        "Las piramides",
-        "Los obelisco",
-        "Las esfinge",
-        "Los templos",
-      ],
-      correctAnswer:   "Los templos",
+      options: ["Las piramides", "Los obelisco", "Las esfinge", "Los templos"],
+      correctAnswer: "Los templos",
     },
     {
       question:
@@ -50,7 +54,12 @@ const QuizzArquitectura = () => {
     {
       question:
         "4. ¿Cuál era la función principal de las pirámides en la arquitectura del antiguo Egipto?",
-      options: ["Observatorios astronómicos", "Fortalezas defensivas", "Tumbas para los faraones", "Escuelas de enseñanza"],
+      options: [
+        "Observatorios astronómicos",
+        "Fortalezas defensivas",
+        "Tumbas para los faraones",
+        "Escuelas de enseñanza",
+      ],
       correctAnswer: "Tumbas para los faraones",
     },
     {
@@ -62,8 +71,7 @@ const QuizzArquitectura = () => {
         "Monumentos conmemorativos para honrar a los faraones fallecidos ",
         "Estructuras residenciales para los sacerdotes.",
       ],
-      correctAnswer:
-      "Simbolizaban rayos de sol petrificados",
+      correctAnswer: "Simbolizaban rayos de sol petrificados",
     },
   ];
 
@@ -163,32 +171,7 @@ const QuizzArquitectura = () => {
               </div>
             ))}
           </Box>
-          <motion.div
-            variants={variants}
-            initial="visible"
-            animate={{
-              opacity: 0,
-              transition: { duration: 1, type: "spring", delay: 1 },
-            }}
-            whileHover="visible"
-          >
-            <Box sx={styles.buttons.container}>
-              <Paper
-                variant="outlined"
-                sx={styles.buttons.previous}
-                onClick={handlePrev}
-              >
-                {"<"}
-              </Paper>
-              <Paper
-                variant="outlined"
-                sx={styles.buttons.next}
-                onClick={handleNext}
-              >
-                {">"}
-              </Paper>
-            </Box>
-          </motion.div>
+
           <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
             <Button onClick={() => setFinished(true)} sx={styles.finishButton}>
               Finalizar quiz
@@ -217,6 +200,7 @@ const styles = {
     outline: "1px solid #DBB489",
     backgroundColor: "rgba(219, 180, 137, 0.1)",
     marginTop: "8%",
+    marginBottom: "40px",
     px: 3,
   },
   container: {
@@ -225,7 +209,8 @@ const styles = {
     alignItems: "center",
     flexDirection: "column",
     background: amber[50],
-    py: 5,
+    pb: 5,
+    pt: 8,
     overflow: "hidden",
   },
   questions: {

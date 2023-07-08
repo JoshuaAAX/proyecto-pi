@@ -1,4 +1,4 @@
-import { Button, Container, Grid, Stack, Typography } from "@mui/material";
+import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
 
 import { useNavigate } from "react-router-dom";
 import { Canvas } from "@react-three/fiber";
@@ -6,6 +6,7 @@ import { Estatua } from "./Estatua";
 import { OrbitControls } from "@react-three/drei";
 
 import { motion } from "framer-motion";
+import { amber } from "@mui/material/colors";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -20,14 +21,15 @@ const Home = () => {
   };
 
   return (
-    <Container
-      maxWidth="md"
+    <Box
       sx={{
         height: "100%",
+        px: "10%",
         width: "100%",
         display: "center",
         alignItems: "center",
         justifyContent: "center",
+        background: amber[50],
       }}
     >
       <Grid
@@ -79,7 +81,7 @@ const Home = () => {
           justifyContent="center"
           alignItems="center"
         >
-          <motion.p
+          <p
             style={{
               marginTop: "40px",
               marginBottom: { md: 0, xs: "40px" },
@@ -96,7 +98,7 @@ const Home = () => {
               Cultura egipcia
             </motion.span>
             , un aprendizaje sencillo y divertido te espera aquí.
-          </motion.p>
+          </p>
 
           <Stack
             direction={{ xs: "row", md: "column" }}
@@ -121,7 +123,7 @@ const Home = () => {
           </Stack>
         </Grid>
       </Grid>
-    </Container>
+    </Box>
   );
 };
 
