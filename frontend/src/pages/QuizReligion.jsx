@@ -6,6 +6,7 @@ import QuestionCard from "../components/QuestionCard";
 import { useEffect, useRef, useState } from "react";
 
 import cat from "../../assets/complete_cat.png";
+import { supabase } from "./../../backend/client";
 
 const QuizReligion = () => {
   const navigate = useNavigate();
@@ -80,16 +81,31 @@ const QuizReligion = () => {
     };
   }, []);
 
-  const handleNext = (e) => {
-    e.preventDefault();
-    let about = document.getElementById(`${indice + 1}`);
-    about && about.scrollIntoView({ behavior: "smooth", block: "center" });
+  const finishQuiz = async () => {
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    if (user) {
+      const { error } = await supabase.from("quizzes").insert({
+        user: user.id,
+        quiz_name: "religion",
+        is_completed: true,
+        puntaje: points,
+      });
+
+      await supabase.from("progress").insert({
+        user: user.id,
+        progress: 0.15,
+      });
+
+      error && console.log(error);
+    }
   };
 
-  const handlePrev = (e) => {
-    e.preventDefault();
-    let about = document.getElementById(`${indice - 1}`);
-    about && about.scrollIntoView({ behavior: "smooth", block: "center" });
+  const handleFinish = () => {
+    setFinished(true);
+    finishQuiz();
   };
 
   const variants = {
@@ -148,7 +164,7 @@ const QuizReligion = () => {
           </Box>
 
           <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-            <Button onClick={() => setFinished(true)} sx={styles.finishButton}>
+            <Button onClick={handleFinish} sx={styles.finishButton}>
               Finalizar quiz
             </Button>
           </motion.div>

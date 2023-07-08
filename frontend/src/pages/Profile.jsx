@@ -158,7 +158,27 @@ const Profile = () => {
     console.log(error);
   };
 
-  
+  const [progress, setProgress] = React.useState();
+
+  const getProgress = async () => {
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    const { data } = await supabase
+      .from("progress")
+      .select()
+      .eq("user", user.id);
+    setProgress(data[0].progress);
+  };
+
+  useEffect(() => {
+    getProgress();
+  }, []);
+
+  useEffect(() => {
+    console.log(progress);
+  }, [progress]);
 
   return (
     <Grid justifyContent="center">
@@ -208,18 +228,17 @@ const Profile = () => {
                   Progreso
                 </Typography>
                 <Typography id="non-linear-slider" gutterBottom>
-                  Porcentaje de progreso: {"0%"}
+                  Porcentaje de progreso: {progress * 100}%
                 </Typography>
                 <Slider
                   defaultValue={0}
-                  aria-label="Disabled slider"
+                  value={progress * 100}
                   sx={{ color: "#DBB489" }}
                 />
                 <Typography id="non-linear-slider" gutterBottom>
-                  Temas completados: {"0/6"}
-                </Typography>
-                <Typography id="non-linear-slider" gutterBottom>
-                  Puntaje por Tema: {"0.0"}
+                  {progress > 0
+                    ? "Temas completados: 1/6"
+                    : "Temas completados: 0/6"}
                 </Typography>
               </Grid>
 
