@@ -2,7 +2,6 @@ import { Routes, Route } from "react-router-dom";
 
 // layouts and pages
 import Page from "./pages/Page";
-import Navbar from "./components/Navbar";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Profile from "./pages/Profile";
@@ -24,10 +23,12 @@ import QuizArte from "./pages/QuizArte";
 import QuizSistema from "./pages/QuizSistema";
 import QuizArquitectura from "./pages/QuizArquitectura";
 import QuizGastronomia from "./pages/QuizGastronomia.jsx";
+
+import "./App.css";
+
 const App = () => {
   return (
-    <>
-      <Navbar />
+    <div style={{ flex: 1, overflowX: "hidden" }}>
       <Routes>
         <Route path="/" element={<Page />} />
         <Route path="/login" element={<Login />} />
@@ -50,7 +51,7 @@ const App = () => {
         <Route path="/quizpolitica" element={<QuizSistema />} />
         <Route path="/quizgastronomia" element={<QuizGastronomia/>}/>
       </Routes>
-    </>
+    </div>
   );
 };
 

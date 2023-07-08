@@ -14,26 +14,30 @@ import arquitectura from "../../assets/arquitectura.png";
 import arte from "../../assets/arte.png";
 import gastronomia from "../../assets/gastronomia.jpg";
 import estrategia from "../../assets/ejercito.jpg";
-import completecat from "../../assets/complete_cat.png"
+import completecat from "../../assets/complete_cat.png";
 import { AnimatePresence, motion } from "framer-motion";
-import {
-  Box,
-  Grid,
-  Paper,
-  Typography,
-  useMediaQuery,
-} from "@mui/material";
+import { Box, Grid, Paper, Typography, useMediaQuery } from "@mui/material";
 import { toast } from "react-hot-toast";
 
 import TouchAppIcon from "@mui/icons-material/TouchApp";
+import CircleIcon from "@mui/icons-material/Circle";
 import { useNavigate } from "react-router-dom";
+import { supabase } from "../../backend/client";
 
 const IntroPage = () => {
   const sliderRef = useRef();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    supabase.auth.onAuthStateChange((event, session) => {
+      if (!session) {
+        navigate("/");
+      }
+    });
+  });
+
   const settings = {
-    dots: false,
+    dots: true,
     infinite: false,
     speed: 500,
     slidesToShow: 1,
@@ -42,6 +46,19 @@ const IntroPage = () => {
     lazyLoad: "ondemand",
     adaptiveHeight: true,
     beforeChange: (oldIndex, newIndex) => setIndice(newIndex),
+    customPaging: (i) => (
+      <div
+        style={{
+          position: "fixed",
+          bottom: 30,
+          width: "30px",
+          color: i === indice ? "#DBB489" : indice === 0 ? "white" : "black",
+          transition: "color .5s ease-in-out",
+        }}
+      >
+        <CircleIcon fontSize="14px" />
+      </div>
+    ),
   };
 
   useEffect(() => {
@@ -79,7 +96,6 @@ const IntroPage = () => {
 
   const [indice, setIndice] = useState(0);
 
-
   const temas = {
     0: (
       <AnimatePresence>
@@ -90,103 +106,101 @@ const IntroPage = () => {
             exit="hidden"
             variants={variants}
             transition={{ duration: 3, type: "spring" }}
+            style={{ position: "relative" }}
           >
-            <Box
-              sx={{
-                position: "relative",
-                height: "100vh",
-                background: "rgba(0,0,0,0)",
-              }}
-            >
-              <AnimatePresence>
-                {!initialRender && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 2, type: "spring", delay: 2.5 }}
-                  >
-                    <Box
-                      sx={{
-                        display: "flex",
-                        justifyContent: "center",
-                        columnGap: 2,
-                        position: "absolute",
-                        bottom: { md: "15%", xs: "20%" },
-                        right: "20px",
-                        background: "#333",
-                        px: 3,
-                        py: 1,
-                        color: "#fff",
-                        borderRadius: "16px",
-                      }}
-                    >
-                      <motion.div
-                        initial={{ x: 200 }}
-                        animate={{
-                          x: 0,
-                          transition: { duration: 1, type: "spring", delay: 4 },
-                        }}
-                      >
-                        <TouchAppIcon fontSize="medium" />
-                      </motion.div>
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{
-                          opacity: 1,
-                          transition: {
-                            duration: 0.8,
-                            type: "spring",
-                            delay: 4,
-                          },
-                        }}
-                      >
-                        <Typography sx={{ width: "12rem" }}>
-                          Usa las flechas o el scroll para deslizar hacia los lados.
-                        </Typography>
-                      </motion.div>
-                    </Box>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-              <Box sx={styles.banner} />
-              <Box sx={styles.about}>
-                <motion.div
-                  initial="hidden"
-                  animate="visible"
-                  variants={variants}
-                  transition={{ duration: 1, type: "spring", delay: 1 }}
-                >
-                  <Typography sx={{ fontSize: { xs: 24, md: 40 } }}>
-                    Bienvenido(a) a nilearn
-                  </Typography>
-                </motion.div>
-                <motion.div
-                  initial="hidden"
-                  animate="visible"
-                  variants={variants}
+            {/*  <AnimatePresence>
+              {!initialRender && toast.custom("Tema 0")
+             
+        
+                   <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
                   transition={{
-                    duration: 1,
+                    duration: 2,
                     type: "spring",
-                    delay: 2,
+                    delay: 2.5,
+                    position: "absolute",
                   }}
                 >
-                  <Typography
+                  <Box
                     sx={{
-                      px: { xs: "8%", md: "20%" },
-                      py: 2,
-                      fontSize: { xs: 16, md: 22 },
+                      display: "flex",
+                      justifyContent: "center",
+                      columnGap: 2,
+
+                      background: "#333",
+                      px: 3,
+                      py: 1,
+                      color: "#fff",
+                      borderRadius: "16px",
                     }}
                   >
-                    Sumérgete en el fascinante mundo de los faraones, los dioses
-                    y las imponentes pirámides que aún nos deslumbran con su
-                    grandeza. Acompáñanos mientras desenterramos los secretos
-                    del Valle de los Reyes y descubrimos el poderoso Nilo, el
-                    río que dio vida y sustento a esta antigua civilización.
-                    
-                  </Typography>
-                </motion.div>
-              </Box>
+                    <motion.div
+                      initial={{ x: 200 }}
+                      animate={{
+                        x: 0,
+                        transition: { duration: 1, type: "spring", delay: 4 },
+                      }}
+                    >
+                      <TouchAppIcon fontSize="medium" />
+                    </motion.div>
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{
+                        opacity: 1,
+                        transition: {
+                          duration: 0.8,
+                          type: "spring",
+                          delay: 4,
+                        },
+                      }}
+                    >
+                      <Typography sx={{ width: "12rem" }}>
+                        Usa las flechas o el scroll para deslizar hacia los
+                        lados.
+                      </Typography>
+                    </motion.div>
+                  </Box>
+                </motion.div> 
+                }
+            </AnimatePresence> */}
+            <Box sx={styles.banner} />
+            <Box sx={styles.about}>
+              <motion.div
+                initial="hidden"
+                animate="visible"
+                variants={variants}
+                transition={{ duration: 1, type: "spring", delay: 1 }}
+              >
+                <Typography sx={{ fontSize: { xs: 24, md: 40 }, mt: 4 }}>
+                  Bienvenido(a) a nilearn
+                </Typography>
+              </motion.div>
+              <motion.div
+                initial="hidden"
+                animate="visible"
+                variants={variants}
+                transition={{
+                  duration: 1,
+                  type: "spring",
+                  delay: 2,
+                }}
+              >
+                <Typography
+                  sx={{
+                    px: { xs: "8%", md: "20%" },
+                    py: 2,
+                    fontSize: { xs: 16, md: 22 },
+                  }}
+                >
+                  Sumérgete en el fascinante mundo de los faraones, los dioses y
+                  las imponentes pirámides que aún nos deslumbran con su
+                  grandeza. Acompáñanos mientras desenterramos los secretos del
+                  Valle de los Reyes y descubrimos el poderoso Nilo, el río que
+                  dio vida y sustento a esta antigua civilización.
+                </Typography>
+              </motion.div>
             </Box>
           </motion.div>
         )}
@@ -217,7 +231,6 @@ const IntroPage = () => {
                 transition: { duration: 2, type: "spring" },
               }}
             >
-              
               <Grid
                 container
                 sx={{
@@ -246,21 +259,20 @@ const IntroPage = () => {
                 )}
                 <Grid item md={6} sx={{ width: "20rem" }}>
                   <Typography variant="body1" sx={{ textAlign: "justify" }}>
-                  Nuestro objetivo es brindarte una experiencia educativa y
+                    Nuestro objetivo es brindarte una experiencia educativa y
                     entretenida, llena de información detallada y visualmente
                     cautivadora. Explora nuestras secciones dedicadas a la vida
                     cotidiana en el antiguo Egipto, la arquitectura majestuosa
                     de los templos y las tumbas, los jeroglíficos enigmáticos y
-                    los tesoros ocultos del arte egipcio. 
-                    ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ La civilización egipcia se caracterizó por su estabilidad
-                    política y social, así como por su avanzado conocimiento en
-                    diversos campos, como la arquitectura, la escritura, la
-                    medicina y la astronomía. Los antiguos egipcios creían en la
-                    vida después de la muerte y dedicaron gran parte de sus
-                    recursos y esfuerzos a la preparación para la vida en el más
-                    allá.
+                    los tesoros ocultos del arte egipcio.
+                    ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ La civilización egipcia se
+                    caracterizó por su estabilidad política y social, así como
+                    por su avanzado conocimiento en diversos campos, como la
+                    arquitectura, la escritura, la medicina y la astronomía. Los
+                    antiguos egipcios creían en la vida después de la muerte y
+                    dedicaron gran parte de sus recursos y esfuerzos a la
+                    preparación para la vida en el más allá.
                   </Typography>
-                  
                 </Grid>
               </Grid>
             </motion.div>
@@ -587,7 +599,7 @@ const IntroPage = () => {
       </AnimatePresence>
     ),
     7: (
-      <AnimatePresence> 
+      <AnimatePresence>
         {indice === 7 && (
           <Box sx={{ position: "absolute", top: "2rem" }}>
             <Box
@@ -665,7 +677,7 @@ const IntroPage = () => {
           </Box>
         )}
       </AnimatePresence>
-    )
+    ),
   };
 
   useEffect(() => {
@@ -691,7 +703,7 @@ const styles = {
     marginTop: "0px",
     backgroundSize: "cover",
     backgroundPosition: "top",
-    height: "100%",
+    height: "100vh",
     width: "100%",
     color: "black",
     display: "flex",

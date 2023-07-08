@@ -6,6 +6,9 @@ import { createTheme, ThemeProvider, CssBaseline } from "@mui/material";
 
 import RubikRegular from "../assets/rubik-regular.woff2";
 
+import "./App.css";
+import Layout from "./components/Layout";
+
 const theme = createTheme({
   typography: {
     fontFamily: "Rubik, sans-serif",
@@ -31,7 +34,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Router>
-        <App />
+        <Layout>
+          <App />
+        </Layout>
       </Router>
     </ThemeProvider>
   </React.StrictMode>

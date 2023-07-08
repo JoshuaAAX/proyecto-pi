@@ -153,7 +153,7 @@ const QuizReligion = () => {
               opacity: 0,
               transition: { duration: 1, type: "spring", delay: 1 },
             }}
-            whileHover="visible"
+     
           >
             <Box sx={styles.buttons.container}>
               <Paper

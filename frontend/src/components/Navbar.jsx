@@ -37,29 +37,49 @@ const Navbar = () => {
   const routes = ["/login", "/signup"];
 
   return (
-    <Box sx={{ flexGrow: 1, mb: 8}}>
-      <AppBar sx={{ backgroundColor: "#DBB489", position: "fixed" }}>
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            onClick={() => navigate("/.")}
-            aria-label="menu"
-            sx={{ mr: 1 }}
-            disableRipple
+    <Box sx={{ mb: "60px", width: "100vw" }}>
+      <AppBar
+        position="fixed"
+        top={0}
+        right={0}
+        height="60px"
+        sx={{ backgroundColor: "#DBB489" }}
+      >
+        <Toolbar
+          sx={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              cursor: "pointer",
+            }}
+            onClick={() => navigate("/")}
           >
-            <img src={logo} alt="Nilearn Logo" height={"40px"} />
-          </IconButton>
-          <Typography
-            variant="h6"
-            component="div"
-            color="black"
-            sx={{ flexGrow: 1 }}
-          >
-            Nilearn
-          </Typography>
-          
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              onClick={() => navigate("/")}
+              aria-label="menu"
+              sx={{ mr: 1 }}
+              disableRipple
+            >
+              <img src={logo} alt="Nilearn Logo" height={"40px"} />
+            </IconButton>
+            <Typography
+              variant="h6"
+              component="div"
+              color="black"
+              sx={{ flexGrow: 1 }}
+            >
+              Nilearn
+            </Typography>
+          </Box>
           {session ? (
             <UserMenu
               bgcolor="slategray"

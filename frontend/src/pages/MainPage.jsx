@@ -19,7 +19,8 @@ const MainPage = () => {
   return (
     <Box
       sx={{
-        height: "100vh",
+        height: "100%",
+        width: "100%",
         background: amber[100],
         display: "flex",
         alignItems: "center",
